@@ -5,9 +5,9 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = '@atz\xef\xe6\xce\xa7~\xd9*)\x04\xfc\xad\x9a'
+_lr_signature = 'O\x19\xa2\x91*E\x8fV\x93\xb7\x9f2\xeda,\xb6'
     
-_lr_action_items = {'DIVIDE':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,25,-16,25,25,-19,25,25,25,-14,-15,25,25,25,25,25,-13,25,25,25,25,25,]),'DIYE':([36,58,65,70,],[-29,66,-29,-28,]),'YEDI':([0,11,21,36,60,65,78,],[1,1,-3,1,1,1,1,]),'ASSIGNMENT':([6,20,],[18,44,]),'LPARA':([0,1,2,11,17,18,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,44,60,61,65,69,74,75,76,78,],[2,2,2,2,2,2,-3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-31,-32,2,]),'NUMBER':([0,1,2,11,17,18,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,44,60,61,65,69,74,75,76,78,],[3,3,3,3,3,3,-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,-31,-32,3,]),'BAISA':([65,70,78,79,],[-29,-28,-29,80,]),'LEKHA':([3,5,6,10,12,13,40,45,46,47,48,49,50,51,52,53,54,55,56,],[-18,-17,-16,22,-22,-16,-19,-6,-14,-15,-9,-8,-7,-10,-21,-11,-13,-5,-12,]),'JABA':([0,11,21,36,60,65,78,],[4,4,-3,4,4,4,4,]),'CHHAINA':([3,5,13,40,42,45,46,47,48,49,50,51,53,54,55,56,],[-18,-17,-16,-19,63,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,]),'MINUS':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,73,77,],[-18,-17,-16,35,-16,35,35,-19,35,35,35,-14,-15,35,35,35,35,-11,-13,35,-12,35,35,76,35,]),'NABHAE':([3,5,13,15,40,45,46,47,48,49,50,51,53,54,55,56,],[-18,-17,-16,39,-19,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,]),'LE':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,24,-16,24,24,-19,24,24,-6,-14,-15,-9,24,-7,-10,-11,-13,24,-12,24,24,24,]),'DEKHI':([3,5,13,40,45,46,47,48,49,50,51,53,54,55,56,64,],[-18,-17,-16,-19,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,69,]),'RPARA':([3,5,13,16,40,45,46,47,48,49,50,51,53,54,55,56,],[-18,-17,-16,40,-19,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,]),'POWER':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,26,-16,26,26,-19,26,26,26,-14,-15,26,26,26,26,26,-13,26,26,26,26,26,]),'NEWLINE':([3,5,8,13,14,19,22,38,39,40,41,43,45,46,47,48,49,50,51,53,54,55,56,57,59,62,63,66,68,71,77,80,],[-18,-17,21,-16,36,-23,-20,-26,-27,-19,60,-4,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,65,-25,-35,-36,-24,-34,-33,78,-30,]),'NE':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,28,-16,28,28,-19,28,28,-6,-14,-15,-9,28,-7,-10,-11,-13,-5,-12,28,28,28,]),'LT':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,27,-16,27,27,-19,27,27,-6,-14,-15,-9,27,-7,-10,-11,-13,27,-12,27,27,27,]),'PLUS':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,73,77,],[-18,-17,-16,32,-16,32,32,-19,32,32,32,-14,-15,32,32,32,32,-11,-13,32,-12,32,32,75,32,]),'RA':([14,38,39,41,59,62,63,68,],[37,-26,-27,61,37,-35,-36,61,]),'COMMA':([3,5,6,12,13,40,45,46,47,48,49,50,51,53,54,55,56,],[-18,-17,-16,31,-16,-19,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,]),'IDENTIFIER':([0,1,2,7,11,17,18,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,44,60,61,65,69,74,75,76,78,],[6,13,13,20,6,13,13,-3,13,13,13,13,13,13,13,13,13,13,13,13,6,13,13,6,13,6,13,13,-31,-32,6,]),'SABEI':([0,11,21,36,60,65,78,],[7,7,-3,7,7,7,7,]),'$end':([0,9,11,21,23,],[-2,0,-2,-3,-1,]),'BHAE':([3,5,13,15,40,45,46,47,48,49,50,51,53,54,55,56,],[-18,-17,-16,38,-19,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,]),'GT':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,30,-16,30,30,-19,30,30,-6,-14,-15,-9,30,-7,-10,-11,-13,30,-12,30,30,30,]),'STRING':([0,1,2,11,17,18,21,24,25,26,27,28,29,30,31,32,33,34,35,36,37,44,60,61,65,69,74,75,76,78,],[5,5,5,5,5,5,-3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,-31,-32,5,]),'TIMES':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,33,-16,33,33,-19,33,33,33,-14,-15,33,33,33,33,33,-13,33,33,33,33,33,]),'GE':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,29,-16,29,29,-19,29,29,-6,-14,-15,-9,29,-7,-10,-11,-13,29,-12,29,29,29,]),'BAJA':([60,65,67,70,],[-29,-29,71,-28,]),'EQ':([3,5,6,12,13,15,16,40,42,43,45,46,47,48,49,50,51,53,54,55,56,64,72,77,],[-18,-17,-16,34,-16,34,34,-19,34,34,-6,-14,-15,-9,34,-7,-10,-11,-13,-5,-12,34,34,34,]),'SAMMA':([4,],[17,]),'CHHA':([3,5,13,40,42,45,46,47,48,49,50,51,53,54,55,56,],[-18,-17,-16,-19,62,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,]),'SEMICOLON':([3,5,13,40,45,46,47,48,49,50,51,53,54,55,56,72,],[-18,-17,-16,-19,-6,-14,-15,-9,-8,-7,-10,-11,-13,-5,-12,73,]),'LEU':([6,],[19,]),}
+_lr_action_items = {'DIYE':([42,65,73,74,79,81,85,86,88,90,],[-32,-35,-32,80,-31,-32,-34,-32,-35,-33,]),'YEDI':([0,11,27,42,67,73,81,86,92,],[1,1,-3,1,1,1,1,1,1,]),'ASSIGNMENT':([6,18,19,21,22,24,25,26,],[20,-40,-39,-38,-36,50,-37,51,]),'LPARA':([0,1,2,11,17,20,22,25,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,50,51,67,68,73,75,78,81,86,89,92,],[2,2,2,2,2,2,-36,-37,-3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,]),'NUMBER':([0,1,2,11,17,20,22,25,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,50,51,67,68,73,75,78,81,86,89,92,],[3,3,3,3,3,3,-36,-37,-3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,]),'BAISA':([73,79,92,93,],[-32,-31,-32,94,]),'LEKHA':([3,5,6,10,12,13,46,52,53,54,55,56,57,58,59,60,61,62,63,],[-24,-23,-22,28,-27,-22,-25,-12,-20,-21,-15,-14,-13,-16,-26,-17,-19,-11,-18,]),'NABHAE':([3,5,13,15,46,52,53,54,55,56,57,58,60,61,62,63,],[-24,-23,-22,45,-25,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,]),'JABA':([0,11,27,42,67,73,81,86,92,],[4,4,-3,4,4,4,4,4,4,]),'CHHAINA':([3,5,13,46,48,52,53,54,55,56,57,58,60,61,62,63,],[-24,-23,-22,-25,70,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,]),'MINUS':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,87,91,],[-24,-23,25,41,-22,41,41,-25,41,41,41,-20,-21,41,41,41,41,-17,-19,41,-18,41,41,41,25,41,]),'STRING':([0,1,2,11,17,20,22,25,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,50,51,67,68,73,75,78,81,86,89,92,],[5,5,5,5,5,5,-36,-37,-3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,]),'LE':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,30,-22,30,30,-25,30,30,-12,-20,-21,-15,30,-13,-16,-17,-19,30,-18,30,30,30,30,]),'DEKHI':([3,5,13,46,52,53,54,55,56,57,58,60,61,62,63,72,],[-24,-23,-22,-25,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,78,]),'RPARA':([3,5,13,16,46,52,53,54,55,56,57,58,60,61,62,63,],[-24,-23,-22,46,-25,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,]),'SEMICOLON':([3,5,13,46,52,53,54,55,56,57,58,60,61,62,63,84,],[-24,-23,-22,-25,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,87,]),'NEWLINE':([3,5,8,13,14,23,28,44,45,46,47,49,52,53,54,55,56,57,58,60,61,62,63,64,66,69,70,71,75,77,80,82,83,91,94,],[-24,-23,27,-22,42,-6,-5,-29,-30,-25,67,-4,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,73,-28,-42,-43,-7,81,-41,-8,86,-10,92,-9,]),'NE':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,34,-22,34,34,-25,34,34,-12,-20,-21,-15,34,-13,-16,-17,-19,-11,-18,34,34,34,34,]),'LT':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,33,-22,33,33,-25,33,33,-12,-20,-21,-15,33,-13,-16,-17,-19,33,-18,33,33,33,33,]),'PLUS':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,87,91,],[-24,-23,22,38,-22,38,38,-25,38,38,38,-20,-21,38,38,38,38,-17,-19,38,-18,38,38,38,22,38,]),'RA':([14,44,45,47,66,69,70,77,82,],[43,-29,-30,68,43,-42,-43,68,43,]),'COMMA':([3,5,6,12,13,46,52,53,54,55,56,57,58,60,61,62,63,],[-24,-23,-22,37,-22,-25,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,]),'IDENTIFIER':([0,1,2,7,11,17,20,22,25,27,30,31,32,33,34,35,36,37,38,39,40,41,42,43,50,51,67,68,73,75,78,81,86,89,92,],[6,13,13,26,6,13,13,-36,-37,-3,13,13,13,13,13,13,13,13,13,13,13,13,6,13,13,13,6,13,6,13,13,6,6,13,6,]),'SABEI':([0,11,27,42,67,73,81,86,92,],[7,7,-3,7,7,7,7,7,7,]),'$end':([0,9,11,27,29,],[-2,0,-2,-3,-1,]),'BHAE':([3,5,13,15,46,52,53,54,55,56,57,58,60,61,62,63,],[-24,-23,-22,44,-25,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,]),'GT':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,36,-22,36,36,-25,36,36,-12,-20,-21,-15,36,-13,-16,-17,-19,36,-18,36,36,36,36,]),'DIVIDE':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,18,31,-22,31,31,-25,31,31,31,-20,-21,31,31,31,31,31,-19,31,31,31,31,31,31,]),'TIMES':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,19,39,-22,39,39,-25,39,39,39,-20,-21,39,39,39,39,39,-19,39,39,39,39,39,39,]),'GE':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,35,-22,35,35,-25,35,35,-12,-20,-21,-15,35,-13,-16,-17,-19,35,-18,35,35,35,35,]),'BAJA':([67,73,76,79,],[-32,-32,83,-31,]),'EQ':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,40,-22,40,40,-25,40,40,-12,-20,-21,-15,40,-13,-16,-17,-19,-11,-18,40,40,40,40,]),'SAMMA':([4,],[17,]),'CHHA':([3,5,13,46,48,52,53,54,55,56,57,58,60,61,62,63,],[-24,-23,-22,-25,69,-12,-20,-21,-15,-14,-13,-16,-17,-19,-11,-18,]),'POWER':([3,5,6,12,13,15,16,46,48,49,52,53,54,55,56,57,58,60,61,62,63,71,72,84,91,],[-24,-23,-22,32,-22,32,32,-25,32,32,32,-20,-21,32,32,32,32,32,-19,32,32,32,32,32,32,]),'ATHAWA':([42,65,73,79,86,88,],[-32,75,-32,-31,-32,75,]),'LEU':([6,],[23,]),}
 
 _lr_action = { }
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'whilecond':([17,61,],[41,68,]),'sign':([73,],[74,]),'stmt':([0,11,36,60,65,78,],[8,8,57,57,57,57,]),'dynamString':([0,11,31,36,60,65,78,],[10,10,52,10,10,10,10,]),'cmpdstmt':([36,60,65,78,],[58,67,70,79,]),'exp':([0,1,2,11,17,18,24,25,26,27,28,29,30,31,32,33,34,35,36,37,44,60,61,65,69,74,78,],[12,15,16,12,42,43,45,46,47,48,49,50,51,12,53,54,55,56,12,15,64,12,42,12,72,77,12,]),'element':([0,11,],[11,11,]),'N':([0,11,],[9,23,]),'condition':([1,37,],[14,59,]),}
+_lr_goto_items = {'optelse':([65,88,],[74,90,]),'whilecond':([17,68,],[47,77,]),'incrementsign':([6,],[24,]),'sign':([6,87,],[21,89,]),'stmt':([0,11,42,67,73,81,86,92,],[8,8,64,64,64,64,64,64,]),'dynamString':([0,11,37,42,67,73,81,86,92,],[10,10,59,10,10,10,10,10,10,]),'cmpdstmt':([42,67,73,81,86,92,],[65,76,79,85,88,93,]),'exp':([0,1,2,11,17,20,30,31,32,33,34,35,36,37,38,39,40,41,42,43,50,51,67,68,73,75,78,81,86,89,92,],[12,15,16,12,48,49,52,53,54,55,56,57,58,12,60,61,62,63,12,15,71,72,12,48,12,15,84,12,12,91,12,]),'element':([0,11,],[11,11,]),'N':([0,11,],[9,29,]),'condition':([1,43,75,],[14,66,82,]),}
 
 _lr_goto = { }
 for _k, _v in _lr_goto_items.items():
@@ -26,40 +26,47 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> N","S'",1,None,None,None),
-  ('N -> element N','N',2,'p_N','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',15),
-  ('N -> <empty>','N',0,'p_N_empty','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',18),
-  ('element -> stmt NEWLINE','element',2,'p_element_stmt','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',21),
-  ('stmt -> IDENTIFIER ASSIGNMENT exp','stmt',3,'p_stmt_assign','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',24),
-  ('exp -> exp EQ exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',28),
-  ('exp -> exp LE exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',29),
-  ('exp -> exp GE exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',30),
-  ('exp -> exp NE exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',31),
-  ('exp -> exp LT exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',32),
-  ('exp -> exp GT exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',33),
-  ('exp -> exp PLUS exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',34),
-  ('exp -> exp MINUS exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',35),
-  ('exp -> exp TIMES exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',36),
-  ('exp -> exp DIVIDE exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',37),
-  ('exp -> exp POWER exp','exp',3,'p_exp_equal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',38),
-  ('exp -> IDENTIFIER','exp',1,'p_exp_identifier','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',42),
-  ('exp -> STRING','exp',1,'p_exp_string','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',45),
-  ('exp -> NUMBER','exp',1,'p_exp_number','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',48),
-  ('exp -> LPARA exp RPARA','exp',3,'p_exp_paren','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',51),
-  ('stmt -> dynamString LEKHA','stmt',2,'p_stmt_print','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',56),
-  ('dynamString -> exp COMMA dynamString','dynamString',3,'p_dynamString_ident','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',60),
-  ('dynamString -> exp','dynamString',1,'p_dynamString_exp','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',63),
-  ('stmt -> IDENTIFIER LEU','stmt',2,'p_stmt_input','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',68),
-  ('stmt -> YEDI condition NEWLINE cmpdstmt DIYE','stmt',5,'p_stmt_ifcondition','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',73),
-  ('condition -> condition RA condition','condition',3,'p_condition_binop','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',77),
-  ('condition -> exp BHAE','condition',2,'p_condition_positive','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',82),
-  ('condition -> exp NABHAE','condition',2,'p_condition_neg','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',86),
-  ('cmpdstmt -> stmt NEWLINE cmpdstmt','cmpdstmt',3,'p_cmpdstmt_stmt','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',90),
-  ('cmpdstmt -> <empty>','cmpdstmt',0,'p_cmpdstmt_empty','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',93),
-  ('stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA','stmt',12,'p_stmt_for','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',98),
-  ('sign -> PLUS','sign',1,'p_sign','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',101),
-  ('sign -> MINUS','sign',1,'p_sign','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',102),
-  ('stmt -> JABA SAMMA whilecond NEWLINE cmpdstmt BAJA','stmt',6,'p_stmt_while','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',107),
-  ('whilecond -> whilecond RA whilecond','whilecond',3,'p_whilecond_normal','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',111),
-  ('whilecond -> exp CHHA','whilecond',2,'p_whilecond_pos','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',115),
-  ('whilecond -> exp CHHAINA','whilecond',2,'p_whilecond_neg','/home/sushil/Desktop/Dropbox/NepProgLang/NepParser.py',118),
+  ('N -> element N','N',2,'p_N','/home/sushil/githubrepo/rhee/NepParser.py',15),
+  ('N -> <empty>','N',0,'p_N_empty','/home/sushil/githubrepo/rhee/NepParser.py',18),
+  ('element -> stmt NEWLINE','element',2,'p_element_stmt','/home/sushil/githubrepo/rhee/NepParser.py',21),
+  ('stmt -> IDENTIFIER ASSIGNMENT exp','stmt',3,'p_stmt_assign','/home/sushil/githubrepo/rhee/NepParser.py',24),
+  ('stmt -> dynamString LEKHA','stmt',2,'p_stmt_print','/home/sushil/githubrepo/rhee/NepParser.py',28),
+  ('stmt -> IDENTIFIER LEU','stmt',2,'p_stmt_input','/home/sushil/githubrepo/rhee/NepParser.py',32),
+  ('stmt -> IDENTIFIER incrementsign ASSIGNMENT exp','stmt',4,'p_stmt_increment','/home/sushil/githubrepo/rhee/NepParser.py',36),
+  ('stmt -> YEDI condition NEWLINE cmpdstmt optelse DIYE','stmt',6,'p_stmt_ifcondition','/home/sushil/githubrepo/rhee/NepParser.py',40),
+  ('stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA','stmt',12,'p_stmt_for','/home/sushil/githubrepo/rhee/NepParser.py',44),
+  ('stmt -> JABA SAMMA whilecond NEWLINE cmpdstmt BAJA','stmt',6,'p_stmt_while','/home/sushil/githubrepo/rhee/NepParser.py',48),
+  ('exp -> exp EQ exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',52),
+  ('exp -> exp LE exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',53),
+  ('exp -> exp GE exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',54),
+  ('exp -> exp NE exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',55),
+  ('exp -> exp LT exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',56),
+  ('exp -> exp GT exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',57),
+  ('exp -> exp PLUS exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',58),
+  ('exp -> exp MINUS exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',59),
+  ('exp -> exp TIMES exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',60),
+  ('exp -> exp DIVIDE exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',61),
+  ('exp -> exp POWER exp','exp',3,'p_exp_equal','/home/sushil/githubrepo/rhee/NepParser.py',62),
+  ('exp -> IDENTIFIER','exp',1,'p_exp_identifier','/home/sushil/githubrepo/rhee/NepParser.py',67),
+  ('exp -> STRING','exp',1,'p_exp_string','/home/sushil/githubrepo/rhee/NepParser.py',70),
+  ('exp -> NUMBER','exp',1,'p_exp_number','/home/sushil/githubrepo/rhee/NepParser.py',73),
+  ('exp -> LPARA exp RPARA','exp',3,'p_exp_paren','/home/sushil/githubrepo/rhee/NepParser.py',76),
+  ('dynamString -> exp COMMA dynamString','dynamString',3,'p_dynamString_ident','/home/sushil/githubrepo/rhee/NepParser.py',80),
+  ('dynamString -> exp','dynamString',1,'p_dynamString_exp','/home/sushil/githubrepo/rhee/NepParser.py',83),
+  ('condition -> condition RA condition','condition',3,'p_condition_binop','/home/sushil/githubrepo/rhee/NepParser.py',87),
+  ('condition -> exp BHAE','condition',2,'p_condition_positive','/home/sushil/githubrepo/rhee/NepParser.py',92),
+  ('condition -> exp NABHAE','condition',2,'p_condition_neg','/home/sushil/githubrepo/rhee/NepParser.py',96),
+  ('cmpdstmt -> stmt NEWLINE cmpdstmt','cmpdstmt',3,'p_cmpdstmt_stmt','/home/sushil/githubrepo/rhee/NepParser.py',100),
+  ('cmpdstmt -> <empty>','cmpdstmt',0,'p_cmpdstmt_empty','/home/sushil/githubrepo/rhee/NepParser.py',103),
+  ('optelse -> ATHAWA condition NEWLINE cmpdstmt optelse','optelse',5,'p_optelse_elseif','/home/sushil/githubrepo/rhee/NepParser.py',107),
+  ('optelse -> ATHAWA NEWLINE cmpdstmt','optelse',3,'p_optelse_else','/home/sushil/githubrepo/rhee/NepParser.py',110),
+  ('optelse -> <empty>','optelse',0,'p_optelse_empty','/home/sushil/githubrepo/rhee/NepParser.py',113),
+  ('sign -> PLUS','sign',1,'p_sign','/home/sushil/githubrepo/rhee/NepParser.py',118),
+  ('sign -> MINUS','sign',1,'p_sign','/home/sushil/githubrepo/rhee/NepParser.py',119),
+  ('incrementsign -> sign','incrementsign',1,'p_incrementsign','/home/sushil/githubrepo/rhee/NepParser.py',123),
+  ('incrementsign -> TIMES','incrementsign',1,'p_incrementsign','/home/sushil/githubrepo/rhee/NepParser.py',124),
+  ('incrementsign -> DIVIDE','incrementsign',1,'p_incrementsign','/home/sushil/githubrepo/rhee/NepParser.py',125),
+  ('whilecond -> whilecond RA whilecond','whilecond',3,'p_whilecond_normal','/home/sushil/githubrepo/rhee/NepParser.py',132),
+  ('whilecond -> exp CHHA','whilecond',2,'p_whilecond_pos','/home/sushil/githubrepo/rhee/NepParser.py',136),
+  ('whilecond -> exp CHHAINA','whilecond',2,'p_whilecond_neg','/home/sushil/githubrepo/rhee/NepParser.py',139),
 ]

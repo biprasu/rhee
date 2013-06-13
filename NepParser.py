@@ -24,6 +24,32 @@ def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
     p[0] = ("assignment", p[1], [p[3]])
 
+def p_stmt_print(p):
+    'stmt : dynamString LEKHA'
+    p[0] = ("print", p[1])
+
+def p_stmt_input(p):
+    'stmt : IDENTIFIER LEU'
+    p[0] = ("input", p[1])
+
+def p_stmt_increment(p):
+    'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
+    p[0] = ("increment", p[2], [p[4]])
+
+def p_stmt_ifcondition(p):
+    'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
+    p[0] = ("ifelse", [("yedi", p[2], p[4])] + p[5])
+
+def p_stmt_for(p):
+    'stmt : SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA'
+    p[0] = ("forloop", p[2], [p[4]], [p[6]], p[8], [p[9]], p[11])
+
+def p_stmt_while(p):
+    'stmt : JABA SAMMA whilecond NEWLINE cmpdstmt BAJA'
+    p[0] = ("whileloop", p[3], p[5])
+
+
+
 def p_exp_equal(p):
     '''exp : exp EQ exp
             | exp LE exp
@@ -52,27 +78,12 @@ def p_exp_paren(p):
     'exp : LPARA exp RPARA'
     p[0] = ("parenthesis", [p[2]])
 
-
-def p_stmt_print(p):
-    'stmt : dynamString LEKHA'
-    p[0] = ("print", p[1])
-
 def p_dynamString_ident(p):
     'dynamString : exp COMMA dynamString'
-    p[0] = [p[1]] + p[3]
+    p[0] = [[p[1]]] + p[3]
 def p_dynamString_exp(p):
     'dynamString : exp'
-    p[0] = [p[1]]
-
-
-def p_stmt_input(p):
-    'stmt : IDENTIFIER LEU'
-    p[0] = ("input", p[1])
-
-
-def p_stmt_ifcondition(p):
-    'stmt : YEDI condition NEWLINE cmpdstmt DIYE'
-    p[0] = ("yedi", p[2], p[4])
+    p[0] = [[p[1]]]
 
 def p_condition_binop(p):
     '''condition : condition RA condition
@@ -94,19 +105,30 @@ def p_cmpdstmt_empty(p):
     'cmpdstmt : '
     p[0] = []
 
+def p_optelse_elseif(p):
+    'optelse : ATHAWA condition NEWLINE cmpdstmt optelse'
+    p[0] = [("elseif", p[2], p[4])] + p[5]
+def p_optelse_else(p):
+    'optelse : ATHAWA NEWLINE cmpdstmt'
+    p[0] = [("else", p[3])]
+def p_optelse_empty(p):
+    'optelse : '
+    p[0] = []
 
-def p_stmt_for(p):
-    'stmt : SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA'
-    p[0] = ("forloop", p[2], [p[4]], [p[6]], p[8], [p[9]], p[11])
+
 def p_sign(p):
     '''sign : PLUS
             | MINUS
     '''
     p[0] = p[1]
+def p_incrementsign(p):
+    '''incrementsign : sign
+                        | TIMES
+                        | DIVIDE
+    '''
+    p[0] = p[1]
 
-def p_stmt_while(p):
-    'stmt : JABA SAMMA whilecond NEWLINE cmpdstmt BAJA'
-    p[0] = ("whileloop", p[3], p[5])
+
 
 def p_whilecond_normal(p):
     'whilecond : whilecond RA whilecond'
@@ -155,23 +177,31 @@ ip = u'''क लेख
 क, " मा हामीले  २ हालेका छौँ " लेख
 "ख मा ", ख, " छ" लेख
 '''
-ip = u'''ख लेउ
-'''
-ip = u'''सबै ख = ३ देखि ५; -२
-     क लेउ
-     २^क लेख
-बैस
-'''
-ip = u'''जब सम्म क==१० छ र ख==२ छैन
-२^क लेख
-बज
-'''
-# ip = u'''यदि  क == २ भए			# yesko certain portion ahile bhaako chaina bholi tira complete hanchu
-#     क = १०.३२
-#     क = १०.३२
-#दिय
-#'''
 # ip = u'''ख लेउ
+# '''
+# ip = u'''सबै ख = ३ देखि ५; -२
+#      क लेउ
+#      २^क लेख
+# बैस
+# '''
+# ip = u'''जब सम्म क==१० छ र ख==२ छैन
+# २^क लेख
+# बज
+# '''
+# ip = u'''यदि  क == २ भए			
+#     क = १०.३२
+#     क = १०.३२
+# अथवा क >= ३ भए र क == १० नभए
+#     "क तिन भन्दा बेसि छ तर १० छैन" लेख
+# अथवा
+#     ख लेउ
+#     "ख मा ", ख, " छ" लेख
+# दिय
+# '''
+# ip = u'''क += १०.३२
+# क -= १०.३२
+# क *= १०.३२
+# क /= १०.३२
 # '''
 
 
