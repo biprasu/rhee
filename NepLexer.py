@@ -23,6 +23,8 @@ tokens = ['STRING',
           'ASSIGNMENT',
           'COMMA',
           'SEMICOLON',
+           'COLON', 
+           'QUESTION', 
           'IDENTIFIER',
           'NUMBER',
           'NEWLINE',
@@ -45,6 +47,7 @@ reserved = {
     u'छैन' : 'CHHAINA',
     u'छ' : 'CHHA',
     u'र'  : 'RA',
+    u'वा' : 'WA', 
  
 }
  
@@ -99,6 +102,8 @@ t_LT = ur'<'
 t_ASSIGNMENT = ur'='
 t_COMMA = ur','
 t_SEMICOLON = ur';'
+t_COLON = ur':'
+t_QUESTION = ur'\?'
  
 #words
 def t_IDENTIFIER(token):
@@ -118,16 +123,17 @@ def t_error(t):
     print "Illegal character '%s'" % t.value[0]
     t.lexer.skip(1)
 
-# lexer = lex.lex()
-# ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
+
+lexer = lex.lex()
+ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
  
-# lexer.input (ip)
+lexer.input (ip)
  
  
-# while True:
-#     a = lexer.token()
-#     if not a: break
-#     if not a.type == 'NEWLINE':
-#         print a.type, a.value
-#     else:
-#         print a.type
+while True:
+    a = lexer.token()
+    if not a: break
+    if not a.type == 'NEWLINE':
+        print a.type, a.value
+    else:
+        print a.type
