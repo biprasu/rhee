@@ -24,8 +24,20 @@ def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
     p[0] = ("assignment", p[1], [p[3]])
 
-def p_stmt_print(p):
+def p_stmt_println(p):
+    'stmt : dynamString COMMA LEKHA'
+    p[0] = ("println", p[1])
+
+def p_stmt_withoutComma(p):
     'stmt : dynamString LEKHA'
+    p[0] = ("println", p[1])
+
+def p_stmt_print(p):
+    'stmt : dynamString COMMA LEKHA SEMICOLON'
+    p[0] = ("print", p[1])
+
+def p_stmt_WOComma(p):
+    'stmt : dynamString LEKHA SEMICOLON'
     p[0] = ("print", p[1])
 
 def p_stmt_input(p):
@@ -34,7 +46,7 @@ def p_stmt_input(p):
 
 def p_stmt_increment(p):
     'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
-    p[0] = ("increment", p[2], [p[4]])
+    p[0] = ("assignment", p[1], [("binop", p[2],[("identifier", p[1])],[p[4]])])
 
 def p_stmt_ifcondition(p):
     'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
@@ -47,6 +59,19 @@ def p_stmt_for(p):
 def p_stmt_while(p):
     'stmt : JABA SAMMA whilecond NEWLINE cmpdstmt BAJA'
     p[0] = ("whileloop", p[3], p[5])
+
+def p_stmt_array(p):
+    'stmt : IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA'
+    p[0] = ("listAssignment", p[1], p[4])
+def p_variableexp_more(p):
+    'variableexp : exp COMMA variableexp'
+    p[0] = [[p[1]]] + p[3]
+def p_variableexp_one(p):
+    'variableexp : exp'
+    p[0] = [[p[1]]]
+def p_variableexp_empty(p):
+    'variableexp : '
+    p[0] = []
 
 
 
@@ -62,6 +87,8 @@ def p_exp_equal(p):
             | exp TIMES exp
             | exp DIVIDE exp
             | exp POWER exp
+            | exp RA exp
+            | exp WA exp
     '''
     p[0] = ("binop", p[2],[p[1]],[p[3]])
 
@@ -78,6 +105,10 @@ def p_exp_paren(p):
     'exp : LPARA exp RPARA'
     p[0] = ("parenthesis", [p[2]])
 
+def p_exp_conditional(p):               # second one is to be evaluated , third one is exp if true and fourth is if false
+    'exp : LPARA exp RPARA QUESTION exp COLON exp'
+    p[0] = ("conditional", [p[2]], [p[5]], [p[7]])
+
 def p_dynamString_ident(p):
     'dynamString : exp COMMA dynamString'
     p[0] = [[p[1]]] + p[3]
@@ -87,6 +118,7 @@ def p_dynamString_exp(p):
 
 def p_condition_binop(p):
     '''condition : condition RA condition
+                    | condition WA condition
     '''
     p[0] = [("conditionalbinop", p[2], p[1], p[3])]
 
@@ -131,7 +163,9 @@ def p_incrementsign(p):
 
 
 def p_whilecond_normal(p):
-    'whilecond : whilecond RA whilecond'
+    '''whilecond : whilecond RA whilecond
+                    | whilecond WA whilecond
+    '''
     p[0] = [("conditionalbinop", p[2], p[1], p[3])]
 
 def p_whilecond_pos(p):
@@ -198,15 +232,31 @@ ip = u'''क लेख
 #     "ख मा ", ख, " छ" लेख
 # दिय
 # '''
-# ip = u'''क += १०.३२
-# क -= १०.३२
-# क *= १०.३२
-# क /= १०.३२
+ip = u'''क += १०.३२
+क = क + १०.३२
+क -= १०.३२
+क *= १०.३२
+क /= १०.३२
+'''
+# ip = u'''क = (क == २) ? २५: ५
 # '''
-
-
-# '''
+ip = u'''यदि  क == २ वा क == ३ भए
+    क लेख
+    क, " मा हामीले  २ हालेका छौँ " लेख
+दिय
+'''
+ip = u'''यदि  क == २ भए वा क == ३ भए
+    क लेख
+    क, " मा हामीले  २ हालेका छौँ " लेख
+दिय
+'''
+ip = u'''क लेख
+क लेख;
+क, " मा हामीले  २ हालेका छौँ " लेख;
+'''
 # print tokenizer(ip)
+
+
 ast = parser.parse(ip, lexer=lexer)
 print ast
 # print "done"

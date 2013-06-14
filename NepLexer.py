@@ -124,16 +124,16 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-lexer = lex.lex()
-ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
+# lexer = lex.lex()
+# ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
  
-lexer.input (ip)
+# lexer.input (ip)
  
  
-while True:
-    a = lexer.token()
-    if not a: break
-    if not a.type == 'NEWLINE':
-        print a.type, a.value
-    else:
-        print a.type
+# while True:
+#     a = lexer.token()
+#     if not a: break
+#     if not a.type == 'NEWLINE':
+#         print a.type, a.value
+#     else:
+#         print a.type
