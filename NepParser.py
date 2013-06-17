@@ -1,5 +1,6 @@
 #encoding=UTF8
 import ply.yacc as yacc
+from NepInterpreter import interpret
 
 start = "N"
 
@@ -260,4 +261,4 @@ ip = u'''क लेख
 ast = parser.parse(ip, lexer=lexer)
 print ast
 # print "done"
-
+interpret(ast)
