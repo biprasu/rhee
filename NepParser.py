@@ -1,5 +1,6 @@
 #encoding=UTF8
 import ply.yacc as yacc
+from NepInterpreter import interpret
 
 start = "N"
 
@@ -290,4 +291,4 @@ print ast
 # from NepInterpreter import *
 # interpret(ast)
 # print "done"
-
+interpret(ast)
