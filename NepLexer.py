@@ -126,7 +126,7 @@ def t_error(t):
 
 # lexer = lex.lex()
 # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
- 
+
 # lexer.input (ip)
  
  

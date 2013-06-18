@@ -12,31 +12,34 @@ precedence = (
     )
 
 def p_N(p):
-    'N : element N'
-    p[0] = [p[1]] + p[2]
+    'N : element NEWLINE N'
+    p[0] = [p[1]] + p[3]
+def p_N_lastone(p):
+    'N : element'
+    p[0] = [p[1]]
 def p_N_empty(p):
     'N : '
     p[0] = []
 def p_element_stmt(p):
-    'element : stmt NEWLINE'
+    'element : stmt'
     p[0] = p[1]
 def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
     p[0] = ("assignment", p[1], [p[3]])
 
-def p_stmt_println(p):
-    'stmt : dynamString COMMA LEKHA'
-    p[0] = ("println", p[1])
+# def p_stmt_println(p):
+#     'stmt : dynamString COMMA LEKHA'
+#     p[0] = ("println", p[1])
 
-def p_stmt_withoutComma(p):
+def p_stmt_withoutCommaNewline(p):
     'stmt : dynamString LEKHA'
     p[0] = ("println", p[1])
 
-def p_stmt_print(p):
-    'stmt : dynamString COMMA LEKHA SEMICOLON'
-    p[0] = ("print", p[1])
+# def p_stmt_print(p):
+#     'stmt : dynamString COMMA LEKHA SEMICOLON'
+#     p[0] = ("print", p[1])
 
-def p_stmt_WOComma(p):
+def p_stmt_WOCommaSameline(p):
     'stmt : dynamString LEKHA SEMICOLON'
     p[0] = ("print", p[1])
 
@@ -60,9 +63,10 @@ def p_stmt_while(p):
     'stmt : JABA SAMMA whilecond NEWLINE cmpdstmt BAJA'
     p[0] = ("whileloop", p[3], p[5])
 
-def p_stmt_array(p):
+def p_stmt_list(p):
     'stmt : IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA'
     p[0] = ("listAssignment", p[1], p[4])
+
 def p_variableexp_more(p):
     'variableexp : exp COMMA variableexp'
     p[0] = [[p[1]]] + p[3]
@@ -101,6 +105,12 @@ def p_exp_string(p):
 def p_exp_number(p):
     'exp : NUMBER'
     p[0] = ("number", p[1])
+def p_exp_list(p):
+    'exp : LGPARA variableexp RGPARA'
+    p[0] = ("list", p[2])
+def p_exp_listitem(p):
+    'exp : IDENTIFIER LGPARA exp RGPARA'
+    p[0] = ("listItem", p[1], [p[3]])
 def p_exp_paren(p):
     'exp : LPARA exp RPARA'
     p[0] = ("parenthesis", [p[2]])
@@ -211,35 +221,35 @@ ip = u'''क लेख
 क, " मा हामीले  २ हालेका छौँ " लेख
 "ख मा ", ख, " छ" लेख
 '''
-# ip = u'''ख लेउ
-# '''
-# ip = u'''सबै ख = ३ देखि ५; -२
-#      क लेउ
-#      २^क लेख
-# बैस
-# '''
-# ip = u'''जब सम्म क==१० छ र ख==२ छैन
-# २^क लेख
-# बज
-# '''
-# ip = u'''यदि  क == २ भए			
-#     क = १०.३२
-#     क = १०.३२
-# अथवा क >= ३ भए र क == १० नभए
-#     "क तिन भन्दा बेसि छ तर १० छैन" लेख
-# अथवा
-#     ख लेउ
-#     "ख मा ", ख, " छ" लेख
-# दिय
-# '''
+ip = u'''ख लेउ
+'''
+ip = u'''सबै ख = ३ देखि ५; -२
+     क लेउ
+     २^क लेख
+बैस
+'''
+ip = u'''जब सम्म क==१० छ र ख==२ छैन
+२^क लेख
+बज
+'''
+ip = u'''यदि  क == २ भए			
+    क = १०.३२
+    क = १०.३२
+अथवा क >= ३ भए र क == १० नभए
+    "क तिन भन्दा बेसि छ तर १० छैन" लेख
+अथवा
+    ख लेउ
+    "ख मा ", ख, " छ" लेख
+दिय
+'''
 ip = u'''क += १०.३२
 क = क + १०.३२
 क -= १०.३२
 क *= १०.३२
 क /= १०.३२
 '''
-# ip = u'''क = (क == २) ? २५: ५
-# '''
+ip = u'''क = (क == २) ? २५: ५
+'''
 ip = u'''यदि  क == २ वा क == ३ भए
     क लेख
     क, " मा हामीले  २ हालेका छौँ " लेख
@@ -250,14 +260,34 @@ ip = u'''यदि  क == २ भए वा क == ३ भए
     क, " मा हामीले  २ हालेका छौँ " लेख
 दिय
 '''
-ip = u'''क लेख
+ip = u'''क = २
+क लेख;
 क लेख;
 क, " मा हामीले  २ हालेका छौँ " लेख;
+"२" लेख;
 '''
+ip = u'''क लेख
+क = [१, ०, ३, २,]
+क = [१, ०, ३, २,] + [१, ०, ३, २,]
+क[१०] लेख;
+क = []
+'''
+
+# ip = u'''क = १०.३२^"नेपाल"
+# ख = "नेपाल"^१०
+# ख = "नेपाल"*१०
+# ख = "नेपाल"-१०  /* yestai yestai type mismatch haru ni aauna sakchan interpret garda check gara la bikram */
+# ख = "नेपाल"+१०  
+# ख = "नेपाल"/१०
+# ख = ("नेपाल">=२)
+# ख = [१, ०, ३, २,] ^ १० + 3 * "नेपाल"
+# '''
 # print tokenizer(ip)
 
 
 ast = parser.parse(ip, lexer=lexer)
 print ast
+# from NepInterpreter import *
+# interpret(ast)
 # print "done"
 
