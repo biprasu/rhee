@@ -47,8 +47,10 @@ reserved = {
     u'छैन' : 'CHHAINA',
     u'छ' : 'CHHA',
     u'र'  : 'RA',
-    u'वा' : 'WA', 
- 
+    u'वा' : 'WA',
+    u'काम' : 'KAAM',
+    u'मका' : 'MAKA',
+    u'पठाउ' : 'PATHAU',
 }
  
 tokens = tokens + list(reserved.values())
@@ -125,8 +127,12 @@ def t_error(t):
 
 
 # lexer = lex.lex()
-# ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
-
+# # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
+# ip = u'''काम रमालो ()
+#     क = []
+#     क[१०] लेख;
+# मका
+# '''
 # lexer.input (ip)
  
  

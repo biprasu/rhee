@@ -68,6 +68,29 @@ def p_stmt_list(p):
     'stmt : IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA'
     p[0] = ("listAssignment", p[1], p[4])
 
+def p_stmt_function(p):
+    'stmt : KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA'
+    p[0] = ('functionDefination', p[2], p[4], p[7])
+
+def p_stmt_functionCall(p):
+    'stmt : IDENTIFIER LPARA variableexp RPARA'
+    p[0] = ("functionCall", p[1], p[3])
+
+def p_stmt_returnStatement(p):
+    'stmt : exp PATHAU'
+    p[0] = ('returnStmt', [p[1]])
+
+
+def p_variableArgs_arguments(p):
+    'variableArgs : IDENTIFIER COMMA variableArgs'
+    p[0] = [p[1]] + p[3]
+def p_variableArgs_single(p):
+    'variableArgs : IDENTIFIER'
+    p[0] = [p[1]]
+def p_variableArgs_empty(p):
+    'variableArgs : '
+    p[0] = []
+
 def p_variableexp_more(p):
     'variableexp : exp COMMA variableexp'
     p[0] = [[p[1]]] + p[3]
@@ -272,6 +295,19 @@ ip = u'''क लेख
 क = [१, ०, ३, २,] + [१, ०, ३, २,]
 क[१०] लेख;
 क = []
+'''
+ip = u'''काम रमाईलो ()
+    क = []
+    क[१०] लेख;
+मका
+रमाईलो ()
+'''
+ip = u'''काम रमाईलो (क, ख,)
+    क = []
+    क[१०] लेख;
+    क पठाउ 
+मका
+रमाईलो (१०, म)
 '''
 
 # ip = u'''क = १०.३२^"नेपाल"
