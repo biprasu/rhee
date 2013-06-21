@@ -45,90 +45,91 @@ Rule 39    exp -> LGPARA variableexp RGPARA
 Rule 40    exp -> IDENTIFIER LGPARA exp RGPARA
 Rule 41    exp -> LPARA exp RPARA
 Rule 42    exp -> LPARA exp RPARA QUESTION exp COLON exp
-Rule 43    dynamString -> exp COMMA dynamString
-Rule 44    dynamString -> exp
-Rule 45    condition -> condition RA condition
-Rule 46    condition -> condition WA condition
-Rule 47    condition -> exp BHAE
-Rule 48    condition -> exp NABHAE
-Rule 49    cmpdstmt -> stmt NEWLINE cmpdstmt
-Rule 50    cmpdstmt -> <empty>
-Rule 51    optelse -> ATHAWA condition NEWLINE cmpdstmt optelse
-Rule 52    optelse -> ATHAWA NEWLINE cmpdstmt
-Rule 53    optelse -> <empty>
-Rule 54    sign -> PLUS
-Rule 55    sign -> MINUS
-Rule 56    incrementsign -> sign
-Rule 57    incrementsign -> TIMES
-Rule 58    incrementsign -> DIVIDE
-Rule 59    whilecond -> whilecond RA whilecond
-Rule 60    whilecond -> whilecond WA whilecond
-Rule 61    whilecond -> exp CHHA
-Rule 62    whilecond -> exp CHHAINA
+Rule 43    exp -> IDENTIFIER LPARA variableexp RPARA
+Rule 44    dynamString -> exp COMMA dynamString
+Rule 45    dynamString -> exp
+Rule 46    condition -> condition RA condition
+Rule 47    condition -> condition WA condition
+Rule 48    condition -> exp BHAE
+Rule 49    condition -> exp NABHAE
+Rule 50    cmpdstmt -> stmt NEWLINE cmpdstmt
+Rule 51    cmpdstmt -> <empty>
+Rule 52    optelse -> ATHAWA condition NEWLINE cmpdstmt optelse
+Rule 53    optelse -> ATHAWA NEWLINE cmpdstmt
+Rule 54    optelse -> <empty>
+Rule 55    sign -> PLUS
+Rule 56    sign -> MINUS
+Rule 57    incrementsign -> sign
+Rule 58    incrementsign -> TIMES
+Rule 59    incrementsign -> DIVIDE
+Rule 60    whilecond -> whilecond RA whilecond
+Rule 61    whilecond -> whilecond WA whilecond
+Rule 62    whilecond -> exp CHHA
+Rule 63    whilecond -> exp CHHAINA
 
 Terminals, with rules where they appear
 
 ASSIGNMENT           : 5 9 11 13
-ATHAWA               : 51 52
+ATHAWA               : 52 53
 BAISA                : 11
 BAJA                 : 12
-BHAE                 : 47
-CHHA                 : 61
-CHHAINA              : 62
+BHAE                 : 48
+CHHA                 : 62
+CHHAINA              : 63
 COLON                : 42
-COMMA                : 17 20 43
+COMMA                : 17 20 44
 DEKHI                : 11
-DIVIDE               : 32 58
+DIVIDE               : 32 59
 DIYE                 : 10
 EQ                   : 23
 GE                   : 25
 GT                   : 28
-IDENTIFIER           : 5 8 9 11 13 14 15 17 18 36 40
+IDENTIFIER           : 5 8 9 11 13 14 15 17 18 36 40 43
 JABA                 : 12
 KAAM                 : 14
 LE                   : 24
 LEKHA                : 6 7
 LEU                  : 8
 LGPARA               : 13 39 40
-LPARA                : 14 15 41 42
+LPARA                : 14 15 41 42 43
 LT                   : 27
 MAKA                 : 14
-MINUS                : 30 55
-NABHAE               : 48
+MINUS                : 30 56
+NABHAE               : 49
 NE                   : 26
-NEWLINE              : 1 10 11 12 14 49 51 52
+NEWLINE              : 1 10 11 12 14 50 52 53
 NUMBER               : 38
 PATHAU               : 16
-PLUS                 : 29 54
+PLUS                 : 29 55
 POWER                : 33
 QUESTION             : 42
-RA                   : 34 45 59
+RA                   : 34 46 60
 RGPARA               : 13 39 40
-RPARA                : 14 15 41 42
+RPARA                : 14 15 41 42 43
 SABEI                : 11
 SAMMA                : 12
 SEMICOLON            : 7 11
 STRING               : 37
-TIMES                : 31 57
-WA                   : 35 46 60
+TIMES                : 31 58
+WA                   : 35 47 61
 YEDI                 : 10
 error                : 
 
 Nonterminals, with rules where they appear
 
 N                    : 1 0
-cmpdstmt             : 10 11 12 14 49 51 52
-condition            : 10 45 45 46 46 51
-dynamString          : 6 7 43
+cmpdstmt             : 10 11 12 14 50 52 53
+condition            : 10 46 46 47 47 52
+dynamString          : 6 7 44
 element              : 1 2
-exp                  : 5 9 11 11 11 16 20 21 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 40 41 42 42 42 43 44 47 48 61 62
+exp                  : 5 9 11 11 11 16 20 21 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 40 41 42 42 42 44 45 48 49 62 63
 incrementsign        : 9
-optelse              : 10 51
-sign                 : 11 56
-stmt                 : 4 49
+optelse              : 10 52
+sign                 : 11 57
+stmt                 : 4 50
 variableArgs         : 14 17
-variableexp          : 13 15 20 39
-whilecond            : 12 59 59 60 60
+variableexp          : 13 15 20 39 43
+whilecond            : 12 60 60 61 61
 
 Parsing method: LALR
 
@@ -151,8 +152,8 @@ state 0
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -173,6 +174,7 @@ state 0
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     $end            reduce using rule 3 (N -> .)
     IDENTIFIER      shift and go to state 7
@@ -194,10 +196,10 @@ state 0
 state 1
 
     (10) stmt -> YEDI . condition NEWLINE cmpdstmt optelse DIYE
-    (45) condition -> . condition RA condition
-    (46) condition -> . condition WA condition
-    (47) condition -> . exp BHAE
-    (48) condition -> . exp NABHAE
+    (46) condition -> . condition RA condition
+    (47) condition -> . condition WA condition
+    (48) condition -> . exp BHAE
+    (49) condition -> . exp NABHAE
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -218,6 +220,7 @@ state 1
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -252,6 +255,7 @@ state 2
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -350,11 +354,12 @@ state 7
     (15) stmt -> IDENTIFIER . LPARA variableexp RPARA
     (36) exp -> IDENTIFIER .
     (40) exp -> IDENTIFIER . LGPARA exp RGPARA
-    (56) incrementsign -> . sign
-    (57) incrementsign -> . TIMES
-    (58) incrementsign -> . DIVIDE
-    (54) sign -> . PLUS
-    (55) sign -> . MINUS
+    (43) exp -> IDENTIFIER . LPARA variableexp RPARA
+    (57) incrementsign -> . sign
+    (58) incrementsign -> . TIMES
+    (59) incrementsign -> . DIVIDE
+    (55) sign -> . PLUS
+    (56) sign -> . MINUS
 
     ASSIGNMENT      shift and go to state 23
     LEU             shift and go to state 27
@@ -432,6 +437,7 @@ state 11
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     RGPARA          reduce using rule 22 (variableexp -> .)
     IDENTIFIER      shift and go to state 15
@@ -463,8 +469,8 @@ state 13
 state 14
 
     (16) stmt -> exp . PATHAU
-    (43) dynamString -> exp . COMMA dynamString
-    (44) dynamString -> exp .
+    (44) dynamString -> exp . COMMA dynamString
+    (45) dynamString -> exp .
     (23) exp -> exp . EQ exp
     (24) exp -> exp . LE exp
     (25) exp -> exp . GE exp
@@ -481,7 +487,7 @@ state 14
 
     PATHAU          shift and go to state 41
     COMMA           shift and go to state 44
-    LEKHA           reduce using rule 44 (dynamString -> exp .)
+    LEKHA           reduce using rule 45 (dynamString -> exp .)
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -501,6 +507,7 @@ state 15
 
     (36) exp -> IDENTIFIER .
     (40) exp -> IDENTIFIER . LGPARA exp RGPARA
+    (43) exp -> IDENTIFIER . LPARA variableexp RPARA
 
     EQ              reduce using rule 36 (exp -> IDENTIFIER .)
     LE              reduce using rule 36 (exp -> IDENTIFIER .)
@@ -530,23 +537,24 @@ state 15
     COLON           reduce using rule 36 (exp -> IDENTIFIER .)
     SEMICOLON       reduce using rule 36 (exp -> IDENTIFIER .)
     LGPARA          shift and go to state 21
+    LPARA           shift and go to state 51
 
 
 state 16
 
     (10) stmt -> YEDI condition . NEWLINE cmpdstmt optelse DIYE
-    (45) condition -> condition . RA condition
-    (46) condition -> condition . WA condition
+    (46) condition -> condition . RA condition
+    (47) condition -> condition . WA condition
 
-    NEWLINE         shift and go to state 52
-    RA              shift and go to state 53
-    WA              shift and go to state 51
+    NEWLINE         shift and go to state 53
+    RA              shift and go to state 54
+    WA              shift and go to state 52
 
 
 state 17
 
-    (47) condition -> exp . BHAE
-    (48) condition -> exp . NABHAE
+    (48) condition -> exp . BHAE
+    (49) condition -> exp . NABHAE
     (23) exp -> exp . EQ exp
     (24) exp -> exp . LE exp
     (25) exp -> exp . GE exp
@@ -561,8 +569,8 @@ state 17
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    BHAE            shift and go to state 54
-    NABHAE          shift and go to state 55
+    BHAE            shift and go to state 55
+    NABHAE          shift and go to state 56
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -596,7 +604,7 @@ state 18
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    RPARA           shift and go to state 56
+    RPARA           shift and go to state 57
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -615,10 +623,10 @@ state 18
 state 19
 
     (12) stmt -> JABA SAMMA . whilecond NEWLINE cmpdstmt BAJA
-    (59) whilecond -> . whilecond RA whilecond
-    (60) whilecond -> . whilecond WA whilecond
-    (61) whilecond -> . exp CHHA
-    (62) whilecond -> . exp CHHAINA
+    (60) whilecond -> . whilecond RA whilecond
+    (61) whilecond -> . whilecond WA whilecond
+    (62) whilecond -> . exp CHHA
+    (63) whilecond -> . exp CHHAINA
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -639,6 +647,7 @@ state 19
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -646,14 +655,14 @@ state 19
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 58
-    whilecond                      shift and go to state 57
+    exp                            shift and go to state 59
+    whilecond                      shift and go to state 58
 
 state 20
 
     (14) stmt -> KAAM IDENTIFIER . LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
 
-    LPARA           shift and go to state 59
+    LPARA           shift and go to state 60
 
 
 state 21
@@ -679,6 +688,7 @@ state 21
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -686,13 +696,13 @@ state 21
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 60
+    exp                            shift and go to state 61
 
 state 22
 
-    (57) incrementsign -> TIMES .
+    (58) incrementsign -> TIMES .
 
-    ASSIGNMENT      reduce using rule 57 (incrementsign -> TIMES .)
+    ASSIGNMENT      reduce using rule 58 (incrementsign -> TIMES .)
 
 
 state 23
@@ -719,18 +729,20 @@ state 23
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    LGPARA          shift and go to state 61
+    LGPARA          shift and go to state 62
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
     NUMBER          shift and go to state 3
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 62
+    exp                            shift and go to state 63
 
 state 24
 
     (15) stmt -> IDENTIFIER LPARA . variableexp RPARA
+    (43) exp -> IDENTIFIER LPARA . variableexp RPARA
     (20) variableexp -> . exp COMMA variableexp
     (21) variableexp -> . exp
     (22) variableexp -> .
@@ -754,6 +766,7 @@ state 24
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     RPARA           reduce using rule 22 (variableexp -> .)
     IDENTIFIER      shift and go to state 15
@@ -763,25 +776,25 @@ state 24
     LPARA           shift and go to state 2
 
     exp                            shift and go to state 33
-    variableexp                    shift and go to state 63
+    variableexp                    shift and go to state 64
 
 state 25
 
-    (56) incrementsign -> sign .
+    (57) incrementsign -> sign .
 
-    ASSIGNMENT      reduce using rule 56 (incrementsign -> sign .)
+    ASSIGNMENT      reduce using rule 57 (incrementsign -> sign .)
 
 
 state 26
 
-    (54) sign -> PLUS .
+    (55) sign -> PLUS .
 
-    ASSIGNMENT      reduce using rule 54 (sign -> PLUS .)
-    IDENTIFIER      reduce using rule 54 (sign -> PLUS .)
-    STRING          reduce using rule 54 (sign -> PLUS .)
-    NUMBER          reduce using rule 54 (sign -> PLUS .)
-    LGPARA          reduce using rule 54 (sign -> PLUS .)
-    LPARA           reduce using rule 54 (sign -> PLUS .)
+    ASSIGNMENT      reduce using rule 55 (sign -> PLUS .)
+    IDENTIFIER      reduce using rule 55 (sign -> PLUS .)
+    STRING          reduce using rule 55 (sign -> PLUS .)
+    NUMBER          reduce using rule 55 (sign -> PLUS .)
+    LGPARA          reduce using rule 55 (sign -> PLUS .)
+    LPARA           reduce using rule 55 (sign -> PLUS .)
 
 
 state 27
@@ -796,40 +809,40 @@ state 28
 
     (9) stmt -> IDENTIFIER incrementsign . ASSIGNMENT exp
 
-    ASSIGNMENT      shift and go to state 64
+    ASSIGNMENT      shift and go to state 65
 
 
 state 29
 
-    (55) sign -> MINUS .
+    (56) sign -> MINUS .
 
-    ASSIGNMENT      reduce using rule 55 (sign -> MINUS .)
-    IDENTIFIER      reduce using rule 55 (sign -> MINUS .)
-    STRING          reduce using rule 55 (sign -> MINUS .)
-    NUMBER          reduce using rule 55 (sign -> MINUS .)
-    LGPARA          reduce using rule 55 (sign -> MINUS .)
-    LPARA           reduce using rule 55 (sign -> MINUS .)
+    ASSIGNMENT      reduce using rule 56 (sign -> MINUS .)
+    IDENTIFIER      reduce using rule 56 (sign -> MINUS .)
+    STRING          reduce using rule 56 (sign -> MINUS .)
+    NUMBER          reduce using rule 56 (sign -> MINUS .)
+    LGPARA          reduce using rule 56 (sign -> MINUS .)
+    LPARA           reduce using rule 56 (sign -> MINUS .)
 
 
 state 30
 
-    (58) incrementsign -> DIVIDE .
+    (59) incrementsign -> DIVIDE .
 
-    ASSIGNMENT      reduce using rule 58 (incrementsign -> DIVIDE .)
+    ASSIGNMENT      reduce using rule 59 (incrementsign -> DIVIDE .)
 
 
 state 31
 
     (11) stmt -> SABEI IDENTIFIER . ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA
 
-    ASSIGNMENT      shift and go to state 65
+    ASSIGNMENT      shift and go to state 66
 
 
 state 32
 
     (39) exp -> LGPARA variableexp . RGPARA
 
-    RGPARA          shift and go to state 66
+    RGPARA          shift and go to state 67
 
 
 state 33
@@ -850,7 +863,7 @@ state 33
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    COMMA           shift and go to state 67
+    COMMA           shift and go to state 68
     RPARA           reduce using rule 21 (variableexp -> exp .)
     RGPARA          reduce using rule 21 (variableexp -> exp .)
     EQ              shift and go to state 49
@@ -875,7 +888,7 @@ state 34
 
     NEWLINE         reduce using rule 6 (stmt -> dynamString LEKHA .)
     $end            reduce using rule 6 (stmt -> dynamString LEKHA .)
-    SEMICOLON       shift and go to state 68
+    SEMICOLON       shift and go to state 69
 
 
 state 35
@@ -897,8 +910,8 @@ state 35
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -919,6 +932,7 @@ state 35
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     $end            reduce using rule 3 (N -> .)
     IDENTIFIER      shift and go to state 7
@@ -935,7 +949,7 @@ state 35
     dynamString                    shift and go to state 12
     exp                            shift and go to state 14
     element                        shift and go to state 13
-    N                              shift and go to state 69
+    N                              shift and go to state 70
 
 state 36
 
@@ -960,6 +974,7 @@ state 36
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -967,7 +982,7 @@ state 36
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 70
+    exp                            shift and go to state 71
 
 state 37
 
@@ -992,6 +1007,7 @@ state 37
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -999,7 +1015,7 @@ state 37
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 71
+    exp                            shift and go to state 72
 
 state 38
 
@@ -1024,6 +1040,7 @@ state 38
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1031,7 +1048,7 @@ state 38
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 72
+    exp                            shift and go to state 73
 
 state 39
 
@@ -1056,6 +1073,7 @@ state 39
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1063,7 +1081,7 @@ state 39
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 73
+    exp                            shift and go to state 74
 
 state 40
 
@@ -1088,6 +1106,7 @@ state 40
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1095,7 +1114,7 @@ state 40
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 74
+    exp                            shift and go to state 75
 
 state 41
 
@@ -1128,6 +1147,7 @@ state 42
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1135,7 +1155,7 @@ state 42
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 75
+    exp                            shift and go to state 76
 
 state 43
 
@@ -1160,6 +1180,7 @@ state 43
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1167,13 +1188,13 @@ state 43
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 76
+    exp                            shift and go to state 77
 
 state 44
 
-    (43) dynamString -> exp COMMA . dynamString
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> exp COMMA . dynamString
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -1194,6 +1215,7 @@ state 44
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1201,8 +1223,8 @@ state 44
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 78
-    dynamString                    shift and go to state 77
+    exp                            shift and go to state 79
+    dynamString                    shift and go to state 78
 
 state 45
 
@@ -1227,6 +1249,7 @@ state 45
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1234,7 +1257,7 @@ state 45
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 79
+    exp                            shift and go to state 80
 
 state 46
 
@@ -1259,6 +1282,7 @@ state 46
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1266,7 +1290,7 @@ state 46
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 80
+    exp                            shift and go to state 81
 
 state 47
 
@@ -1291,6 +1315,7 @@ state 47
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1298,7 +1323,7 @@ state 47
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 81
+    exp                            shift and go to state 82
 
 state 48
 
@@ -1323,6 +1348,7 @@ state 48
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1330,7 +1356,7 @@ state 48
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 82
+    exp                            shift and go to state 83
 
 state 49
 
@@ -1355,6 +1381,7 @@ state 49
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1362,7 +1389,7 @@ state 49
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 83
+    exp                            shift and go to state 84
 
 state 50
 
@@ -1387,6 +1414,7 @@ state 50
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1394,15 +1422,14 @@ state 50
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 84
+    exp                            shift and go to state 85
 
 state 51
 
-    (46) condition -> condition WA . condition
-    (45) condition -> . condition RA condition
-    (46) condition -> . condition WA condition
-    (47) condition -> . exp BHAE
-    (48) condition -> . exp NABHAE
+    (43) exp -> IDENTIFIER LPARA . variableexp RPARA
+    (20) variableexp -> . exp COMMA variableexp
+    (21) variableexp -> . exp
+    (22) variableexp -> .
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -1423,6 +1450,46 @@ state 51
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
+
+    RPARA           reduce using rule 22 (variableexp -> .)
+    IDENTIFIER      shift and go to state 15
+    STRING          shift and go to state 5
+    NUMBER          shift and go to state 3
+    LGPARA          shift and go to state 11
+    LPARA           shift and go to state 2
+
+    exp                            shift and go to state 33
+    variableexp                    shift and go to state 86
+
+state 52
+
+    (47) condition -> condition WA . condition
+    (46) condition -> . condition RA condition
+    (47) condition -> . condition WA condition
+    (48) condition -> . exp BHAE
+    (49) condition -> . exp NABHAE
+    (23) exp -> . exp EQ exp
+    (24) exp -> . exp LE exp
+    (25) exp -> . exp GE exp
+    (26) exp -> . exp NE exp
+    (27) exp -> . exp LT exp
+    (28) exp -> . exp GT exp
+    (29) exp -> . exp PLUS exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp TIMES exp
+    (32) exp -> . exp DIVIDE exp
+    (33) exp -> . exp POWER exp
+    (34) exp -> . exp RA exp
+    (35) exp -> . exp WA exp
+    (36) exp -> . IDENTIFIER
+    (37) exp -> . STRING
+    (38) exp -> . NUMBER
+    (39) exp -> . LGPARA variableexp RGPARA
+    (40) exp -> . IDENTIFIER LGPARA exp RGPARA
+    (41) exp -> . LPARA exp RPARA
+    (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1431,13 +1498,13 @@ state 51
     LPARA           shift and go to state 2
 
     exp                            shift and go to state 17
-    condition                      shift and go to state 85
+    condition                      shift and go to state 87
 
-state 52
+state 53
 
     (10) stmt -> YEDI condition NEWLINE . cmpdstmt optelse DIYE
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -1450,8 +1517,8 @@ state 52
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -1472,9 +1539,10 @@ state 52
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    ATHAWA          reduce using rule 50 (cmpdstmt -> .)
-    DIYE            reduce using rule 50 (cmpdstmt -> .)
+    ATHAWA          reduce using rule 51 (cmpdstmt -> .)
+    DIYE            reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -1485,18 +1553,18 @@ state 52
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 87
+    cmpdstmt                       shift and go to state 89
     exp                            shift and go to state 14
 
-state 53
+state 54
 
-    (45) condition -> condition RA . condition
-    (45) condition -> . condition RA condition
-    (46) condition -> . condition WA condition
-    (47) condition -> . exp BHAE
-    (48) condition -> . exp NABHAE
+    (46) condition -> condition RA . condition
+    (46) condition -> . condition RA condition
+    (47) condition -> . condition WA condition
+    (48) condition -> . exp BHAE
+    (49) condition -> . exp NABHAE
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -1517,6 +1585,7 @@ state 53
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1525,27 +1594,27 @@ state 53
     LPARA           shift and go to state 2
 
     exp                            shift and go to state 17
-    condition                      shift and go to state 88
-
-state 54
-
-    (47) condition -> exp BHAE .
-
-    NEWLINE         reduce using rule 47 (condition -> exp BHAE .)
-    RA              reduce using rule 47 (condition -> exp BHAE .)
-    WA              reduce using rule 47 (condition -> exp BHAE .)
-
+    condition                      shift and go to state 90
 
 state 55
 
-    (48) condition -> exp NABHAE .
+    (48) condition -> exp BHAE .
 
-    NEWLINE         reduce using rule 48 (condition -> exp NABHAE .)
-    RA              reduce using rule 48 (condition -> exp NABHAE .)
-    WA              reduce using rule 48 (condition -> exp NABHAE .)
+    RA              reduce using rule 48 (condition -> exp BHAE .)
+    WA              reduce using rule 48 (condition -> exp BHAE .)
+    NEWLINE         reduce using rule 48 (condition -> exp BHAE .)
 
 
 state 56
+
+    (49) condition -> exp NABHAE .
+
+    RA              reduce using rule 49 (condition -> exp NABHAE .)
+    WA              reduce using rule 49 (condition -> exp NABHAE .)
+    NEWLINE         reduce using rule 49 (condition -> exp NABHAE .)
+
+
+state 57
 
     (41) exp -> LPARA exp RPARA .
     (42) exp -> LPARA exp RPARA . QUESTION exp COLON exp
@@ -1577,24 +1646,24 @@ state 56
     DEKHI           reduce using rule 41 (exp -> LPARA exp RPARA .)
     COLON           reduce using rule 41 (exp -> LPARA exp RPARA .)
     SEMICOLON       reduce using rule 41 (exp -> LPARA exp RPARA .)
-    QUESTION        shift and go to state 89
-
-
-state 57
-
-    (12) stmt -> JABA SAMMA whilecond . NEWLINE cmpdstmt BAJA
-    (59) whilecond -> whilecond . RA whilecond
-    (60) whilecond -> whilecond . WA whilecond
-
-    NEWLINE         shift and go to state 91
-    RA              shift and go to state 92
-    WA              shift and go to state 90
+    QUESTION        shift and go to state 91
 
 
 state 58
 
-    (61) whilecond -> exp . CHHA
-    (62) whilecond -> exp . CHHAINA
+    (12) stmt -> JABA SAMMA whilecond . NEWLINE cmpdstmt BAJA
+    (60) whilecond -> whilecond . RA whilecond
+    (61) whilecond -> whilecond . WA whilecond
+
+    NEWLINE         shift and go to state 93
+    RA              shift and go to state 94
+    WA              shift and go to state 92
+
+
+state 59
+
+    (62) whilecond -> exp . CHHA
+    (63) whilecond -> exp . CHHAINA
     (23) exp -> exp . EQ exp
     (24) exp -> exp . LE exp
     (25) exp -> exp . GE exp
@@ -1609,8 +1678,8 @@ state 58
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    CHHA            shift and go to state 93
-    CHHAINA         shift and go to state 94
+    CHHA            shift and go to state 95
+    CHHAINA         shift and go to state 96
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -1626,19 +1695,19 @@ state 58
     WA              shift and go to state 47
 
 
-state 59
+state 60
 
     (14) stmt -> KAAM IDENTIFIER LPARA . variableArgs RPARA NEWLINE cmpdstmt MAKA
     (17) variableArgs -> . IDENTIFIER COMMA variableArgs
     (18) variableArgs -> . IDENTIFIER
     (19) variableArgs -> .
 
-    IDENTIFIER      shift and go to state 96
+    IDENTIFIER      shift and go to state 98
     RPARA           reduce using rule 19 (variableArgs -> .)
 
-    variableArgs                   shift and go to state 95
+    variableArgs                   shift and go to state 97
 
-state 60
+state 61
 
     (40) exp -> IDENTIFIER LGPARA exp . RGPARA
     (23) exp -> exp . EQ exp
@@ -1655,7 +1724,7 @@ state 60
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    RGPARA          shift and go to state 97
+    RGPARA          shift and go to state 99
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -1671,7 +1740,7 @@ state 60
     WA              shift and go to state 47
 
 
-state 61
+state 62
 
     (13) stmt -> IDENTIFIER ASSIGNMENT LGPARA . variableexp RGPARA
     (39) exp -> LGPARA . variableexp RGPARA
@@ -1698,6 +1767,7 @@ state 61
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     RGPARA          reduce using rule 22 (variableexp -> .)
     IDENTIFIER      shift and go to state 15
@@ -1707,9 +1777,9 @@ state 61
     LPARA           shift and go to state 2
 
     exp                            shift and go to state 33
-    variableexp                    shift and go to state 98
+    variableexp                    shift and go to state 100
 
-state 62
+state 63
 
     (5) stmt -> IDENTIFIER ASSIGNMENT exp .
     (23) exp -> exp . EQ exp
@@ -1743,14 +1813,15 @@ state 62
     WA              shift and go to state 47
 
 
-state 63
+state 64
 
     (15) stmt -> IDENTIFIER LPARA variableexp . RPARA
+    (43) exp -> IDENTIFIER LPARA variableexp . RPARA
 
-    RPARA           shift and go to state 99
+    RPARA           shift and go to state 101
 
 
-state 64
+state 65
 
     (9) stmt -> IDENTIFIER incrementsign ASSIGNMENT . exp
     (23) exp -> . exp EQ exp
@@ -1773,6 +1844,7 @@ state 64
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1780,9 +1852,9 @@ state 64
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 100
+    exp                            shift and go to state 102
 
-state 65
+state 66
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT . exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA
     (23) exp -> . exp EQ exp
@@ -1805,6 +1877,7 @@ state 65
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -1812,9 +1885,9 @@ state 65
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 101
+    exp                            shift and go to state 103
 
-state 66
+state 67
 
     (39) exp -> LGPARA variableexp RGPARA .
 
@@ -1847,7 +1920,7 @@ state 66
     SEMICOLON       reduce using rule 39 (exp -> LGPARA variableexp RGPARA .)
 
 
-state 67
+state 68
 
     (20) variableexp -> exp COMMA . variableexp
     (20) variableexp -> . exp COMMA variableexp
@@ -1873,6 +1946,7 @@ state 67
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     RGPARA          reduce using rule 22 (variableexp -> .)
     RPARA           reduce using rule 22 (variableexp -> .)
@@ -1882,10 +1956,10 @@ state 67
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    variableexp                    shift and go to state 102
+    variableexp                    shift and go to state 104
     exp                            shift and go to state 33
 
-state 68
+state 69
 
     (7) stmt -> dynamString LEKHA SEMICOLON .
 
@@ -1893,14 +1967,14 @@ state 68
     $end            reduce using rule 7 (stmt -> dynamString LEKHA SEMICOLON .)
 
 
-state 69
+state 70
 
     (1) N -> element NEWLINE N .
 
     $end            reduce using rule 1 (N -> element NEWLINE N .)
 
 
-state 70
+state 71
 
     (24) exp -> exp LE exp .
     (23) exp -> exp . EQ exp
@@ -1960,7 +2034,7 @@ state 70
   ! WA              [ shift and go to state 47 ]
 
 
-state 71
+state 72
 
     (32) exp -> exp DIVIDE exp .
     (23) exp -> exp . EQ exp
@@ -2020,7 +2094,7 @@ state 71
   ! WA              [ shift and go to state 47 ]
 
 
-state 72
+state 73
 
     (33) exp -> exp POWER exp .
     (23) exp -> exp . EQ exp
@@ -2080,7 +2154,7 @@ state 72
   ! WA              [ shift and go to state 47 ]
 
 
-state 73
+state 74
 
     (27) exp -> exp LT exp .
     (23) exp -> exp . EQ exp
@@ -2140,7 +2214,7 @@ state 73
   ! WA              [ shift and go to state 47 ]
 
 
-state 74
+state 75
 
     (26) exp -> exp NE exp .
     (23) exp -> exp . EQ exp
@@ -2213,7 +2287,7 @@ state 74
   ! WA              [ reduce using rule 26 (exp -> exp NE exp .) ]
 
 
-state 75
+state 76
 
     (25) exp -> exp GE exp .
     (23) exp -> exp . EQ exp
@@ -2273,7 +2347,7 @@ state 75
   ! WA              [ shift and go to state 47 ]
 
 
-state 76
+state 77
 
     (28) exp -> exp GT exp .
     (23) exp -> exp . EQ exp
@@ -2333,17 +2407,17 @@ state 76
   ! WA              [ shift and go to state 47 ]
 
 
-state 77
-
-    (43) dynamString -> exp COMMA dynamString .
-
-    LEKHA           reduce using rule 43 (dynamString -> exp COMMA dynamString .)
-
-
 state 78
 
-    (43) dynamString -> exp . COMMA dynamString
-    (44) dynamString -> exp .
+    (44) dynamString -> exp COMMA dynamString .
+
+    LEKHA           reduce using rule 44 (dynamString -> exp COMMA dynamString .)
+
+
+state 79
+
+    (44) dynamString -> exp . COMMA dynamString
+    (45) dynamString -> exp .
     (23) exp -> exp . EQ exp
     (24) exp -> exp . LE exp
     (25) exp -> exp . GE exp
@@ -2359,7 +2433,7 @@ state 78
     (35) exp -> exp . WA exp
 
     COMMA           shift and go to state 44
-    LEKHA           reduce using rule 44 (dynamString -> exp .)
+    LEKHA           reduce using rule 45 (dynamString -> exp .)
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -2375,7 +2449,7 @@ state 78
     WA              shift and go to state 47
 
 
-state 79
+state 80
 
     (34) exp -> exp RA exp .
     (23) exp -> exp . EQ exp
@@ -2448,7 +2522,7 @@ state 79
   ! WA              [ reduce using rule 34 (exp -> exp RA exp .) ]
 
 
-state 80
+state 81
 
     (29) exp -> exp PLUS exp .
     (23) exp -> exp . EQ exp
@@ -2508,7 +2582,7 @@ state 80
   ! WA              [ shift and go to state 47 ]
 
 
-state 81
+state 82
 
     (35) exp -> exp WA exp .
     (23) exp -> exp . EQ exp
@@ -2581,7 +2655,7 @@ state 81
   ! WA              [ reduce using rule 35 (exp -> exp WA exp .) ]
 
 
-state 82
+state 83
 
     (31) exp -> exp TIMES exp .
     (23) exp -> exp . EQ exp
@@ -2641,7 +2715,7 @@ state 82
   ! WA              [ shift and go to state 47 ]
 
 
-state 83
+state 84
 
     (23) exp -> exp EQ exp .
     (23) exp -> exp . EQ exp
@@ -2701,7 +2775,7 @@ state 83
   ! WA              [ shift and go to state 47 ]
 
 
-state 84
+state 85
 
     (30) exp -> exp MINUS exp .
     (23) exp -> exp . EQ exp
@@ -2761,58 +2835,65 @@ state 84
   ! WA              [ shift and go to state 47 ]
 
 
-state 85
-
-    (46) condition -> condition WA condition .
-    (45) condition -> condition . RA condition
-    (46) condition -> condition . WA condition
-
-  ! shift/reduce conflict for RA resolved as shift
-  ! shift/reduce conflict for WA resolved as shift
-    NEWLINE         reduce using rule 46 (condition -> condition WA condition .)
-    RA              shift and go to state 53
-    WA              shift and go to state 51
-
-  ! RA              [ reduce using rule 46 (condition -> condition WA condition .) ]
-  ! WA              [ reduce using rule 46 (condition -> condition WA condition .) ]
-
-
 state 86
 
-    (49) cmpdstmt -> stmt . NEWLINE cmpdstmt
+    (43) exp -> IDENTIFIER LPARA variableexp . RPARA
 
-    NEWLINE         shift and go to state 103
+    RPARA           shift and go to state 105
 
 
 state 87
 
-    (10) stmt -> YEDI condition NEWLINE cmpdstmt . optelse DIYE
-    (51) optelse -> . ATHAWA condition NEWLINE cmpdstmt optelse
-    (52) optelse -> . ATHAWA NEWLINE cmpdstmt
-    (53) optelse -> .
-
-    ATHAWA          shift and go to state 105
-    DIYE            reduce using rule 53 (optelse -> .)
-
-    optelse                        shift and go to state 104
-
-state 88
-
-    (45) condition -> condition RA condition .
-    (45) condition -> condition . RA condition
-    (46) condition -> condition . WA condition
+    (47) condition -> condition WA condition .
+    (46) condition -> condition . RA condition
+    (47) condition -> condition . WA condition
 
   ! shift/reduce conflict for RA resolved as shift
   ! shift/reduce conflict for WA resolved as shift
-    NEWLINE         reduce using rule 45 (condition -> condition RA condition .)
-    RA              shift and go to state 53
-    WA              shift and go to state 51
+    NEWLINE         reduce using rule 47 (condition -> condition WA condition .)
+    RA              shift and go to state 54
+    WA              shift and go to state 52
 
-  ! RA              [ reduce using rule 45 (condition -> condition RA condition .) ]
-  ! WA              [ reduce using rule 45 (condition -> condition RA condition .) ]
+  ! RA              [ reduce using rule 47 (condition -> condition WA condition .) ]
+  ! WA              [ reduce using rule 47 (condition -> condition WA condition .) ]
+
+
+state 88
+
+    (50) cmpdstmt -> stmt . NEWLINE cmpdstmt
+
+    NEWLINE         shift and go to state 106
 
 
 state 89
+
+    (10) stmt -> YEDI condition NEWLINE cmpdstmt . optelse DIYE
+    (52) optelse -> . ATHAWA condition NEWLINE cmpdstmt optelse
+    (53) optelse -> . ATHAWA NEWLINE cmpdstmt
+    (54) optelse -> .
+
+    ATHAWA          shift and go to state 108
+    DIYE            reduce using rule 54 (optelse -> .)
+
+    optelse                        shift and go to state 107
+
+state 90
+
+    (46) condition -> condition RA condition .
+    (46) condition -> condition . RA condition
+    (47) condition -> condition . WA condition
+
+  ! shift/reduce conflict for RA resolved as shift
+  ! shift/reduce conflict for WA resolved as shift
+    NEWLINE         reduce using rule 46 (condition -> condition RA condition .)
+    RA              shift and go to state 54
+    WA              shift and go to state 52
+
+  ! RA              [ reduce using rule 46 (condition -> condition RA condition .) ]
+  ! WA              [ reduce using rule 46 (condition -> condition RA condition .) ]
+
+
+state 91
 
     (42) exp -> LPARA exp RPARA QUESTION . exp COLON exp
     (23) exp -> . exp EQ exp
@@ -2835,6 +2916,7 @@ state 89
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -2842,15 +2924,15 @@ state 89
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 106
+    exp                            shift and go to state 109
 
-state 90
+state 92
 
-    (60) whilecond -> whilecond WA . whilecond
-    (59) whilecond -> . whilecond RA whilecond
-    (60) whilecond -> . whilecond WA whilecond
-    (61) whilecond -> . exp CHHA
-    (62) whilecond -> . exp CHHAINA
+    (61) whilecond -> whilecond WA . whilecond
+    (60) whilecond -> . whilecond RA whilecond
+    (61) whilecond -> . whilecond WA whilecond
+    (62) whilecond -> . exp CHHA
+    (63) whilecond -> . exp CHHAINA
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -2871,6 +2953,7 @@ state 90
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -2878,14 +2961,14 @@ state 90
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 58
-    whilecond                      shift and go to state 107
+    exp                            shift and go to state 59
+    whilecond                      shift and go to state 110
 
-state 91
+state 93
 
     (12) stmt -> JABA SAMMA whilecond NEWLINE . cmpdstmt BAJA
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -2898,8 +2981,8 @@ state 91
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -2920,8 +3003,9 @@ state 91
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    BAJA            reduce using rule 50 (cmpdstmt -> .)
+    BAJA            reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -2932,18 +3016,18 @@ state 91
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 108
+    cmpdstmt                       shift and go to state 111
     exp                            shift and go to state 14
 
-state 92
+state 94
 
-    (59) whilecond -> whilecond RA . whilecond
-    (59) whilecond -> . whilecond RA whilecond
-    (60) whilecond -> . whilecond WA whilecond
-    (61) whilecond -> . exp CHHA
-    (62) whilecond -> . exp CHHAINA
+    (60) whilecond -> whilecond RA . whilecond
+    (60) whilecond -> . whilecond RA whilecond
+    (61) whilecond -> . whilecond WA whilecond
+    (62) whilecond -> . exp CHHA
+    (63) whilecond -> . exp CHHAINA
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -2964,6 +3048,7 @@ state 92
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -2971,44 +3056,44 @@ state 92
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 58
-    whilecond                      shift and go to state 109
-
-state 93
-
-    (61) whilecond -> exp CHHA .
-
-    RA              reduce using rule 61 (whilecond -> exp CHHA .)
-    WA              reduce using rule 61 (whilecond -> exp CHHA .)
-    NEWLINE         reduce using rule 61 (whilecond -> exp CHHA .)
-
-
-state 94
-
-    (62) whilecond -> exp CHHAINA .
-
-    RA              reduce using rule 62 (whilecond -> exp CHHAINA .)
-    WA              reduce using rule 62 (whilecond -> exp CHHAINA .)
-    NEWLINE         reduce using rule 62 (whilecond -> exp CHHAINA .)
-
+    exp                            shift and go to state 59
+    whilecond                      shift and go to state 112
 
 state 95
 
-    (14) stmt -> KAAM IDENTIFIER LPARA variableArgs . RPARA NEWLINE cmpdstmt MAKA
+    (62) whilecond -> exp CHHA .
 
-    RPARA           shift and go to state 110
+    RA              reduce using rule 62 (whilecond -> exp CHHA .)
+    WA              reduce using rule 62 (whilecond -> exp CHHA .)
+    NEWLINE         reduce using rule 62 (whilecond -> exp CHHA .)
 
 
 state 96
 
-    (17) variableArgs -> IDENTIFIER . COMMA variableArgs
-    (18) variableArgs -> IDENTIFIER .
+    (63) whilecond -> exp CHHAINA .
 
-    COMMA           shift and go to state 111
-    RPARA           reduce using rule 18 (variableArgs -> IDENTIFIER .)
+    RA              reduce using rule 63 (whilecond -> exp CHHAINA .)
+    WA              reduce using rule 63 (whilecond -> exp CHHAINA .)
+    NEWLINE         reduce using rule 63 (whilecond -> exp CHHAINA .)
 
 
 state 97
+
+    (14) stmt -> KAAM IDENTIFIER LPARA variableArgs . RPARA NEWLINE cmpdstmt MAKA
+
+    RPARA           shift and go to state 113
+
+
+state 98
+
+    (17) variableArgs -> IDENTIFIER . COMMA variableArgs
+    (18) variableArgs -> IDENTIFIER .
+
+    COMMA           shift and go to state 114
+    RPARA           reduce using rule 18 (variableArgs -> IDENTIFIER .)
+
+
+state 99
 
     (40) exp -> IDENTIFIER LGPARA exp RGPARA .
 
@@ -3041,23 +3126,40 @@ state 97
     SEMICOLON       reduce using rule 40 (exp -> IDENTIFIER LGPARA exp RGPARA .)
 
 
-state 98
+state 100
 
     (13) stmt -> IDENTIFIER ASSIGNMENT LGPARA variableexp . RGPARA
     (39) exp -> LGPARA variableexp . RGPARA
 
-    RGPARA          shift and go to state 112
+    RGPARA          shift and go to state 115
 
 
-state 99
+state 101
 
     (15) stmt -> IDENTIFIER LPARA variableexp RPARA .
+    (43) exp -> IDENTIFIER LPARA variableexp RPARA .
 
     NEWLINE         reduce using rule 15 (stmt -> IDENTIFIER LPARA variableexp RPARA .)
     $end            reduce using rule 15 (stmt -> IDENTIFIER LPARA variableexp RPARA .)
+    PATHAU          reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    COMMA           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    EQ              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    LE              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    GE              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    NE              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    LT              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    GT              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    PLUS            reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    MINUS           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    TIMES           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    DIVIDE          reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    POWER           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    RA              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    WA              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    LEKHA           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
 
 
-state 100
+state 102
 
     (9) stmt -> IDENTIFIER incrementsign ASSIGNMENT exp .
     (23) exp -> exp . EQ exp
@@ -3091,7 +3193,7 @@ state 100
     WA              shift and go to state 47
 
 
-state 101
+state 103
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp . DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA
     (23) exp -> exp . EQ exp
@@ -3108,7 +3210,7 @@ state 101
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    DEKHI           shift and go to state 113
+    DEKHI           shift and go to state 116
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -3124,7 +3226,7 @@ state 101
     WA              shift and go to state 47
 
 
-state 102
+state 104
 
     (20) variableexp -> exp COMMA variableexp .
 
@@ -3132,11 +3234,44 @@ state 102
     RGPARA          reduce using rule 20 (variableexp -> exp COMMA variableexp .)
 
 
-state 103
+state 105
 
-    (49) cmpdstmt -> stmt NEWLINE . cmpdstmt
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (43) exp -> IDENTIFIER LPARA variableexp RPARA .
+
+    EQ              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    LE              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    GE              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    NE              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    LT              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    GT              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    PLUS            reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    MINUS           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    TIMES           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    DIVIDE          reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    POWER           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    RA              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    WA              reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    PATHAU          reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    COMMA           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    LEKHA           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    BHAE            reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    NABHAE          reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    RPARA           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    RGPARA          reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    CHHA            reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    CHHAINA         reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    NEWLINE         reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    $end            reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    DEKHI           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    COLON           reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+    SEMICOLON       reduce using rule 43 (exp -> IDENTIFIER LPARA variableexp RPARA .)
+
+
+state 106
+
+    (50) cmpdstmt -> stmt NEWLINE . cmpdstmt
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -3149,8 +3284,8 @@ state 103
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -3171,12 +3306,13 @@ state 103
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    ATHAWA          reduce using rule 50 (cmpdstmt -> .)
-    DIYE            reduce using rule 50 (cmpdstmt -> .)
-    BAJA            reduce using rule 50 (cmpdstmt -> .)
-    MAKA            reduce using rule 50 (cmpdstmt -> .)
-    BAISA           reduce using rule 50 (cmpdstmt -> .)
+    ATHAWA          reduce using rule 51 (cmpdstmt -> .)
+    DIYE            reduce using rule 51 (cmpdstmt -> .)
+    BAJA            reduce using rule 51 (cmpdstmt -> .)
+    MAKA            reduce using rule 51 (cmpdstmt -> .)
+    BAISA           reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -3187,26 +3323,26 @@ state 103
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 114
+    cmpdstmt                       shift and go to state 117
     exp                            shift and go to state 14
 
-state 104
+state 107
 
     (10) stmt -> YEDI condition NEWLINE cmpdstmt optelse . DIYE
 
-    DIYE            shift and go to state 115
+    DIYE            shift and go to state 118
 
 
-state 105
+state 108
 
-    (51) optelse -> ATHAWA . condition NEWLINE cmpdstmt optelse
-    (52) optelse -> ATHAWA . NEWLINE cmpdstmt
-    (45) condition -> . condition RA condition
-    (46) condition -> . condition WA condition
-    (47) condition -> . exp BHAE
-    (48) condition -> . exp NABHAE
+    (52) optelse -> ATHAWA . condition NEWLINE cmpdstmt optelse
+    (53) optelse -> ATHAWA . NEWLINE cmpdstmt
+    (46) condition -> . condition RA condition
+    (47) condition -> . condition WA condition
+    (48) condition -> . exp BHAE
+    (49) condition -> . exp NABHAE
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -3227,8 +3363,9 @@ state 105
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    NEWLINE         shift and go to state 116
+    NEWLINE         shift and go to state 119
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
     NUMBER          shift and go to state 3
@@ -3236,9 +3373,9 @@ state 105
     LPARA           shift and go to state 2
 
     exp                            shift and go to state 17
-    condition                      shift and go to state 117
+    condition                      shift and go to state 120
 
-state 106
+state 109
 
     (42) exp -> LPARA exp RPARA QUESTION exp . COLON exp
     (23) exp -> exp . EQ exp
@@ -3255,7 +3392,7 @@ state 106
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    COLON           shift and go to state 118
+    COLON           shift and go to state 121
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -3271,65 +3408,65 @@ state 106
     WA              shift and go to state 47
 
 
-state 107
-
-    (60) whilecond -> whilecond WA whilecond .
-    (59) whilecond -> whilecond . RA whilecond
-    (60) whilecond -> whilecond . WA whilecond
-
-  ! shift/reduce conflict for RA resolved as shift
-  ! shift/reduce conflict for WA resolved as shift
-    NEWLINE         reduce using rule 60 (whilecond -> whilecond WA whilecond .)
-    RA              shift and go to state 92
-    WA              shift and go to state 90
-
-  ! RA              [ reduce using rule 60 (whilecond -> whilecond WA whilecond .) ]
-  ! WA              [ reduce using rule 60 (whilecond -> whilecond WA whilecond .) ]
-
-
-state 108
-
-    (12) stmt -> JABA SAMMA whilecond NEWLINE cmpdstmt . BAJA
-
-    BAJA            shift and go to state 119
-
-
-state 109
-
-    (59) whilecond -> whilecond RA whilecond .
-    (59) whilecond -> whilecond . RA whilecond
-    (60) whilecond -> whilecond . WA whilecond
-
-  ! shift/reduce conflict for RA resolved as shift
-  ! shift/reduce conflict for WA resolved as shift
-    NEWLINE         reduce using rule 59 (whilecond -> whilecond RA whilecond .)
-    RA              shift and go to state 92
-    WA              shift and go to state 90
-
-  ! RA              [ reduce using rule 59 (whilecond -> whilecond RA whilecond .) ]
-  ! WA              [ reduce using rule 59 (whilecond -> whilecond RA whilecond .) ]
-
-
 state 110
 
-    (14) stmt -> KAAM IDENTIFIER LPARA variableArgs RPARA . NEWLINE cmpdstmt MAKA
+    (61) whilecond -> whilecond WA whilecond .
+    (60) whilecond -> whilecond . RA whilecond
+    (61) whilecond -> whilecond . WA whilecond
 
-    NEWLINE         shift and go to state 120
+  ! shift/reduce conflict for RA resolved as shift
+  ! shift/reduce conflict for WA resolved as shift
+    NEWLINE         reduce using rule 61 (whilecond -> whilecond WA whilecond .)
+    RA              shift and go to state 94
+    WA              shift and go to state 92
+
+  ! RA              [ reduce using rule 61 (whilecond -> whilecond WA whilecond .) ]
+  ! WA              [ reduce using rule 61 (whilecond -> whilecond WA whilecond .) ]
 
 
 state 111
+
+    (12) stmt -> JABA SAMMA whilecond NEWLINE cmpdstmt . BAJA
+
+    BAJA            shift and go to state 122
+
+
+state 112
+
+    (60) whilecond -> whilecond RA whilecond .
+    (60) whilecond -> whilecond . RA whilecond
+    (61) whilecond -> whilecond . WA whilecond
+
+  ! shift/reduce conflict for RA resolved as shift
+  ! shift/reduce conflict for WA resolved as shift
+    NEWLINE         reduce using rule 60 (whilecond -> whilecond RA whilecond .)
+    RA              shift and go to state 94
+    WA              shift and go to state 92
+
+  ! RA              [ reduce using rule 60 (whilecond -> whilecond RA whilecond .) ]
+  ! WA              [ reduce using rule 60 (whilecond -> whilecond RA whilecond .) ]
+
+
+state 113
+
+    (14) stmt -> KAAM IDENTIFIER LPARA variableArgs RPARA . NEWLINE cmpdstmt MAKA
+
+    NEWLINE         shift and go to state 123
+
+
+state 114
 
     (17) variableArgs -> IDENTIFIER COMMA . variableArgs
     (17) variableArgs -> . IDENTIFIER COMMA variableArgs
     (18) variableArgs -> . IDENTIFIER
     (19) variableArgs -> .
 
-    IDENTIFIER      shift and go to state 96
+    IDENTIFIER      shift and go to state 98
     RPARA           reduce using rule 19 (variableArgs -> .)
 
-    variableArgs                   shift and go to state 121
+    variableArgs                   shift and go to state 124
 
-state 112
+state 115
 
     (13) stmt -> IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA .
     (39) exp -> LGPARA variableexp RGPARA .
@@ -3356,7 +3493,7 @@ state 112
   ! $end            [ reduce using rule 39 (exp -> LGPARA variableexp RGPARA .) ]
 
 
-state 113
+state 116
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI . exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA
     (23) exp -> . exp EQ exp
@@ -3379,6 +3516,7 @@ state 113
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -3386,20 +3524,20 @@ state 113
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 122
+    exp                            shift and go to state 125
 
-state 114
+state 117
 
-    (49) cmpdstmt -> stmt NEWLINE cmpdstmt .
+    (50) cmpdstmt -> stmt NEWLINE cmpdstmt .
 
-    BAJA            reduce using rule 49 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
-    DIYE            reduce using rule 49 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
-    MAKA            reduce using rule 49 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
-    ATHAWA          reduce using rule 49 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
-    BAISA           reduce using rule 49 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
+    ATHAWA          reduce using rule 50 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
+    DIYE            reduce using rule 50 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
+    BAJA            reduce using rule 50 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
+    MAKA            reduce using rule 50 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
+    BAISA           reduce using rule 50 (cmpdstmt -> stmt NEWLINE cmpdstmt .)
 
 
-state 115
+state 118
 
     (10) stmt -> YEDI condition NEWLINE cmpdstmt optelse DIYE .
 
@@ -3407,11 +3545,11 @@ state 115
     $end            reduce using rule 10 (stmt -> YEDI condition NEWLINE cmpdstmt optelse DIYE .)
 
 
-state 116
+state 119
 
-    (52) optelse -> ATHAWA NEWLINE . cmpdstmt
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (53) optelse -> ATHAWA NEWLINE . cmpdstmt
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -3424,8 +3562,8 @@ state 116
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -3446,8 +3584,9 @@ state 116
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    DIYE            reduce using rule 50 (cmpdstmt -> .)
+    DIYE            reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -3458,23 +3597,23 @@ state 116
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 123
+    cmpdstmt                       shift and go to state 126
     exp                            shift and go to state 14
 
-state 117
+state 120
 
-    (51) optelse -> ATHAWA condition . NEWLINE cmpdstmt optelse
-    (45) condition -> condition . RA condition
-    (46) condition -> condition . WA condition
+    (52) optelse -> ATHAWA condition . NEWLINE cmpdstmt optelse
+    (46) condition -> condition . RA condition
+    (47) condition -> condition . WA condition
 
-    NEWLINE         shift and go to state 124
-    RA              shift and go to state 53
-    WA              shift and go to state 51
+    NEWLINE         shift and go to state 127
+    RA              shift and go to state 54
+    WA              shift and go to state 52
 
 
-state 118
+state 121
 
     (42) exp -> LPARA exp RPARA QUESTION exp COLON . exp
     (23) exp -> . exp EQ exp
@@ -3497,6 +3636,7 @@ state 118
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -3504,9 +3644,9 @@ state 118
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 125
+    exp                            shift and go to state 128
 
-state 119
+state 122
 
     (12) stmt -> JABA SAMMA whilecond NEWLINE cmpdstmt BAJA .
 
@@ -3514,11 +3654,11 @@ state 119
     $end            reduce using rule 12 (stmt -> JABA SAMMA whilecond NEWLINE cmpdstmt BAJA .)
 
 
-state 120
+state 123
 
     (14) stmt -> KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE . cmpdstmt MAKA
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -3531,8 +3671,8 @@ state 120
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -3553,8 +3693,9 @@ state 120
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    MAKA            reduce using rule 50 (cmpdstmt -> .)
+    MAKA            reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -3565,19 +3706,19 @@ state 120
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 126
+    cmpdstmt                       shift and go to state 129
     exp                            shift and go to state 14
 
-state 121
+state 124
 
     (17) variableArgs -> IDENTIFIER COMMA variableArgs .
 
     RPARA           reduce using rule 17 (variableArgs -> IDENTIFIER COMMA variableArgs .)
 
 
-state 122
+state 125
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp . SEMICOLON sign exp NEWLINE cmpdstmt BAISA
     (23) exp -> exp . EQ exp
@@ -3594,7 +3735,7 @@ state 122
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    SEMICOLON       shift and go to state 127
+    SEMICOLON       shift and go to state 130
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -3610,18 +3751,18 @@ state 122
     WA              shift and go to state 47
 
 
-state 123
+state 126
 
-    (52) optelse -> ATHAWA NEWLINE cmpdstmt .
+    (53) optelse -> ATHAWA NEWLINE cmpdstmt .
 
-    DIYE            reduce using rule 52 (optelse -> ATHAWA NEWLINE cmpdstmt .)
+    DIYE            reduce using rule 53 (optelse -> ATHAWA NEWLINE cmpdstmt .)
 
 
-state 124
+state 127
 
-    (51) optelse -> ATHAWA condition NEWLINE . cmpdstmt optelse
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (52) optelse -> ATHAWA condition NEWLINE . cmpdstmt optelse
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -3634,8 +3775,8 @@ state 124
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -3656,9 +3797,10 @@ state 124
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    ATHAWA          reduce using rule 50 (cmpdstmt -> .)
-    DIYE            reduce using rule 50 (cmpdstmt -> .)
+    ATHAWA          reduce using rule 51 (cmpdstmt -> .)
+    DIYE            reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -3669,12 +3811,12 @@ state 124
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 128
+    cmpdstmt                       shift and go to state 131
     exp                            shift and go to state 14
 
-state 125
+state 128
 
     (42) exp -> LPARA exp RPARA QUESTION exp COLON exp .
     (23) exp -> exp . EQ exp
@@ -3747,37 +3889,37 @@ state 125
   ! WA              [ reduce using rule 42 (exp -> LPARA exp RPARA QUESTION exp COLON exp .) ]
 
 
-state 126
+state 129
 
     (14) stmt -> KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt . MAKA
 
-    MAKA            shift and go to state 129
+    MAKA            shift and go to state 132
 
 
-state 127
+state 130
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON . sign exp NEWLINE cmpdstmt BAISA
-    (54) sign -> . PLUS
-    (55) sign -> . MINUS
+    (55) sign -> . PLUS
+    (56) sign -> . MINUS
 
     PLUS            shift and go to state 26
     MINUS           shift and go to state 29
 
-    sign                           shift and go to state 130
+    sign                           shift and go to state 133
 
-state 128
+state 131
 
-    (51) optelse -> ATHAWA condition NEWLINE cmpdstmt . optelse
-    (51) optelse -> . ATHAWA condition NEWLINE cmpdstmt optelse
-    (52) optelse -> . ATHAWA NEWLINE cmpdstmt
-    (53) optelse -> .
+    (52) optelse -> ATHAWA condition NEWLINE cmpdstmt . optelse
+    (52) optelse -> . ATHAWA condition NEWLINE cmpdstmt optelse
+    (53) optelse -> . ATHAWA NEWLINE cmpdstmt
+    (54) optelse -> .
 
-    ATHAWA          shift and go to state 105
-    DIYE            reduce using rule 53 (optelse -> .)
+    ATHAWA          shift and go to state 108
+    DIYE            reduce using rule 54 (optelse -> .)
 
-    optelse                        shift and go to state 131
+    optelse                        shift and go to state 134
 
-state 129
+state 132
 
     (14) stmt -> KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA .
 
@@ -3785,7 +3927,7 @@ state 129
     $end            reduce using rule 14 (stmt -> KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA .)
 
 
-state 130
+state 133
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign . exp NEWLINE cmpdstmt BAISA
     (23) exp -> . exp EQ exp
@@ -3808,6 +3950,7 @@ state 130
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
     IDENTIFIER      shift and go to state 15
     STRING          shift and go to state 5
@@ -3815,16 +3958,16 @@ state 130
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    exp                            shift and go to state 132
+    exp                            shift and go to state 135
 
-state 131
+state 134
 
-    (51) optelse -> ATHAWA condition NEWLINE cmpdstmt optelse .
+    (52) optelse -> ATHAWA condition NEWLINE cmpdstmt optelse .
 
-    DIYE            reduce using rule 51 (optelse -> ATHAWA condition NEWLINE cmpdstmt optelse .)
+    DIYE            reduce using rule 52 (optelse -> ATHAWA condition NEWLINE cmpdstmt optelse .)
 
 
-state 132
+state 135
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp . NEWLINE cmpdstmt BAISA
     (23) exp -> exp . EQ exp
@@ -3841,7 +3984,7 @@ state 132
     (34) exp -> exp . RA exp
     (35) exp -> exp . WA exp
 
-    NEWLINE         shift and go to state 133
+    NEWLINE         shift and go to state 136
     EQ              shift and go to state 49
     LE              shift and go to state 36
     GE              shift and go to state 42
@@ -3857,11 +4000,11 @@ state 132
     WA              shift and go to state 47
 
 
-state 133
+state 136
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE . cmpdstmt BAISA
-    (49) cmpdstmt -> . stmt NEWLINE cmpdstmt
-    (50) cmpdstmt -> .
+    (50) cmpdstmt -> . stmt NEWLINE cmpdstmt
+    (51) cmpdstmt -> .
     (5) stmt -> . IDENTIFIER ASSIGNMENT exp
     (6) stmt -> . dynamString LEKHA
     (7) stmt -> . dynamString LEKHA SEMICOLON
@@ -3874,8 +4017,8 @@ state 133
     (14) stmt -> . KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA
     (15) stmt -> . IDENTIFIER LPARA variableexp RPARA
     (16) stmt -> . exp PATHAU
-    (43) dynamString -> . exp COMMA dynamString
-    (44) dynamString -> . exp
+    (44) dynamString -> . exp COMMA dynamString
+    (45) dynamString -> . exp
     (23) exp -> . exp EQ exp
     (24) exp -> . exp LE exp
     (25) exp -> . exp GE exp
@@ -3896,8 +4039,9 @@ state 133
     (40) exp -> . IDENTIFIER LGPARA exp RGPARA
     (41) exp -> . LPARA exp RPARA
     (42) exp -> . LPARA exp RPARA QUESTION exp COLON exp
+    (43) exp -> . IDENTIFIER LPARA variableexp RPARA
 
-    BAISA           reduce using rule 50 (cmpdstmt -> .)
+    BAISA           reduce using rule 51 (cmpdstmt -> .)
     IDENTIFIER      shift and go to state 7
     YEDI            shift and go to state 1
     SABEI           shift and go to state 8
@@ -3908,19 +4052,19 @@ state 133
     LGPARA          shift and go to state 11
     LPARA           shift and go to state 2
 
-    stmt                           shift and go to state 86
+    stmt                           shift and go to state 88
     dynamString                    shift and go to state 12
-    cmpdstmt                       shift and go to state 134
+    cmpdstmt                       shift and go to state 137
     exp                            shift and go to state 14
 
-state 134
+state 137
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt . BAISA
 
-    BAISA           shift and go to state 135
+    BAISA           shift and go to state 138
 
 
-state 135
+state 138
 
     (11) stmt -> SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA .
 
@@ -3930,65 +4074,65 @@ state 135
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for EQ in state 74 resolved as shift
-WARNING: shift/reduce conflict for LE in state 74 resolved as shift
-WARNING: shift/reduce conflict for GE in state 74 resolved as shift
-WARNING: shift/reduce conflict for NE in state 74 resolved as shift
-WARNING: shift/reduce conflict for LT in state 74 resolved as shift
-WARNING: shift/reduce conflict for GT in state 74 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 74 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 74 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 74 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 74 resolved as shift
-WARNING: shift/reduce conflict for POWER in state 74 resolved as shift
-WARNING: shift/reduce conflict for RA in state 74 resolved as shift
-WARNING: shift/reduce conflict for WA in state 74 resolved as shift
-WARNING: shift/reduce conflict for EQ in state 79 resolved as shift
-WARNING: shift/reduce conflict for LE in state 79 resolved as shift
-WARNING: shift/reduce conflict for GE in state 79 resolved as shift
-WARNING: shift/reduce conflict for NE in state 79 resolved as shift
-WARNING: shift/reduce conflict for LT in state 79 resolved as shift
-WARNING: shift/reduce conflict for GT in state 79 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 79 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 79 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 79 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 79 resolved as shift
-WARNING: shift/reduce conflict for POWER in state 79 resolved as shift
-WARNING: shift/reduce conflict for RA in state 79 resolved as shift
-WARNING: shift/reduce conflict for WA in state 79 resolved as shift
-WARNING: shift/reduce conflict for EQ in state 81 resolved as shift
-WARNING: shift/reduce conflict for LE in state 81 resolved as shift
-WARNING: shift/reduce conflict for GE in state 81 resolved as shift
-WARNING: shift/reduce conflict for NE in state 81 resolved as shift
-WARNING: shift/reduce conflict for LT in state 81 resolved as shift
-WARNING: shift/reduce conflict for GT in state 81 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 81 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 81 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 81 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 81 resolved as shift
-WARNING: shift/reduce conflict for POWER in state 81 resolved as shift
-WARNING: shift/reduce conflict for RA in state 81 resolved as shift
-WARNING: shift/reduce conflict for WA in state 81 resolved as shift
-WARNING: shift/reduce conflict for RA in state 85 resolved as shift
-WARNING: shift/reduce conflict for WA in state 85 resolved as shift
-WARNING: shift/reduce conflict for RA in state 88 resolved as shift
-WARNING: shift/reduce conflict for WA in state 88 resolved as shift
-WARNING: shift/reduce conflict for RA in state 107 resolved as shift
-WARNING: shift/reduce conflict for WA in state 107 resolved as shift
-WARNING: shift/reduce conflict for RA in state 109 resolved as shift
-WARNING: shift/reduce conflict for WA in state 109 resolved as shift
-WARNING: shift/reduce conflict for EQ in state 125 resolved as shift
-WARNING: shift/reduce conflict for LE in state 125 resolved as shift
-WARNING: shift/reduce conflict for GE in state 125 resolved as shift
-WARNING: shift/reduce conflict for NE in state 125 resolved as shift
-WARNING: shift/reduce conflict for LT in state 125 resolved as shift
-WARNING: shift/reduce conflict for GT in state 125 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 125 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 125 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 125 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 125 resolved as shift
-WARNING: shift/reduce conflict for POWER in state 125 resolved as shift
-WARNING: shift/reduce conflict for RA in state 125 resolved as shift
-WARNING: shift/reduce conflict for WA in state 125 resolved as shift
-WARNING: reduce/reduce conflict in state 112 resolved using rule (stmt -> IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA)
-WARNING: rejected rule (exp -> LGPARA variableexp RGPARA) in state 112
+WARNING: shift/reduce conflict for EQ in state 75 resolved as shift
+WARNING: shift/reduce conflict for LE in state 75 resolved as shift
+WARNING: shift/reduce conflict for GE in state 75 resolved as shift
+WARNING: shift/reduce conflict for NE in state 75 resolved as shift
+WARNING: shift/reduce conflict for LT in state 75 resolved as shift
+WARNING: shift/reduce conflict for GT in state 75 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 75 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 75 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 75 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 75 resolved as shift
+WARNING: shift/reduce conflict for POWER in state 75 resolved as shift
+WARNING: shift/reduce conflict for RA in state 75 resolved as shift
+WARNING: shift/reduce conflict for WA in state 75 resolved as shift
+WARNING: shift/reduce conflict for EQ in state 80 resolved as shift
+WARNING: shift/reduce conflict for LE in state 80 resolved as shift
+WARNING: shift/reduce conflict for GE in state 80 resolved as shift
+WARNING: shift/reduce conflict for NE in state 80 resolved as shift
+WARNING: shift/reduce conflict for LT in state 80 resolved as shift
+WARNING: shift/reduce conflict for GT in state 80 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 80 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 80 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 80 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 80 resolved as shift
+WARNING: shift/reduce conflict for POWER in state 80 resolved as shift
+WARNING: shift/reduce conflict for RA in state 80 resolved as shift
+WARNING: shift/reduce conflict for WA in state 80 resolved as shift
+WARNING: shift/reduce conflict for EQ in state 82 resolved as shift
+WARNING: shift/reduce conflict for LE in state 82 resolved as shift
+WARNING: shift/reduce conflict for GE in state 82 resolved as shift
+WARNING: shift/reduce conflict for NE in state 82 resolved as shift
+WARNING: shift/reduce conflict for LT in state 82 resolved as shift
+WARNING: shift/reduce conflict for GT in state 82 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 82 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 82 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 82 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 82 resolved as shift
+WARNING: shift/reduce conflict for POWER in state 82 resolved as shift
+WARNING: shift/reduce conflict for RA in state 82 resolved as shift
+WARNING: shift/reduce conflict for WA in state 82 resolved as shift
+WARNING: shift/reduce conflict for RA in state 87 resolved as shift
+WARNING: shift/reduce conflict for WA in state 87 resolved as shift
+WARNING: shift/reduce conflict for RA in state 90 resolved as shift
+WARNING: shift/reduce conflict for WA in state 90 resolved as shift
+WARNING: shift/reduce conflict for RA in state 110 resolved as shift
+WARNING: shift/reduce conflict for WA in state 110 resolved as shift
+WARNING: shift/reduce conflict for RA in state 112 resolved as shift
+WARNING: shift/reduce conflict for WA in state 112 resolved as shift
+WARNING: shift/reduce conflict for EQ in state 128 resolved as shift
+WARNING: shift/reduce conflict for LE in state 128 resolved as shift
+WARNING: shift/reduce conflict for GE in state 128 resolved as shift
+WARNING: shift/reduce conflict for NE in state 128 resolved as shift
+WARNING: shift/reduce conflict for LT in state 128 resolved as shift
+WARNING: shift/reduce conflict for GT in state 128 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 128 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 128 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 128 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 128 resolved as shift
+WARNING: shift/reduce conflict for POWER in state 128 resolved as shift
+WARNING: shift/reduce conflict for RA in state 128 resolved as shift
+WARNING: shift/reduce conflict for WA in state 128 resolved as shift
+WARNING: reduce/reduce conflict in state 115 resolved using rule (stmt -> IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA)
+WARNING: rejected rule (exp -> LGPARA variableexp RGPARA) in state 115
