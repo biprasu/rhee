@@ -212,9 +212,11 @@ def p_whilecond_neg(p):
 
 
 def p_error(p):
-    tok = yacc.token()
-    print "Syntax Error: Near Token " + str(tok)
-    exit(1)
+    #tok = yacc.token()
+    #print "Syntax Error: Near Token " + str(tok)
+    #changed here
+    print "Syntax Error: Near Token " + p.type
+    exit(-1)
 
 
 
@@ -338,8 +340,6 @@ if not input:
 
 ast = parser.parse(input, lexer=lexer)
 print ast
-# from NepInterpreter import *
-# interpret(ast)
-# print "done"
+
 interpret(ast)
 exit(0)
