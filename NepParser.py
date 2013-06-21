@@ -144,6 +144,10 @@ def p_exp_conditional(p):               # second one is to be evaluated , third 
     'exp : LPARA exp RPARA QUESTION exp COLON exp'
     p[0] = ("conditional", [p[2]], [p[5]], [p[7]])
 
+def p_exp_functionCall(p):
+    'exp : IDENTIFIER LPARA variableexp RPARA'
+    p[0] = ("functionCallExp", p[1], p[3])
+
 def p_dynamString_ident(p):
     'dynamString : exp COMMA dynamString'
     p[0] = [[p[1]]] + p[3]
@@ -304,6 +308,12 @@ ip = u'''काम रमाईलो (क, ख,)
     क पठाउ 
 मका
 रमाईलो (१०, म)
+'''
+ip = u'''काम रमाईलो (क, ख,)
+    "क" लेख;
+मका
+क = रमाईलो (१०, म)
+रमाईलो (१०, म) लेख;
 '''
 
 # ip = u'''क = १०.३२^"नेपाल"
