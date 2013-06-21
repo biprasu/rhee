@@ -82,6 +82,9 @@ def p_stmt_returnStatement(p):
     'stmt : exp PATHAU'
     p[0] = ('returnStmt', [p[1]])
 
+def p_stmt_newline(p):
+    'stmt : NEWLINE'
+    pass
 
 def p_variableArgs_arguments(p):
     'variableArgs : IDENTIFIER COMMA variableArgs'
@@ -313,6 +316,14 @@ ip = u'''काम रमाईलो (क, ख,)
 ip = u'''काम रमाईलो (क, ख,)
     "क" लेख;
 मका
+क = रमाईलो (१०, म)
+रमाईलो (१०, म) लेख;
+'''
+input = u'''काम रमाईलो (क, ख,)
+    "क" लेख;
+मका
+
+म=१०
 क = रमाईलो (१०, म)
 रमाईलो (१०, म) लेख;
 '''
