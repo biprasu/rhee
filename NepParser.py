@@ -324,7 +324,7 @@ ip = u'''काम रमाईलो (क, ख,)
 input = u'''काम रमाईलो (क, ख,)
     "क" लेख;
 मका
-
+क लेख
 म=१०
 क = रमाईलो (१०, म)
 रमाईलो (१०, म) लेख;
@@ -365,5 +365,9 @@ if not input:
 ast = parser.parse(input, lexer=lexer)
 print ast
 
-interpret(ast)
+try:
+    interpret(ast)
+except:
+    pass
+
 exit(0)
