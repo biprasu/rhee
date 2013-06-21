@@ -28,6 +28,7 @@ def p_element_stmt(p):
 def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
     p[0] = ("assignment", p[1], [p[3]])
+    print p.lineno(2)
 
 # def p_stmt_println(p):
 #     'stmt : dynamString COMMA LEKHA'
