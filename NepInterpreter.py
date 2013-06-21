@@ -32,7 +32,8 @@ def type(data):
 
 def interpret(trees,env = environment):
     for tree in trees:
-        stmttype = tree[0]
+        stmttype,lineno = tree[0].split('_')
+        lineno = int(lineno)
         if stmttype == 'string':
             return tree[1]
         elif stmttype == 'number':

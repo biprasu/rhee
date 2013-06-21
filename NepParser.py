@@ -27,8 +27,7 @@ def p_element_stmt(p):
     p[0] = p[1]
 def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
-    p[0] = ("assignment"+"_"+p.lineno(2), p[1], [p[3]])
-    print p.lineno(2)
+    p[0] = ("assignment"+"_"+str(p.lineno(2)), p[1], [p[3]])
 
 # def p_stmt_println(p):
 #     'stmt : dynamString COMMA LEKHA'
@@ -36,7 +35,7 @@ def p_stmt_assign(p):
 
 def p_stmt_withoutCommaNewline(p):
     'stmt : dynamString LEKHA'
-    p[0] = ("println"+"_"+p.lineno(2), p[1])
+    p[0] = ("println"+"_"+str(p.lineno(2)), p[1])
 
 # def p_stmt_print(p):
 #     'stmt : dynamString COMMA LEKHA SEMICOLON'
@@ -44,43 +43,43 @@ def p_stmt_withoutCommaNewline(p):
 
 def p_stmt_WOCommaSameline(p):
     'stmt : dynamString LEKHA SEMICOLON'
-    p[0] = ("print"+"_"+p.lineno(2), p[1])
+    p[0] = ("print"+"_"+str(p.lineno(2)), p[1])
 
 def p_stmt_input(p):
     'stmt : IDENTIFIER LEU'
-    p[0] = ("input"+"_"+p.lineno(2), p[1])
+    p[0] = ("input"+"_"+str(p.lineno(2)), p[1])
 
 def p_stmt_increment(p):
     'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
-    p[0] = ("assignment"+"_"+p.lineno(1), p[1], [("binop", p[2],[("identifier", p[1])],[p[4]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop", p[2],[("identifier", p[1])],[p[4]])])
 
 def p_stmt_ifcondition(p):
     'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
-    p[0] = ("ifelse"+"_"+p.lineno(1), [("yedi"+"_"+p.lineno(1), p[2], p[4])] + p[5])
+    p[0] = ("ifelse"+"_"+str(p.lineno(1)), [("yedi"+"_"+str(p.lineno(1)), p[2], p[4])] + p[5])
 
 def p_stmt_for(p):
     'stmt : SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA'
-    p[0] = ("forloop"+"_"+p.lineno(1), p[2], [p[4]], [p[6]], p[8], [p[9]], p[11])
+    p[0] = ("forloop"+"_"+str(p.lineno(1)), p[2], [p[4]], [p[6]], p[8], [p[9]], p[11])
 
 def p_stmt_while(p):
     'stmt : JABA SAMMA whilecond NEWLINE cmpdstmt BAJA'
-    p[0] = ("whileloop"+"_"+p.lineno(1), p[3], p[5])
+    p[0] = ("whileloop"+"_"+str(p.lineno(1)), p[3], p[5])
 
 def p_stmt_list(p):
     'stmt : IDENTIFIER ASSIGNMENT LGPARA variableexp RGPARA'
-    p[0] = ("listAssignment"+"_"+p.lineno(1), p[1], p[4])
+    p[0] = ("listAssignment"+"_"+str(p.lineno(1)), p[1], p[4])
 
 def p_stmt_function(p):
     'stmt : KAAM IDENTIFIER LPARA variableArgs RPARA NEWLINE cmpdstmt MAKA'
-    p[0] = ('functionDefination'+"_"+p.lineno(1), p[2], p[4], p[7])
+    p[0] = ('functionDefination'+"_"+str(p.lineno(1)), p[2], p[4], p[7])
 
 def p_stmt_functionCall(p):
     'stmt : IDENTIFIER LPARA variableexp RPARA'
-    p[0] = ("functionCall"+"_"+p.lineno(1), p[1], p[3])
+    p[0] = ("functionCall"+"_"+str(p.lineno(1)), p[1], p[3])
 
 def p_stmt_returnStatement(p):
     'stmt : exp PATHAU'
-    p[0] = ('returnStmt'+"_"+p.lineno(2), [p[1]])
+    p[0] = ('returnStmt'+"_"+str(p.lineno(2)), [p[1]])
 
 def p_stmt_newline(p):
     'stmt : NEWLINE'
@@ -123,34 +122,34 @@ def p_exp_equal(p):
             | exp RA exp
             | exp WA exp
     '''
-    p[0] = ("binop"+"_"+p.lineno(2), p[2],[p[1]],[p[3]])
+    p[0] = ("binop"+"_"+str(p.lineno(2)), p[2],[p[1]],[p[3]])
 
 def p_exp_identifier(p):
     'exp : IDENTIFIER'
-    p[0] = ("identifier"+"_"+p.lineno(1), p[1])
+    p[0] = ("identifier"+"_"+str(p.lineno(1)), p[1])
 def p_exp_string(p):
     'exp : STRING'
-    p[0] = ("string"+"_"+p.lineno(1), p[1])
+    p[0] = ("string"+"_"+str(p.lineno(1)), p[1])
 def p_exp_number(p):
     'exp : NUMBER'
-    p[0] = ("number"+"_"+p.lineno(1), p[1])
+    p[0] = ("number"+"_"+str(p.lineno(1)), p[1])
 def p_exp_list(p):
     'exp : LGPARA variableexp RGPARA'
-    p[0] = ("list"+"_"+p.lineno(1), p[2])
+    p[0] = ("list"+"_"+str(p.lineno(1)), p[2])
 def p_exp_listitem(p):
     'exp : IDENTIFIER LGPARA exp RGPARA'
-    p[0] = ("listItem"+"_"+p.lineno(1), p[1], [p[3]])
+    p[0] = ("listItem"+"_"+str(p.lineno(1)), p[1], [p[3]])
 def p_exp_paren(p):
     'exp : LPARA exp RPARA'
-    p[0] = ("parenthesis"+"_"+p.lineno(1), [p[2]])
+    p[0] = ("parenthesis"+"_"+str(p.lineno(1)), [p[2]])
 
 def p_exp_conditional(p):               # second one is to be evaluated , third one is exp if true and fourth is if false
     'exp : LPARA exp RPARA QUESTION exp COLON exp'
-    p[0] = ("conditional"+"_"+p.lineno(4), [p[2]], [p[5]], [p[7]])
+    p[0] = ("conditional"+"_"+str(p.lineno(4)), [p[2]], [p[5]], [p[7]])
 
 def p_exp_functionCall(p):
     'exp : IDENTIFIER LPARA variableexp RPARA'
-    p[0] = ("functionCallExp"+"_"+p.lineno(1), p[1], p[3])
+    p[0] = ("functionCallExp"+"_"+str(p.lineno(1)), p[1], p[3])
 
 def p_dynamString_ident(p):
     'dynamString : exp COMMA dynamString'
@@ -163,15 +162,15 @@ def p_condition_binop(p):
     '''condition : condition RA condition
                     | condition WA condition
     '''
-    p[0] = [("conditionalbinop"+"_"+p.lineno(2), p[2], p[1], p[3])]
+    p[0] = [("conditionalbinop"+"_"+str(p.lineno(2)), p[2], p[1], p[3])]
 
 def p_condition_positive(p):
     'condition : exp BHAE'
-    p[0] = [("positive"+"_"+p.lineno(2), [p[1]])]
+    p[0] = [("positive"+"_"+str(p.lineno(2)), [p[1]])]
 
 def p_condition_neg(p):
     'condition : exp NABHAE'
-    p[0] = [("negative"+"_"+p.lineno(2), [p[1]])]
+    p[0] = [("negative"+"_"+str(p.lineno(2)), [p[1]])]
 
 def p_cmpdstmt_stmt(p):
     'cmpdstmt : stmt NEWLINE cmpdstmt'
@@ -182,10 +181,10 @@ def p_cmpdstmt_empty(p):
 
 def p_optelse_elseif(p):
     'optelse : ATHAWA condition NEWLINE cmpdstmt optelse'
-    p[0] = [("elseif"+"_"+p.lineno(1), p[2], p[4])] + p[5]
+    p[0] = [("elseif"+"_"+str(p.lineno(1)), p[2], p[4])] + p[5]
 def p_optelse_else(p):
     'optelse : ATHAWA NEWLINE cmpdstmt'
-    p[0] = [("else"+"_"+p.lineno(1), p[3])]
+    p[0] = [("else"+"_"+str(p.lineno(1)), p[3])]
 def p_optelse_empty(p):
     'optelse : '
     p[0] = []
@@ -193,6 +192,7 @@ def p_optelse_empty(p):
 """
 om namah shivaya
 """
+
 def p_sign(p):
     '''sign : PLUS
             | MINUS
