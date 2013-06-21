@@ -1,6 +1,7 @@
 #encoding=UTF8
 import ply.yacc as yacc
 from NepInterpreter import interpret
+from sys import argv,exit
 
 start = "N"
 
@@ -228,19 +229,12 @@ lexer = lex.lex(module=NepLexer)
 parser = yacc.yacc()
 
 
-ip = u'''क = १०.३२
-ख = "नेपाल"
-ख = क
-ख = ( क )
-ख = (क==२)
-ख = (क!=२)
-ख = (क>=२)
-ख = (क<=२)
-ख = (क>२)
-ख = (क<२)
-'''
-ip = u'''ख = क - २ + (भ  * त) / ८ ^ २
-'''
+
+
+#write input text here to override it
+input = ""
+
+
 ip = u'''क लेख
 क, " मा हामीले  २ हालेका छौँ " लेख
 "ख मा ", ख, " छ" लेख
@@ -272,7 +266,7 @@ ip = u'''क += १०.३२
 क *= १०.३२
 क /= १०.३२
 '''
-ip = u'''क = (क == २) ? २५: ५
+input = u'''क = (क == २) ? २५: ५
 '''
 ip = u'''यदि  क == २ वा क == ३ भए
     क लेख
@@ -322,9 +316,30 @@ ip = u'''काम रमाईलो (क, ख,)
 # print tokenizer(ip)
 
 
-ast = parser.parse(ip, lexer=lexer)
+#write a file name here to override it.
+filename = ""
+
+usage =\
+"""
+Usage: python NepParser.py filename
+filename: .rhee File to interpret
+"""
+
+args = str(argv)
+if not input:
+    if filename:
+        input = unicode(open(filename,"r").read(),'UTF8')
+    elif len(argv) <2:
+        print usage
+        exit(-1)
+    else:
+        input = unicode(open(argv[1],"r").read(),"UTF8")
+
+
+ast = parser.parse(input, lexer=lexer)
 print ast
 # from NepInterpreter import *
 # interpret(ast)
 # print "done"
 interpret(ast)
+exit(0)
