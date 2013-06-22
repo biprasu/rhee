@@ -2,6 +2,10 @@
 import re
 import sys
 
+
+
+
+
 environment = (None,{})
 map_num = {u'\u0966':0, u'\u0967':1, u'\u0968':2, u'\u0969':3,
             u'\u096a':4, u'\u096b':5, u'\u096c':6, u'\u096d':7,
@@ -23,6 +27,8 @@ def to_ascii(num):
     return float(ascii)
 
 def to_unicode(num):
+    if not num:
+        raise NameError
     unic = u''
     for char in str(num):
         unic += (char == '-' ) and '-' or ((char=='.') and '.' or get_key_from_value(map_num, int(char)))
@@ -125,9 +131,9 @@ def interpret(trees,env = environment):
 
             elif stmttype == 'conditionalbinop':
                 operator = tree[1]
-                if operator == u'\u0930':
+                if operator == u'\u0930': #RA
                     return get_key_from_value(map_num, map_num[interpret(tree[2], env)] and map_num[interpret(tree[3], env)])
-                elif operator == u'\u0935\u093e':
+                elif operator == u'\u0935\u093e': #WA
                     return get_key_from_value(map_num, map_num[interpret(tree[2], env)] or map_num[interpret(tree[3], env)])
 
             elif stmttype == 'forloop':
@@ -181,8 +187,10 @@ def interpret(trees,env = environment):
                 return [interpret(i, env) for i in tree[1]]
     except SystemExit:
         pass
-    except:
+
+    except Exception,e:
         print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
+        print e.__class__.__name__
         exit (-1)
 
 
