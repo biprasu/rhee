@@ -51,6 +51,10 @@ reserved = {
     u'काम' : 'KAAM',
     u'मका' : 'MAKA',
     u'पठाउ' : 'PATHAU',
+    u'मा' : 'MA',
+    u'बाट' : 'BATA',
+    u'बन्दगर' :'BANDAGARA',
+
 }
  
 tokens = tokens + list(reserved.values())

@@ -1,6 +1,7 @@
 #encoding=UTF8
 import re
 import sys
+from NepInterpreterLibrary import ArgumentError, checklibrary, call
 
 errors ={
     'ZeroDivisionError': 'शुन्य ले भाग गरियो',
@@ -10,11 +11,6 @@ errors ={
     'KeyError' : 'कोशमा नाम मिलेन',
     'ArgumentError' : 'काम को आरगुमेन्ट मिलेन',
 }
-
-class ArgumentError(Exception):
-    pass
-
-
 
 environment = (None,{})
 map_num = {u'\u0966':0, u'\u0967':1, u'\u0968':2, u'\u0969':3,
@@ -52,6 +48,8 @@ def interpret(trees,env = environment):
     try:
 
         for tree in trees:
+            if not tree:
+                continue
             stmttype,lineno = tree[0].split('_')
             lineno = int(lineno)
             if stmttype == 'string':
@@ -72,7 +70,11 @@ def interpret(trees,env = environment):
                 return get_key_from_value(map_num, not map_num[interpret(tree[1], env)])
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:
-                    print interpret(data, env),
+                    a = interpret(data,env)
+                    if a:
+                        print interpret(data, env),
+                    else:
+                        print u"शुन्य",
                 if stmttype == 'println':   print
             elif stmttype == 'assignment':
                 env_update(tree[1], interpret(tree[2],env), env)
@@ -177,8 +179,12 @@ def interpret(trees,env = environment):
             elif stmttype == 'functionCall':
                 fname = tree[1]
                 args = tree[2]
-                fvalue = env_lookup(fname,env)
-                #print fvalue
+
+                if env_exists(fname,env):
+                    fvalue = env_lookup(fname,env)
+                else:
+                    fvalue = [None]
+                #check local function
                 if fvalue[0] == "function":
                     fparams = fvalue[1]
                     fbody = fvalue[2]
@@ -193,6 +199,11 @@ def interpret(trees,env = environment):
                     result = interpret(fbody,newenv)
                     return (result != None) and result or None
 
+                elif checklibrary(tree):
+                    return call (tree,env)
+                else:
+                    raise ArgumentError()
+
             elif stmttype == 'returnStmt':
                 return [interpret(i, env) for i in tree[1]]
     except SystemExit:
@@ -202,7 +213,7 @@ def interpret(trees,env = environment):
         print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
         errorname = e.__class__.__name__
         errormessage = errors.get(errorname)
-        print errormessage
+        print errormessage,e.message
         exit (-1)
 
 
@@ -219,7 +230,16 @@ def env_update(vname,value,env):
     else:
         (env[1])[vname] = value
 
-    
+
+def env_exists(vname,env):
+    if vname in env[1]:
+        return True
+    elif vname in environment[1]:
+        return True
+    else:
+        return False
+        #error
+
 
 def env_lookup(vname, env):
     if vname in env[1]:

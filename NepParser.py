@@ -22,12 +22,31 @@ def p_N_lastone(p):
 def p_N_empty(p):
     'N : '
     p[0] = []
+
 def p_element_stmt(p):
     'element : stmt'
     p[0] = p[1]
 def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
     p[0] = ("assignment"+"_"+str(p.lineno(2)), p[1], [p[3]])
+
+
+#Pravesh added these
+def p_stmt_filewritewithnewline(p):
+    'stmt : IDENTIFIER MA dynamString LEKHA SEMICOLON'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp",[("functionCall"+"_"+str(p.lineno(1)), u"फाइललेख",[p[1],p[3]])])
+
+def p_stmt_filewrite(p):
+    'stmt : IDENTIFIER MA dynamString LEKHA'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"फाइललेखलाइन",[p[1],p[3]])])
+
+def p_stmt_fileread(p):
+    'stmt : IDENTIFIER BATA IDENTIFIER LEU'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),p[3], [("functionCall"+"_"+str(p.lineno(1)), u"फाइलपढ",[p[1]])])
+
+def p_stmt_fileclose(p):
+    'stmt : IDENTIFIER BANDAGARA'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"बन्दगर", [p[1]])])
 
 # def p_stmt_println(p):
 #     'stmt : dynamString COMMA LEKHA'
@@ -75,7 +94,7 @@ def p_stmt_function(p):
 
 def p_stmt_functionCall(p):
     'stmt : IDENTIFIER LPARA variableexp RPARA'
-    p[0] = ("functionCall"+"_"+str(p.lineno(1)), p[1], p[3])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), p[1], p[3])])
 
 def p_stmt_returnStatement(p):
     'stmt : exp PATHAU'
@@ -149,7 +168,7 @@ def p_exp_conditional(p):               # second one is to be evaluated , third 
 
 def p_exp_functionCall(p):
     'exp : IDENTIFIER LPARA variableexp RPARA'
-    p[0] = ("functionCallExp"+"_"+str(p.lineno(1)), p[1], p[3])
+    p[0] = ("functionCall"+"_"+str(p.lineno(1)), p[1], p[3])
 
 def p_dynamString_ident(p):
     'dynamString : exp COMMA dynamString'
@@ -226,6 +245,7 @@ def p_error(p):
     #print "Syntax Error: Near Token " + str(tok)
     #changed here
     print "Syntax Error: Near Token " + p.type
+    print p.lineno
     exit(-1)
 
 
@@ -278,7 +298,7 @@ ip = u'''क += १०.३२
 क *= १०.३२
 क /= १०.३२
 '''
-input = u'''क = (क == २) ? २५: ५
+ip = u'''क = (क == २) ? २५: ५
 '''
 ip = u'''यदि  क == २ वा क == ३ भए
     क लेख
@@ -321,7 +341,7 @@ ip = u'''काम रमाईलो (क, ख,)
 क = रमाईलो (१०, म)
 रमाईलो (१०, म) लेख;
 '''
-input = u'''काम रमाईलो (क, ख,)
+ip = u'''काम रमाईलो (क, ख,)
     "क" लेख;
 मका
 रमाईलो(१०,१०,१०)
@@ -366,6 +386,7 @@ ast = parser.parse(input, lexer=lexer)
 print ast
 
 try:
+#    pass
     interpret(ast)
 except:
     pass
