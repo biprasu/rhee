@@ -1,4 +1,16 @@
+#encoding=UTF8
 import re
+import sys
+from NepInterpreterLibrary import ArgumentError, checklibrary, call
+
+errors ={
+    'ZeroDivisionError': 'शुन्य ले भाग गरियो',
+    'NameError' : 'नाम मिलेन',
+    'IOError' : 'फाइलमा गल्ति भएको छ',
+    'IndexError': 'संग्रह को अकं मिलेन',
+    'KeyError' : 'कोशमा नाम मिलेन',
+    'ArgumentError' : 'काम को आरगुमेन्ट मिलेन',
+}
 
 environment = (None,{})
 map_num = {u'\u0966':0, u'\u0967':1, u'\u0968':2, u'\u0969':3,
@@ -21,6 +33,8 @@ def to_ascii(num):
     return float(ascii)
 
 def to_unicode(num):
+    if not num:
+        raise NameError
     unic = u''
     for char in str(num):
         unic += (char == '-' ) and '-' or ((char=='.') and '.' or get_key_from_value(map_num, int(char)))
@@ -31,151 +45,176 @@ def type(data):
 
 
 def interpret(trees,env = environment):
-    for tree in trees:
-        stmttype = tree[0]
-        if stmttype == 'string':
-            return tree[1]
-        elif stmttype == 'number':
-            return tree[1]
-        elif stmttype == 'identifier':
-            return env_lookup(tree[1],env)
-        elif stmttype == 'list':
-            return [interpret(i,env) for i in tree[1]]
-        elif stmttype == 'listItem':
-            return env_lookup(tree[1], env)[int(to_ascii(interpret(tree[2], env)))]
-        elif stmttype == 'parenthesis':
-            return interpret(tree[1], env)
-        elif stmttype == 'positive':
-            return interpret(tree[1], env)
-        elif stmttype == 'negative':
-            return get_key_from_value(map_num, not map_num[interpret(tree[1], env)])       
-        elif stmttype == 'println' or stmttype == 'print':
-            for data in tree[1]:
-                print interpret(data, env),
-            if stmttype == 'println':   print
-        elif stmttype == 'assignment':
-            env_update(tree[1], interpret(tree[2],env), env)
-            #print env
-        elif stmttype == 'increment':
-            pass
-        elif stmttype == 'binop':
-            operator = tree[1]
-            if operator == u'\u0935\u093e':
-                return get_key_from_value(map_num, map_num[interpret(tree[2], env)] or map_num[interpret(tree[3], env)])
+    try:
 
-#            if type(tree[2]) != type(tree[3]):
-#                print 'error: type mismatch'
-#                return
+        for tree in trees:
+            if not tree:
+                continue
+            stmttype,lineno = tree[0].split('_')
+            lineno = int(lineno)
+            if stmttype == 'string':
+                return tree[1]
+            elif stmttype == 'number':
+                return tree[1]
+            elif stmttype == 'identifier':
+                return env_lookup(tree[1],env)
+            elif stmttype == 'list':
+                return [interpret(i,env) for i in tree[1]]
+            elif stmttype == 'listItem':
+                return env_lookup(tree[1], env)[int(to_ascii(interpret(tree[2], env)))]
+            elif stmttype == 'parenthesis':
+                return interpret(tree[1], env)
+            elif stmttype == 'positive':
+                return interpret(tree[1], env)
+            elif stmttype == 'negative':
+                return get_key_from_value(map_num, not map_num[interpret(tree[1], env)])
+            elif stmttype == 'println' or stmttype == 'print':
+                for data in tree[1]:
+                    a = interpret(data,env)
+                    if a:
+                        print interpret(data, env),
+                    else:
+                        print u"शुन्य",
+                if stmttype == 'println':   print
+            elif stmttype == 'assignment':
+                env_update(tree[1], interpret(tree[2],env), env)
+                #print env
+            elif stmttype == 'increment':
+                pass
+            elif stmttype == 'binop':
+                operator = tree[1]
+                if operator == u'\u0935\u093e':
+                    return get_key_from_value(map_num, map_num[interpret(tree[2], env)] or map_num[interpret(tree[3], env)])
 
-            if type(tree[2]) == 'list':
-                return interpret(tree[2], env) + interpret(tree[3], env)
+    #            if type(tree[2]) != type(tree[3]):
+    #                print 'error: type mismatch'
+    #                return
 
-            left_value = to_ascii(interpret(tree[2], env))
-            right_value = to_ascii(interpret(tree[3], env))
+                if type(tree[2]) == 'list':
+                    return interpret(tree[2], env) + interpret(tree[3], env)
 
-            if operator == '^':
-                num = left_value**right_value
-            elif operator == '+':
-                num = left_value + right_value
-            elif operator == '-':
-                num = left_value - right_value
-            elif operator == '*':
-                num = left_value * right_value     
-            elif operator == '/':
-                num = left_value / right_value                            
-            elif operator == '<':
-                num = left_value < right_value 
-                return (left_value < right_value) and u'\u0967' or u'\u0966'
-            elif operator == '>':
-                num = left_value > right_value
-                return (left_value > right_value) and u'\u0967' or u'\u0966'
-            elif operator == '<=':
-                num = left_value <= right_value 
-                return (left_value <= right_value) and u'\u0967' or u'\u0966'
-            elif operator == '>=':
-                num = left_value >= right_value  
-                return (left_value >= right_value) and u'\u0967' or u'\u0966'                
-            elif operator == '==':
-                return (left_value == right_value) and u'\u0967' or u'\u0966'
-            elif operator == '!=':
-                return (left_value != right_value) and u'\u0967' or u'\u0966'   
-                         
-            return to_unicode(num)
+                left_value = to_ascii(interpret(tree[2], env))
+                right_value = to_ascii(interpret(tree[3], env))
 
-        elif stmttype == 'whileloop':
-            while map_num[interpret(tree[1], env)]:
-                interpret(tree[2], env)
+                if operator == '^':
+                    num = left_value**right_value
+                elif operator == '+':
+                    num = left_value + right_value
+                elif operator == '-':
+                    num = left_value - right_value
+                elif operator == '*':
+                    num = left_value * right_value
+                elif operator == '/':
+                    num = left_value / right_value
+                elif operator == '<':
+                    num = left_value < right_value
+                    return (left_value < right_value) and u'\u0967' or u'\u0966'
+                elif operator == '>':
+                    num = left_value > right_value
+                    return (left_value > right_value) and u'\u0967' or u'\u0966'
+                elif operator == '<=':
+                    num = left_value <= right_value
+                    return (left_value <= right_value) and u'\u0967' or u'\u0966'
+                elif operator == '>=':
+                    num = left_value >= right_value
+                    return (left_value >= right_value) and u'\u0967' or u'\u0966'
+                elif operator == '==':
+                    return (left_value == right_value) and u'\u0967' or u'\u0966'
+                elif operator == '!=':
+                    return (left_value != right_value) and u'\u0967' or u'\u0966'
 
-        elif stmttype == 'ifelse':
-            interpret(tree[1], env)
-        elif stmttype == 'yedi':
-            if map_num[interpret(tree[1], env)]:
-                interpret(tree[2])
-                return
-        elif stmttype == 'elseif':
-            if map_num[interpret(tree[1], env)]:
-                interpret(tree[2], env)
-                return
-        elif stmttype == 'else':
-            interpret(tree[1], env)
+                return to_unicode(num)
 
-        elif stmttype == 'conditionalbinop':
-            operator = tree[1]
-            if operator == u'\u0930':
-                return get_key_from_value(map_num, map_num[interpret(tree[2], env)] and map_num[interpret(tree[3], env)])
-            elif operator == u'\u0935\u093e':
-                return get_key_from_value(map_num, map_num[interpret(tree[2], env)] or map_num[interpret(tree[3], env)])
+            elif stmttype == 'whileloop':
+                while map_num[interpret(tree[1], env)]:
+                    interpret(tree[2], env)
 
-        elif stmttype == 'forloop':
-            env_update(tree[1], interpret(tree[2], env), env) 
-
-            start = int(to_ascii(interpret(tree[2], env)))
-            end = int(to_ascii(interpret(tree[3], env)))
-            inc = int(to_ascii(interpret(tree[5], env)))
-            temp = start
-
-            inc = (tree[4]== u'-') and -1*inc or 1*inc
-            for i in range(start, end, inc):
-                interpret(tree[6], env)
-                temp += inc
-                env_update(tree[1], to_unicode(temp), env)
-
-        elif stmttype == 'conditional':
-            return map_num[interpret(tree[1], env)] and interpret(tree[2], env) or interpret(tree[3], env)
-
-        elif stmttype == 'listAssignment':
-            env_update(tree[1], [interpret(i, env) for i in tree[2]], env)
-
-        elif stmttype == 'functionDefination':
-            fname = tree[1]
-            fparams = tree[2]
-            fbody = tree[3]
-            fvalue = ("function", fparams, fbody, env)
-            add_to_env(env, fname, fvalue)
-
-        elif stmttype == 'functionCall':
-            fname = tree[1]
-            args = tree[2]
-            fvalue = env_lookup(fname,env)
-            #print fvalue
-            if fvalue[0] == "function":
-                fparams = fvalue[1]
-                fbody = fvalue[2]
-                fenv = fvalue[3]
-                newenv = (fenv, {})
-                if len(fparams) != len(args):
-                    print "wrong number of args"
+            elif stmttype == 'ifelse':
+                interpret(tree[1], env)
+            elif stmttype == 'yedi':
+                if map_num[interpret(tree[1], env)]:
+                    interpret(tree[2])
                     return
+            elif stmttype == 'elseif':
+                if map_num[interpret(tree[1], env)]:
+                    interpret(tree[2], env)
+                    return
+            elif stmttype == 'else':
+                interpret(tree[1], env)
+
+            elif stmttype == 'conditionalbinop':
+                operator = tree[1]
+                if operator == u'\u0930': #RA
+                    return get_key_from_value(map_num, map_num[interpret(tree[2], env)] and map_num[interpret(tree[3], env)])
+                elif operator == u'\u0935\u093e': #WA
+                    return get_key_from_value(map_num, map_num[interpret(tree[2], env)] or map_num[interpret(tree[3], env)])
+
+            elif stmttype == 'forloop':
+                env_update(tree[1], interpret(tree[2], env), env)
+
+                start = int(to_ascii(interpret(tree[2], env)))
+                end = int(to_ascii(interpret(tree[3], env)))
+                inc = int(to_ascii(interpret(tree[5], env)))
+                temp = start
+
+                inc = (tree[4]== u'-') and -1*inc or 1*inc
+                for i in range(start, end, inc):
+                    interpret(tree[6], env)
+                    temp += inc
+                    env_update(tree[1], to_unicode(temp), env)
+
+            elif stmttype == 'conditional':
+                return map_num[interpret(tree[1], env)] and interpret(tree[2], env) or interpret(tree[3], env)
+
+            elif stmttype == 'listAssignment':
+                env_update(tree[1], [interpret(i, env) for i in tree[2]], env)
+
+            elif stmttype == 'functionDefination':
+                fname = tree[1]
+                fparams = tree[2]
+                fbody = tree[3]
+                fvalue = ("function", fparams, fbody, env)
+                add_to_env(env, fname, fvalue)
+
+            elif stmttype == 'functionCall':
+                fname = tree[1]
+                args = tree[2]
+
+                if env_exists(fname,env):
+                    fvalue = env_lookup(fname,env)
                 else:
-                    for i in range(len(args)):
-                        argval = interpret(args[i], env)
-                        (newenv[1])[fparams[i]] = argval 
-                result = interpret(fbody,newenv)
-                return (result != None) and result or None
+                    fvalue = [None]
+                #check local function
+                if fvalue[0] == "function":
+                    fparams = fvalue[1]
+                    fbody = fvalue[2]
+                    fenv = fvalue[3]
+                    newenv = (fenv, {})
+                    if len(fparams) != len(args):
+                        raise ArgumentError()
+                    else:
+                        for i in range(len(args)):
+                            argval = interpret(args[i], env)
+                            (newenv[1])[fparams[i]] = argval
+                    result = interpret(fbody,newenv)
+                    return (result != None) and result or None
 
-        elif stmttype == 'returnStmt':
-            return [interpret(i, env) for i in tree[1]]                                     
+                elif checklibrary(tree):
+                    return call (tree,env)
+                else:
+                    raise ArgumentError()
 
+            elif stmttype == 'returnStmt':
+                return [interpret(i, env) for i in tree[1]]
+    except SystemExit:
+        pass
+
+    except Exception,e:
+        print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
+        errorname = e.__class__.__name__
+        errormessage = errors.get(errorname)
+        print errormessage,e.message
+        exit (-1)
 
 
 def add_to_env(env,vname,value):
@@ -191,7 +230,16 @@ def env_update(vname,value,env):
     else:
         (env[1])[vname] = value
 
-    
+
+def env_exists(vname,env):
+    if vname in env[1]:
+        return True
+    elif vname in environment[1]:
+        return True
+    else:
+        return False
+        #error
+
 
 def env_lookup(vname, env):
     if vname in env[1]:
@@ -203,5 +251,5 @@ def env_lookup(vname, env):
     elif vname in environment[1]:
         return (environment[1])[vname]
     else:
-        pass
+        raise NameError
         #error
