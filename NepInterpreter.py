@@ -2,7 +2,13 @@
 import re
 import sys
 
-
+errors ={
+    'ZeroDivisionError': 'शुन्य ले भाग गरियो',
+    'NameError' : 'नाम मिलेन',
+    'IOError' : 'फाइलमा गल्ति भएको छ',
+    'IndexError': 'संग्रह को अकं मिलेन',
+    'KeyError' : 'कोशमा नाम मिलेन',
+}
 
 
 
@@ -190,7 +196,9 @@ def interpret(trees,env = environment):
 
     except Exception,e:
         print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
-        print e.__class__.__name__
+        errorname = e.__class__.__name__
+        errormessage = errors.get(errorname)
+        print errormessage
         exit (-1)
 
 
