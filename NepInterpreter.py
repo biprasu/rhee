@@ -8,7 +8,11 @@ errors ={
     'IOError' : 'फाइलमा गल्ति भएको छ',
     'IndexError': 'संग्रह को अकं मिलेन',
     'KeyError' : 'कोशमा नाम मिलेन',
+    'ArgumentError' : 'काम को आरगुमेन्ट मिलेन',
 }
+
+class ArgumentError(Exception):
+    pass
 
 
 
@@ -46,6 +50,7 @@ def type(data):
 
 def interpret(trees,env = environment):
     try:
+
         for tree in trees:
             stmttype,lineno = tree[0].split('_')
             lineno = int(lineno)
@@ -180,8 +185,7 @@ def interpret(trees,env = environment):
                     fenv = fvalue[3]
                     newenv = (fenv, {})
                     if len(fparams) != len(args):
-                        print "wrong number of args"
-                        return
+                        raise ArgumentError()
                     else:
                         for i in range(len(args)):
                             argval = interpret(args[i], env)
