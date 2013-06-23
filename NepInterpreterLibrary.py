@@ -6,9 +6,14 @@ from Tkinter import *
 import NepInterpreter as NI
 
 
-#they are to be used by the graphics module
-#root = None
-#canvas = None
+class ArgumentError(Exception):
+    pass
+
+class BreakError(Exception):
+    pass
+
+class ContinueError(Exception):
+    pass
 
 to_col = {
 
@@ -264,9 +269,6 @@ function_names = {
     u"बटन" : keyboardgetkeys,
 }
 
-
-class ArgumentError(Exception):
-    pass
 
 def checklibrary(tree):
     fname = tree[1]

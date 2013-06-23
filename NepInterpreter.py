@@ -1,15 +1,19 @@
 #encoding=UTF8
 import re
 import sys
-from NepInterpreterLibrary import ArgumentError, checklibrary, call
+import traceback
+
+from NepInterpreterLibrary import ArgumentError, BreakError,ContinueError, checklibrary, call
 
 errors ={
-    'ZeroDivisionError': 'शुन्य ले भाग गरियो',
-    'NameError' : 'नाम मिलेन',
-    'IOError' : 'फाइलमा गल्ति भएको छ',
-    'IndexError': 'संग्रह को अकं मिलेन',
-    'KeyError' : 'कोशमा नाम मिलेन',
-    'ArgumentError' : 'काम को आरगुमेन्ट मिलेन',
+    'ZeroDivisionError': u'शुन्य ले भाग गरियो',
+    'NameError' : u'नाम मिलेन',
+    'IOError' : u'फाइलमा गल्ति भएको छ',
+    'IndexError': u'संग्रह को अकं मिलेन',
+    'KeyError' : u'कोशमा नाम मिलेन',
+    'ArgumentError' : u'काम को आरगुमेन्ट मिलेन',
+    'BreakError' :u'यहा राख्न पाइन्न',
+    'ContinueError' : u'यहा राख्न पाइन्न',
 }
 
 environment = (None,{})
@@ -40,20 +44,29 @@ def to_unicode(num):
         unic += (char == '-' ) and '-' or ((char=='.') and '.' or get_key_from_value(map_num, int(char)))
     return unic
 
-def type(data):
+def _type(data):
     return data[0][0]
 
 
 def interpret(trees,env = environment):
-    try:
 
-        for tree in trees:
-            if not tree:
-                continue
-            stmttype,lineno = tree[0].split('_')
-            lineno = int(lineno)
-            if stmttype == 'string':
+    for tree in trees:
+
+        if not tree:
+            continue
+        stmttype,lineno = tree[0].split('_')
+        lineno = int(lineno)
+
+        try:
+        #These two errors will be caught by the loops
+            if stmttype == 'break':
+                raise BreakError()
+            elif stmttype == 'continue':
+                raise ContinueError()
+            elif stmttype == 'string':
                 return tree[1]
+            elif stmttype == 'sunya':
+                return None
             elif stmttype == 'number':
                 return tree[1]
             elif stmttype == 'identifier':
@@ -90,7 +103,7 @@ def interpret(trees,env = environment):
     #                print 'error: type mismatch'
     #                return
 
-                if type(tree[2]) == 'list':
+                if _type(tree[2]) == 'list':
                     return interpret(tree[2], env) + interpret(tree[3], env)
 
                 left_value = to_ascii(interpret(tree[2], env))
@@ -127,7 +140,18 @@ def interpret(trees,env = environment):
 
             elif stmttype == 'whileloop':
                 while map_num[interpret(tree[1], env)]:
-                    interpret(tree[2], env)
+                    try:
+                        for items in tree[2]:
+                            type = items[0].split('_')[0]
+                            if type == 'break':
+                                raise BreakError()
+                            elif type == 'continue':
+                                raise ContinueError()
+                            interpret([items], env)
+                    except BreakError:
+                        break
+                    except ContinueError:
+                        continue
 
             elif stmttype == 'ifelse':
                 interpret(tree[1], env)
@@ -159,7 +183,19 @@ def interpret(trees,env = environment):
 
                 inc = (tree[4]== u'-') and -1*inc or 1*inc
                 for i in range(start, end, inc):
-                    interpret(tree[6], env)
+                    try:
+                        for items in tree[6]:
+                            type = items[0].split('_')[0]
+                            if type == 'break':
+                                raise BreakError()
+                            elif type == 'continue':
+                                raise ContinueError()
+                            interpret([items], env)
+                    except BreakError:
+                        break
+                    except ContinueError:
+                        temp += inc
+                        env_update(tree[1], to_unicode(temp), env)
                     temp += inc
                     env_update(tree[1], to_unicode(temp), env)
 
@@ -206,15 +242,21 @@ def interpret(trees,env = environment):
 
             elif stmttype == 'returnStmt':
                 return [interpret(i, env) for i in tree[1]]
-    except SystemExit:
-        pass
+        except SystemExit:
+            exit(-1)
 
-    except Exception,e:
-        print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
-        errorname = e.__class__.__name__
-        errormessage = errors.get(errorname)
-        print errormessage,e.message
-        exit (-1)
+        except Exception,e:
+            if e.__class__.__name__ == "BreakError":
+                raise BreakError()
+            if e.__class__.__name__ == "ContinueError":
+                raise ContinueError()
+
+            print traceback.format_exc()
+            print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
+            errorname = e.__class__.__name__
+            errormessage = errors.get(errorname)
+            print errormessage,e.message
+            exit (-1)
 
 
 def add_to_env(env,vname,value):
