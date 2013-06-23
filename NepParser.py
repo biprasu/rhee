@@ -23,15 +23,27 @@ def p_N_empty(p):
     'N : '
     p[0] = []
 
+
+
 def p_element_stmt(p):
     'element : stmt'
     p[0] = p[1]
+
 def p_stmt_assign(p):
     'stmt : IDENTIFIER ASSIGNMENT exp'
     p[0] = ("assignment"+"_"+str(p.lineno(2)), p[1], [p[3]])
 
 
 #Pravesh added these
+
+def p_stmt_break(p):
+    'stmt : BAHIRA'
+    p[0] = ("break"+"_"+str(p.lineno(1)),)
+
+def p_stmt_continue(p):
+    'stmt : ARKO'
+    p[0] = ("continue"+"_"+str(p.lineno(1)),)
+
 def p_stmt_filewritewithnewline(p):
     'stmt : IDENTIFIER MA dynamString LEKHA SEMICOLON'
     p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp",[("functionCall"+"_"+str(p.lineno(1)), u"__फाइललेख__",[p[1],p[3]])])
@@ -179,6 +191,9 @@ def p_exp_string(p):
 def p_exp_number(p):
     'exp : NUMBER'
     p[0] = ("number"+"_"+str(p.lineno(1)), p[1])
+def p_exp_sunya(p):
+    'exp : SUNYA'
+    p[0] = ('sunya'+"_"+str(p.lineno(1)))
 def p_exp_list(p):
     'exp : LGPARA variableexp RGPARA'
     p[0] = ("list"+"_"+str(p.lineno(1)), p[2])
