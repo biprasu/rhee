@@ -268,18 +268,10 @@ def p_whilecond_neg(p):
 
 
 def p_error(p):
-<<<<<<< HEAD
-    tok = yacc.token()
-    print "Syntax Error: Near Token '" + tok.value + "' on Line Number " + str(tok.lineno)
-    exit(1)
-=======
-    #tok = yacc.token()
-    #print "Syntax Error: Near Token " + str(tok)
     #changed here
     print "Syntax Error: Near Token " + p.type
     print p.lineno
     exit(-1)
->>>>>>> 4f3ac5ec9e85ce97aa79d29f882c431bc4d80ad8
 
 
 
@@ -394,6 +386,20 @@ ip = u'''काम रमाईलो (क, ख,)
 # '''
 # print tokenizer(ip)
 
+input =u'''क = "फाइलखोल"
+क लेख
+म = गन("फाइलखोल")
+म = टुक्राऊ("फाइलखोल", "इ")
+म = खोज("फाइलखोल", "इ")
+म = खोज("फाइलखोल", "इ", ०, १०)
+म = बद्ल("फाइलखोल", "इ", "ल")
+म = अङ्क("१०")
+म = खालीहताऊ("   फाइलखोल   ")
+म = गन(["फ", "ाइलखोल"])
+म = टुक्राऊ("फाइलखोल", "इ")
+
+म लेख
+'''
 
 #write a file name here to override it.
 filename = ""

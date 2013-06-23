@@ -41,8 +41,6 @@ def keyboardgetkeys(args,env):
     else:
         return NI.to_unicode(0)
 
-
-
 def openfile(args,env):
     filename = NI.interpret(args[0],env)
     mode = NI.interpret(args[1],env)
@@ -246,8 +244,61 @@ def drawrectangle(args):
     return
 
 
+def count(args, env):
+    # if (!args) raise ArgumentError
+    if (len(args) != 1):
+        raise ArgumentError
+    return len(NI.interpret(args[0],env))
 
+def breakString(args, env):
+    if (len(args) != 2):
+        raise ArgumentError
+    string = NI.interpret(args[0], env)
+    pattern = NI.interpret(args[1], env)
+    return string.split(pattern)
 
+def findString(args, env):
+    if (len(args) < 2 or len(args) > 4):
+        raise ArgumentError
+    string = NI.interpret(args[0], env)
+    pattern = NI.interpret(args[1], env)
+    begin = (len(args)>2) and NI.interpret(args[2], env) or u'०'
+    end =   (len(args)>3) and NI.interpret(args[3], env) or u'०'
+    begin = int(NI.to_ascii(begin))
+    end = int(NI.to_ascii(end))
+    
+    if (end != 0):
+        return string.find(pattern, begin, end)
+    return string.find(pattern, begin)
+
+def replaceString(args, env):
+    if len(args) != 3:
+        raise ArgumentError
+    s = NI.interpret(args[0], env)
+    os = NI.interpret(args[1], env)
+    ns = NI.interpret(args[2], env)
+    return s.replace(os, ns)
+
+def isNumber(args,env):
+    if len(args) != 1:
+        raise ArgumentError
+    for item in NI.interpret(args[0], env):
+        if ((not item in NI.map_num) and item != u'.' and item != u'-'):
+            return False
+    return True
+
+def toNumber(args,env):
+    if len(args) != 1:
+        raise ArgumentError
+    for item in NI.interpret(args[0], env):
+        if ((not item in NI.map_num) and item != u'.' and item != u'-'):
+            raise NotANumber
+    return NI.interpret(args[0])
+
+def trimString(args,env):
+    if len(args) != 1:
+        raise ArgumentError
+    return NI.interpret(args[0]).strip(" ")
 
 function_names = {
     u'फाइलखोल' : openfile,
@@ -262,10 +313,19 @@ function_names = {
     u"__मेटाउ__" : cleargraphics,
     u"__कोर__" : drawgraphics,
     u"बटन" : keyboardgetkeys,
+    u'गन' : count,
+    u'टुक्राऊ' : breakString,
+    u'खोज'     : findString,
+    u'बद्ल'     : replaceString,
+    u'अङ्कहो'  : isNumber,
+    u'अङ्क'     : toNumber,
+    u'खालीहताऊ' : trimString,
 }
 
 
 class ArgumentError(Exception):
+    pass
+class NotANumber(Exception):
     pass
 
 def checklibrary(tree):

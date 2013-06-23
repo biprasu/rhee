@@ -10,6 +10,7 @@ errors ={
     'IndexError': 'संग्रह को अकं मिलेन',
     'KeyError' : 'कोशमा नाम मिलेन',
     'ArgumentError' : 'काम को आरगुमेन्ट मिलेन',
+    'NotANumber'    : 'दिईएको अर्गुमेन्त अङ्क होइन ',
 }
 
 environment = (None,{})
