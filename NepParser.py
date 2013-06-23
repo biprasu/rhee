@@ -220,7 +220,7 @@ def p_whilecond_neg(p):
 
 def p_error(p):
     tok = yacc.token()
-    print "Syntax Error: Near Token " + str(tok)
+    print "Syntax Error: Near Token '" + tok.value + "' on Line Number " + str(tok.lineno)
     exit(1)
 
 
@@ -322,7 +322,7 @@ input = u'''काम रमाईलो (क, ख,)
 
 म=१०
 क = रमाईलो (१०, म)
-रमाईलो (१०, म) लेख;
+रमाईलो (१०, म) लेख
 '''
 
 # ip = u'''क = १०.३२^"नेपाल"
