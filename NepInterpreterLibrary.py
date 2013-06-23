@@ -166,6 +166,8 @@ def drawgraphics(args,env):
         drawline(interpreted_args)
     elif interpreted_args[1] == u"डट":
         drawpoint(interpreted_args)
+    elif interpreted_args[1] == u"शब्द":
+        drawtext(interpreted_args)
     return
 
 
@@ -178,6 +180,20 @@ def drawpoint(args):
     outline = to_col[args[5]] if args[5] else None
     root,canvas = args[0]
     canvas.create_rectangle(c1,c2,c1,c2,width=width,outline=outline)
+    root.update()
+    return
+
+def drawtext(args):
+    if len(args)<5 or len(args) > 7:
+        raise ArgumentError()
+    c1 = int(NI.to_ascii(args[2]))
+    c2 = int(NI.to_ascii(args[3]))
+    text = args[4].encode("UTF8")
+    size = int(NI.to_ascii(args[5])) if args[5] else None
+    color = to_col[args[6]] if args[6] else None
+    font = "a " + str(size) if size is not None else "0 "
+    root,canvas = args[0]
+    canvas.create_text(c1,c2,text=text,font=font,fill=color,anchor="nw")
     root.update()
     return
 
