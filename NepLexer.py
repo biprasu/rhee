@@ -59,6 +59,9 @@ reserved = {
     u'बनाउ' : 'BANAU',
     u'कोर' : 'KORA',
     u'मेटाउ' : 'METAU',
+    u'बाहिर' : 'BAHIRA',
+    u'अर्को': "ARKO",
+    u'शुन्य' : 'SUNYA',
 }
  
 tokens = tokens + list(reserved.values())
