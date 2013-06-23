@@ -33,7 +33,7 @@ def to_ascii(num):
     return float(ascii)
 
 def to_unicode(num):
-    if not num:
+    if num is None:
         raise NameError
     unic = u''
     for char in str(num):

@@ -54,7 +54,11 @@ reserved = {
     u'मा' : 'MA',
     u'बाट' : 'BATA',
     u'बन्दगर' :'BANDAGARA',
-
+    u'देखाउ' : 'DEKHAU',
+    u'लुकाउ' : 'LUKAU',
+    u'बनाउ' : 'BANAU',
+    u'कोर' : 'KORA',
+    u'मेटाउ' : 'METAU',
 }
  
 tokens = tokens + list(reserved.values())
@@ -114,7 +118,7 @@ t_QUESTION = ur'\?'
 #words
 def t_IDENTIFIER(token):
     #down below is the entire devanagari script except numbers.
-    ur'[\u0900-\u0965][\u0900-\u0965_०-९]*'
+    ur'[\u0900-\u0965_][\u0900-\u0965_०-९]*'
     token.type = reserved.get(token.value,'IDENTIFIER')    # Check for reserved words
     return token
  

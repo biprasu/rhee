@@ -34,19 +34,40 @@ def p_stmt_assign(p):
 #Pravesh added these
 def p_stmt_filewritewithnewline(p):
     'stmt : IDENTIFIER MA dynamString LEKHA SEMICOLON'
-    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp",[("functionCall"+"_"+str(p.lineno(1)), u"फाइललेख",[p[1],p[3]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp",[("functionCall"+"_"+str(p.lineno(1)), u"__फाइललेख__",[p[1],p[3]])])
 
 def p_stmt_filewrite(p):
     'stmt : IDENTIFIER MA dynamString LEKHA'
-    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"फाइललेखलाइन",[p[1],p[3]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__फाइललेखलाइन__",[p[1],p[3]])])
 
 def p_stmt_fileread(p):
     'stmt : IDENTIFIER BATA IDENTIFIER LEU'
-    p[0] = ("assignment"+"_"+str(p.lineno(1)),p[3], [("functionCall"+"_"+str(p.lineno(1)), u"फाइलपढ",[p[1]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),p[3], [("functionCall"+"_"+str(p.lineno(1)), u"__फाइलपढ__",[p[1]])])
 
 def p_stmt_fileclose(p):
     'stmt : IDENTIFIER BANDAGARA'
-    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"बन्दगर", [p[1]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__बन्दगर__", [p[1]])])
+
+def p_stmt_graphicshow(p):
+    'stmt : IDENTIFIER DEKHAU'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__देखाउ__", [p[1]])])
+
+def p_stmt_graphichide(p):
+    'stmt : IDENTIFIER LUKAU'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__लुकाउ__", [p[1]])])
+
+def p_stmt_graphicupdate(p):
+    'stmt : IDENTIFIER BANAU'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__बनाउ__", [p[1]])])
+
+def p_stmt_graphiclear(p):
+    'stmt : IDENTIFIER METAU'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__मेटाउ__", [p[1]])])
+
+# single rule to draw all graphics
+def p_stmt_graphicdraw(p):
+    'stmt : IDENTIFIER MA IDENTIFIER KORA variableexp '
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__कोर__", [p[1],p[3]]+p[5])])
 
 # def p_stmt_println(p):
 #     'stmt : dynamString COMMA LEKHA'
@@ -236,14 +257,14 @@ def p_whilecond_normal(p):
     '''whilecond : whilecond RA whilecond
                     | whilecond WA whilecond
     '''
-    p[0] = [("conditionalbinop", p[2], p[1], p[3])]
+    p[0] = [("conditionalbinop"+"_"+str(p.lineno(2)), p[2], p[1], p[3])]
 
 def p_whilecond_pos(p):
     'whilecond : exp CHHA'
-    p[0] = [("positive", [p[1]])]
+    p[0] = [("positive"+"_" +str(p.lineno(2)), [p[1]])]
 def p_whilecond_neg(p):
     'whilecond : exp CHHAINA'
-    p[0] = [("negative", [p[1]])]
+    p[0] = [("negative"+"_" + str(p.lineno(2)), [p[1]])]
 
 
 def p_error(p):
