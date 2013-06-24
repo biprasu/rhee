@@ -71,10 +71,10 @@ tokens = tokens + list(reserved.values())
  
 #comment
 def t_comment(token):
-    ur'(//.*)|(?:/\*[^(\*/)]*\*/)'
+    ur'(//[^\n]*)|(?:/\*[^(\*/)]*\*/)'
     token.lexer.lineno += token.value.count('\n')
     pass
- 
+
  
 def t_NEWLINE(token):
     ur'\n+'
