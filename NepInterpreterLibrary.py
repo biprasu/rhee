@@ -256,13 +256,19 @@ def count(args, env):
     # if (!args) raise ArgumentError
     if (len(args) != 1):
         raise ArgumentError
-    return len(NI.interpret(args[0],env))
+    return NI.to_unicode(len(NI.interpret(args[0],env)))
 
 def breakString(args, env):
     if (len(args) != 2):
         raise ArgumentError
+
     string = NI.interpret(args[0], env)
     pattern = NI.interpret(args[1], env)
+
+    # type checking we accept only unicode string
+    if type(string) != type(u'ल') or type(u'ल') != type(pattern):
+        raise ArgumentError
+
     return string.split(pattern)
 
 def findString(args, env):
@@ -272,12 +278,19 @@ def findString(args, env):
     pattern = NI.interpret(args[1], env)
     begin = (len(args)>2) and NI.interpret(args[2], env) or u'०'
     end =   (len(args)>3) and NI.interpret(args[3], env) or u'०'
+
+    if type(string) != type(u'ल') \
+       or type(u'ल') != type(pattern) \
+       or type(u'ल') != type(pattern) \
+        or type(u'ल') != type(pattern):
+        raise ArgumentError
+
     begin = int(NI.to_ascii(begin))
     end = int(NI.to_ascii(end))
     
     if (end != 0):
-        return string.find(pattern, begin, end)
-    return string.find(pattern, begin)
+        return NI.get_key_from_value(NI.map_num, string.find(pattern, begin, end))
+    return NI.to_unicode(string.find(pattern, begin))
 
 def replaceString(args, env):
     if len(args) != 3:
@@ -285,6 +298,10 @@ def replaceString(args, env):
     s = NI.interpret(args[0], env)
     os = NI.interpret(args[1], env)
     ns = NI.interpret(args[2], env)
+    if type(s) != type(u'ल') \
+        or type(u'ल') != type(os)\
+        or type(ns) != type(u'ल'):
+        raise ArgumentError
     return s.replace(os, ns)
 
 def isNumber(args,env):
@@ -301,7 +318,7 @@ def toNumber(args,env):
     for item in NI.interpret(args[0], env):
         if ((not item in NI.map_num) and item != u'.' and item != u'-'):
             raise NotANumber
-    return NI.interpret(args[0])
+    return (NI.interpret(args[0]))
 
 def trimString(args,env):
     if len(args) != 1:

@@ -82,6 +82,8 @@ def interpret(trees,env = environment):
                 return interpret(tree[1], env)
             elif stmttype == 'negative':
                 return get_key_from_value(map_num, not map_num[interpret(tree[1], env)])
+            elif stmttype == 'slicing':
+                return env_lookup( tree[1],env)[(tree[2] and int(to_ascii(interpret(tree[2],env))) or 0):(tree[3] and int(to_ascii(interpret(tree[3],env))) or None)]
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:
                     a = interpret(data,env)
@@ -120,6 +122,8 @@ def interpret(trees,env = environment):
                     num = left_value * right_value
                 elif operator == '/':
                     num = left_value / right_value
+                elif operator == '%':
+                    num = left_value % right_value
                 elif operator == '<':
                     num = left_value < right_value
                     return (left_value < right_value) and u'\u0967' or u'\u0966'

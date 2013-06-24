@@ -9,6 +9,7 @@ tokens = ['STRING',
           'MINUS',
           'DIVIDE',
           'TIMES',
+          'MODULUS',
           'POWER',
           'LPARA',
           'RPARA',
@@ -95,6 +96,7 @@ t_MINUS = ur'\-'
 t_DIVIDE = ur'/'
 t_TIMES = ur'\*'
 t_POWER = ur'\^'
+t_MODULUS = ur'\%'
 
 #paranthesis
 t_LPARA = ur'\('
@@ -137,17 +139,17 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-# lexer = lex.lex()
-# # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
-# ip = u'''काम रमालो ()
+#lexer = lex.lex()
+## ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
+#ip = u'''काम रमालो ()
 #     क = []
 #     क[१०] लेख;
-# मका
-# '''
-# lexer.input (ip)
- 
- 
-# while True:
+#मका
+#'''
+#lexer.input (ip)
+#
+#
+#while True:
 #     a = lexer.token()
 #     if not a: break
 #     if not a.type == 'NEWLINE':

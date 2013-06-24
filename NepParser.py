@@ -117,8 +117,6 @@ def p_stmt_for1(p):
     'stmt : SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp NEWLINE cmpdstmt BAISA'
     p[0] = ("forloop"+"_"+str(p.lineno(1)), p[2], [p[4]], [p[6]], u"+", [("number_"+str(p.lineno(1)),u'१' )], p[8])
 
-
-
 def p_stmt_while(p):
     'stmt : JABA SAMMA whilecond NEWLINE cmpdstmt BAJA'
     p[0] = ("whileloop"+"_"+str(p.lineno(1)), p[3], p[5])
@@ -177,6 +175,7 @@ def p_exp_equal(p):
             | exp TIMES exp
             | exp DIVIDE exp
             | exp POWER exp
+            | exp MODULUS exp
             | exp RA exp
             | exp WA exp
     '''
@@ -191,6 +190,9 @@ def p_exp_string(p):
 def p_exp_number(p):
     'exp : NUMBER'
     p[0] = ("number"+"_"+str(p.lineno(1)), p[1])
+def p_exp_minus(p):
+    'exp : MINUS NUMBER'
+    p[0] = ("number"+"_"+str(p.lineno(1)), "-"+p[2])
 def p_exp_sunya(p):
     'exp : SUNYA'
     p[0] = ('sunya'+"_"+str(p.lineno(1)))
@@ -203,6 +205,16 @@ def p_exp_listitem(p):
 def p_exp_paren(p):
     'exp : LPARA exp RPARA'
     p[0] = ("parenthesis"+"_"+str(p.lineno(1)), [p[2]])
+
+def p_exp_slicing(p):
+    'exp : IDENTIFIER LGPARA sliceexp COLON sliceexp RGPARA'
+    p[0] = ("slicing"+"_"+str(p.lineno(1)), p[1], p[3], p[5])
+def p_sliceexp_var(p):
+    'sliceexp : exp'
+    p[0] = [p[1]]
+def p_sliceexp_empty(p):
+    'sliceexp : '
+    p[0] = []
 
 def p_exp_conditional(p):               # second one is to be evaluated , third one is exp if true and fourth is if false
     'exp : LPARA exp RPARA QUESTION exp COLON exp'
@@ -350,16 +362,16 @@ ip = u'''यदि  क == २ भए वा क == ३ भए
     क, " मा हामीले  २ हालेका छौँ " लेख
 दिय
 '''
-ip = u'''क = २
+input = u'''क = २
 क लेख;
 क लेख;
 क, " मा हामीले  २ हालेका छौँ " लेख;
 "२" लेख;
 '''
-ip = u'''क लेख
-क = [१, ०, ३, २,]
+ip = u'''क = [१, ०, ३, २,]
+क लेख
 क = [१, ०, ३, २,] + [१, ०, ३, २,]
-क[१०] लेख;
+क[१] लेख;
 क = []
 '''
 ip = u'''काम रमाईलो ()
@@ -400,22 +412,39 @@ ip = u'''काम रमाईलो (क, ख,)
 # ख = [१, ०, ३, २,] ^ १० + 3 * "नेपाल"
 # '''
 # print tokenizer(ip)
-
-input =u'''क = "फाइलखोल"
-क लेख
-म = गन("फाइलखोल")
-म = टुक्राऊ("फाइलखोल", "इ")
-म = खोज("फाइलखोल", "इ")
-म = खोज("फाइलखोल", "इ", ०, १०)
-म = बद्ल("फाइलखोल", "इ", "ल")
-म = अङ्क("१०")
-म = खालीहताऊ("   फाइलखोल   ")
-म = गन(["फ", "ाइलखोल"])
-म = टुक्राऊ("फाइलखोल", "इ")
-
+input = u'''क = "फाइलखोल"
+म = क[:-१]
 म लेख
 '''
 
+inpu =u'''क = "फाइलखोल"
+क लेख
+म = गन("फाइलखोल")
+म लेख
+म = टुक्राऊ("फाइलखोल", "इ")
+म लेख
+म = खोज("फाइलखोल", "इ")
+म लेख
+म = खोज("फाइलखोल", "इ", ०, १०)
+म लेख
+म = बद्ल("फाइलखोल", "इ", "ल")
+म लेख
+म = अङ्क("१०")
+म लेख
+म = खालीहताऊ("   फाइलखोल   ")
+म लेख
+म = गन(["फ", "ाइलखोल"])
+म लेख
+म = टुक्राऊ("फाइलखोल", "इ")
+म लेख
+म = खोज("फाइलखोल", "इ")
+
+'''
+
+input = u'''क = १+०-३*२+१-३*२
+क लेख
+३%२ लेख
+'''
 #write a file name here to override it.
 filename = ""
 
