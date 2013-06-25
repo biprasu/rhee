@@ -4,7 +4,7 @@ import sys
 import traceback
 
 from NepInterpreterLibrary import ArgumentError, BreakError,ContinueError, checklibrary, call
-#from NepGUI import writetotextbox
+#from NepGUI import writetogui
 
 errors ={
     'ZeroDivisionError': 'शुन्य ले भाग गरियो',
@@ -59,12 +59,12 @@ def to_unicode(num):
 def _type(data):
     return data[0][0]
 
-textbox = None
+gui = None
 def interpret(trees,env = environment,tb=None):
-    global textbox
+    global gui
 
     if tb:
-        textbox = tb
+        gui = tb
     if not env:
         env = environment
     for tree in trees:
@@ -103,18 +103,18 @@ def interpret(trees,env = environment,tb=None):
             elif stmttype == 'slicing':
                 return env_lookup( tree[1],env)[(tree[2] and int(to_ascii(interpret(tree[2],env))) or 0):(tree[3] and int(to_ascii(interpret(tree[3],env))) or None)]
             elif stmttype == 'input':
-                env_update(tree[1],unicode(raw_input(),encoding="UTF8"),env)
+                env_update(tree[1],gui.getInputData(),env)
 
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:
                     a = interpret(data,env)
                     if a:
                         #print interpret(data, env),
-                        textbox.SetValue(textbox.GetValue() + interpret(data,env))
+                        gui.tc3.SetValue(gui.tc3.GetValue() + interpret(data,env))
                     else:
                         #print u"शुन्य",
-                        textbox.SetValue(textbox.GetValue() + u"शुन्य")
-                if stmttype == 'println':   textbox.SetValue(textbox.GetValue()+u"\n")
+                        gui.tc3.SetValue(gui.tc3.GetValue() + u"शुन्य")
+                if stmttype == 'println':   gui.tc3.SetValue(gui.tc3.GetValue()+u"\n")
             elif stmttype == 'assignment':
                 env_update(tree[1], interpret(tree[2],env), env)
                 #print env
