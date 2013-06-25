@@ -33,15 +33,25 @@ def get_key_from_value(my_dict, v):
     return None
 
 def to_ascii(num):
+
+    if not ( isinstance(num,str)):
+        return num
+
     ascii = ''
     for char in num:
                 ascii += (char == '-') and '-' or ((char=='.') and '.' or str(map_num[char]))
-    return float(ascii)
+    if ascii.find('.') == -1:
+        return int(ascii)
+    else:
+        return float(ascii)
 
 def to_unicode(num):
     if num is None:
         raise NameError
+    if not(isinstance(num,int) or isinstance(num,float) ):
+        return num
     unic = u''
+
     for char in str(num):
         unic += (char == '-' ) and '-' or ((char=='.') and '.' or get_key_from_value(map_num, int(char)))
     return unic
@@ -92,6 +102,9 @@ def interpret(trees,env = environment,tb=None):
                 return get_key_from_value(map_num, not map_num[interpret(tree[1], env)])
             elif stmttype == 'slicing':
                 return env_lookup( tree[1],env)[(tree[2] and int(to_ascii(interpret(tree[2],env))) or 0):(tree[3] and int(to_ascii(interpret(tree[3],env))) or None)]
+            elif stmttype == 'input':
+                env_update(tree[1],unicode(raw_input(),encoding="UTF8"),env)
+
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:
                     a = interpret(data,env)
@@ -119,8 +132,9 @@ def interpret(trees,env = environment,tb=None):
                 if _type(tree[2]) == 'list':
                     return interpret(tree[2], env) + interpret(tree[3], env)
 
-                left_value = to_ascii(interpret(tree[2], env))
-                right_value = to_ascii(interpret(tree[3], env))
+
+                left_value = None if tree[2] == u"शुन्य" else to_ascii(interpret(tree[2], env))
+                right_value = None if tree[2] == u"शुन्य" else to_ascii(interpret(tree[3], env))
 
                 if operator == '^':
                     num = left_value**right_value
@@ -157,11 +171,6 @@ def interpret(trees,env = environment,tb=None):
                 while map_num[interpret(tree[1], env)]:
                     try:
                         for items in tree[2]:
-                            type = items[0].split('_')[0]
-                            if type == 'break':
-                                raise BreakError()
-                            elif type == 'continue':
-                                raise ContinueError()
                             interpret([items], env)
                     except BreakError:
                         break

@@ -15,8 +15,10 @@ class BreakError(Exception):
 class ContinueError(Exception):
     pass
 
+
 class NotANumber(Exception):
     pass
+
 
 to_col = {
 

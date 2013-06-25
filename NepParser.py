@@ -190,12 +190,14 @@ def p_exp_string(p):
 def p_exp_number(p):
     'exp : NUMBER'
     p[0] = ("number"+"_"+str(p.lineno(1)), p[1])
+
 def p_exp_minus(p):
     'exp : MINUS NUMBER'
     p[0] = ("number"+"_"+str(p.lineno(1)), "-"+p[2])
+
 def p_exp_sunya(p):
     'exp : SUNYA'
-    p[0] = ('sunya'+"_"+str(p.lineno(1)))
+    p[0] = ('sunya'+"_"+str(p.lineno(1)),)
 def p_exp_list(p):
     'exp : LGPARA variableexp RGPARA'
     p[0] = ("list"+"_"+str(p.lineno(1)), p[2])
@@ -362,7 +364,7 @@ ip = u'''यदि  क == २ भए वा क == ३ भए
     क, " मा हामीले  २ हालेका छौँ " लेख
 दिय
 '''
-input = u'''क = २
+ip = u'''क = २
 क लेख;
 क लेख;
 क, " मा हामीले  २ हालेका छौँ " लेख;
@@ -412,7 +414,7 @@ ip = u'''काम रमाईलो (क, ख,)
 # ख = [१, ०, ३, २,] ^ १० + 3 * "नेपाल"
 # '''
 # print tokenizer(ip)
-input = u'''क = "फाइलखोल"
+ip = u'''क = "फाइलखोल"
 म = क[:-१]
 म लेख
 '''
@@ -441,9 +443,13 @@ inpu =u'''क = "फाइलखोल"
 
 '''
 
+<<<<<<< HEAD
 input = u'''
 
 क = १+०-३*२+१-३*२
+=======
+ip = u'''क = १+०-३*२+१-३*२
+>>>>>>> 14cbf80741fddee76142a20b9a2f24ba364f66fc
 क लेख
 ३%२ लेख
 '''
