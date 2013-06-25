@@ -114,7 +114,7 @@ class Example(wx.Frame):
         self.Bind(wx.EVT_TOOL, self.saveAsFile, satool)
         self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)
         self.Bind(wx.EVT_TOOL, self.RunProgram, rtool)
-        self.Bind(wx.EVT_TOOL, self.getInputData, stop)
+        # self.Bind(wx.EVT_TOOL, self.getInputData, stop)
 
 
 
@@ -195,7 +195,7 @@ class Example(wx.Frame):
         self.panel.SetSizer(self.vbox)
 
         self.SetSize((250, 200))
-        self.SetTitle('ऋ - नेपाली भाषामा प्रोग्राम्मिंग')
+        self.SetTitle(u'ऋ - नेपाली भाषामा प्रोग्राम्मिंग')
         self.Centre()
         # self.getInputData()
         
@@ -207,7 +207,7 @@ class Example(wx.Frame):
         return KeyInput
 
     def newFile(self, e):
-        ret  = wx.MessageBox('Do you want to save changes?', 'Question', 
+        ret  = wx.MessageBox(u'तपाई कोडलाई save गर्न चाहनुहुन्छ?', 'Question', 
                     wx.YES_NO | wx.CANCEL | wx.NO_DEFAULT, self)
 
         if ret == wx.YES:
@@ -219,7 +219,7 @@ class Example(wx.Frame):
     def openFile(self, e):
         wildcard = "Rhee source (*.rhee)|*.rhee|" \
                     "All files (*.*)|*.*"
-        dialog = wx.FileDialog(None, "Choose a file", os.getcwd(),"", wildcard, wx.OPEN)
+        dialog = wx.FileDialog(None, u"फाइल छान्नु होस", os.getcwd(),"", wildcard, wx.OPEN)
         if dialog.ShowModal() == wx.ID_OK:
             self.filePath = dialog.GetPath()
             # print unicode(open(dialog.GetPath(),"r").read(),'UTF8')
@@ -230,7 +230,7 @@ class Example(wx.Frame):
         wildcard = "Rhee source (*.rhee)|*.rhee|" \
                     "All files (*.*)|*.*"
         if not self.filePath:
-            dialog = wx.FileDialog(None, "Choose location", os.getcwd(),"", wildcard, wx.SAVE|wx.OVERWRITE_PROMPT)
+            dialog = wx.FileDialog(None, u"फाइल save गर्न ठाउँ छान्नु होस", os.getcwd(),"", wildcard, wx.SAVE|wx.OVERWRITE_PROMPT)
             if dialog.ShowModal() == wx.ID_OK:
                 self.filePath = dialog.GetPath()
             dialog.Destroy()
@@ -239,7 +239,7 @@ class Example(wx.Frame):
     def saveAsFile(self, e):
         wildcard = "Rhee source (*.rhee)|*.rhee|" \
                     "All files (*.*)|*.*"
-        dialog = wx.FileDialog(None, "Save As", os.getcwd(),"", wildcard, wx.SAVE|wx.OVERWRITE_PROMPT)
+        dialog = wx.FileDialog(None, u"फाइल save गर्न ठाउँ छान्नु होस", os.getcwd(),"", wildcard, wx.SAVE|wx.OVERWRITE_PROMPT)
         if dialog.ShowModal() == wx.ID_OK:
             self.filePath = dialog.GetPath()
             # print self.tc2.GetValue()
@@ -267,7 +267,7 @@ class Example(wx.Frame):
         print a
     
     def OnQuit(self, e):
-        ret  = wx.MessageBox('Are you sure to quit?', 'Question', 
+        ret  = wx.MessageBox(u'प्रोग्राम बन्द गर्दिम त?', 'Question', 
                     wx.YES_NO | wx.NO_DEFAULT, self)
 
         if ret == wx.YES:
