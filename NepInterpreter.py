@@ -4,6 +4,7 @@ import sys
 import traceback
 
 from NepInterpreterLibrary import ArgumentError, BreakError,ContinueError, checklibrary, call
+#from NepGUI import writetotextbox
 
 errors ={
     'ZeroDivisionError': 'शुन्य ले भाग गरियो',
@@ -48,9 +49,14 @@ def to_unicode(num):
 def _type(data):
     return data[0][0]
 
+textbox = None
+def interpret(trees,env = environment,tb=None):
+    global textbox
 
-def interpret(trees,env = environment):
-
+    if tb:
+        textbox = tb
+    if not env:
+        env = environment
     for tree in trees:
 
         if not tree:
@@ -60,7 +66,9 @@ def interpret(trees,env = environment):
 
         try:
         #These two errors will be caught by the loops
-            if stmttype == 'break':
+            if stmttype == 'blankLine':
+                pass
+            elif stmttype == 'break':
                 raise BreakError()
             elif stmttype == 'continue':
                 raise ContinueError()
@@ -88,10 +96,12 @@ def interpret(trees,env = environment):
                 for data in tree[1]:
                     a = interpret(data,env)
                     if a:
-                        print interpret(data, env),
+                        #print interpret(data, env),
+                        textbox.SetValue(textbox.GetValue() + interpret(data,env))
                     else:
-                        print u"शुन्य",
-                if stmttype == 'println':   print
+                        #print u"शुन्य",
+                        textbox.SetValue(textbox.GetValue() + u"शुन्य")
+                if stmttype == 'println':   textbox.SetValue(textbox.GetValue()+u"\n")
             elif stmttype == 'assignment':
                 env_update(tree[1], interpret(tree[2],env), env)
                 #print env

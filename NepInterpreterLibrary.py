@@ -343,7 +343,7 @@ function_names = {
     u'खोज'     : findString,
     u'बद्ल'     : replaceString,
     u'अङ्कहो'  : isNumber,
-    u'अङ्क'     : toNumber,
+    u'अ‍कं'     : toNumber,
     u'खालीहताऊ' : trimString,
 }
 

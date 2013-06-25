@@ -77,7 +77,7 @@ def t_comment(token):
  
  
 def t_NEWLINE(token):
-    ur'\n+'
+    ur'\n'
     token.lexer.lineno += token.value.count('\n')
     return token
  
@@ -139,17 +139,20 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-#lexer = lex.lex()
-## ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
-#ip = u'''काम रमालो ()
+# lexer = lex.lex()
+# # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
+# ip = u'''
+
+
+# काम रमालो ()
 #     क = []
 #     क[१०] लेख;
-#मका
-#'''
-#lexer.input (ip)
-#
-#
-#while True:
+# मका
+# '''
+# lexer.input (ip)
+
+
+# while True:
 #     a = lexer.token()
 #     if not a: break
 #     if not a.type == 'NEWLINE':

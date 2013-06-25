@@ -139,7 +139,7 @@ def p_stmt_returnStatement(p):
 
 def p_stmt_newline(p):
     'stmt : NEWLINE'
-    pass
+    p[0] = ("blankLine"+"_"+str(p.lineno(1)),)
 
 def p_variableArgs_arguments(p):
     'variableArgs : IDENTIFIER COMMA variableArgs'
@@ -441,37 +441,39 @@ inpu =u'''क = "फाइलखोल"
 
 '''
 
-input = u'''क = १+०-३*२+१-३*२
+input = u'''
+
+क = १+०-३*२+१-३*२
 क लेख
 ३%२ लेख
 '''
-#write a file name here to override it.
-filename = ""
+# #write a file name here to override it.
+# filename = ""
 
-usage =\
-"""
-Usage: python NepParser.py filename
-filename: .rhee File to interpret
-"""
+# usage =\
+# """
+# Usage: python NepParser.py filename
+# filename: .rhee File to interpret
+# """
 
-args = str(argv)
-if not input:
-    if filename:
-        input = unicode(open(filename,"r").read(),'UTF8')
-    elif len(argv) <2:
-        print usage
-        exit(-1)
-    else:
-        input = unicode(open(argv[1],"r").read(),"UTF8")
+# args = str(argv)
+# if not input:
+#     if filename:
+#         input = unicode(open(filename,"r").read(),'UTF8')
+#     elif len(argv) <2:
+#         print usage
+#         exit(-1)
+#     else:
+#         input = unicode(open(argv[1],"r").read(),"UTF8")
 
 
-ast = parser.parse(input, lexer=lexer)
-print ast
+# ast = parser.parse(input, lexer=lexer)
+# print ast
 
-try:
-#    pass
-    interpret(ast)
-except:
-    pass
+# try:
+# #    pass
+#     interpret(ast)
+# except:
+#     pass
 
-exit(0)
+# exit(0)
