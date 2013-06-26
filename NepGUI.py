@@ -38,10 +38,16 @@ class InputHandler(wx.Dialog):
         vbox = wx.BoxSizer(wx.VERTICAL)
 
         sb = wx.StaticBox(pnl, label=u'डाटा दिनुहोस')
+
+        font1 = wx.Font(15, wx.MODERN, wx.NORMAL, wx.NORMAL, False, u'Consolas')
+        font2 = wx.Font(13, wx.MODERN, wx.NORMAL, wx.NORMAL, False, u'Consolas')
+        sb.SetFont(font1)
+        
         sbs = wx.StaticBoxSizer(sb, orient=wx.VERTICAL)        
         
         hbox1 = wx.BoxSizer(wx.HORIZONTAL)        
         self.tcH = wx.TextCtrl(pnl)
+        self.tcH.SetFont(font2)
         hbox1.Add(self.tcH, flag=wx.LEFT, border=5)
         sbs.Add(hbox1)
         
@@ -212,6 +218,8 @@ class Example(wx.Frame):
 
         if ret == wx.YES:
             self.saveFile(e)
+        elif ret == wx.CANCEL:
+            return
 
         self.tc2.SetValue("")
         self.filePath = ""
