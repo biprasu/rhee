@@ -146,6 +146,10 @@ def p_stmt_returnStatement(p):
     'stmt : exp PATHAU'
     p[0] = ('returnStmt'+"_"+str(p.lineno(2)), [p[1]])
 
+def p_stmt_listitemassignment(p):
+    'stmt : IDENTIFIER LGPARA exp RGPARA ASSIGNMENT exp'
+    p[0] = ('listItemAssign'+"_"+str(p.lineno(2)), p[1], [p[3]], [p[6]])
+
 def p_variableArgs_arguments(p):
     'variableArgs : IDENTIFIER COMMA variableArgs'
     p[0] = [p[1]] + p[3]
@@ -453,9 +457,7 @@ input = u'''
 
 क = १+०-३*२+१-३*२
 '''
-input = u'''क = ०
-क += १
-क लेख
+input = u'''क[०] = "तेस्तात"
 '''
 #write a file name here to override it.
 # filename = ""
