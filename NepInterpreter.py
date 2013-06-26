@@ -24,6 +24,14 @@ map_num = {u'\u0966':0, u'\u0967':1, u'\u0968':2, u'\u0969':3,
             u'\u096e':8 ,u'\u096f':9
             }
 
+def listtostring(k):
+    s = u"["
+    for elements in k:
+        s += elements
+        s += u","
+    s += "]"
+    return s
+
 def get_key_from_value(my_dict, v):
 #    if not v in my_dict.values():
 #        return None
@@ -116,7 +124,10 @@ def interpret(trees,env = environment,tb=None):
                     a = interpret(data,env)
                     if a:
                         #print interpret(data, env),
-                        gui.tc3.SetValue(gui.tc3.GetValue() + interpret(data,env))
+                        result = interpret(data,env)
+                        if isinstance(result,list):
+                            result = listtostring(result)
+                        gui.tc3.SetValue(gui.tc3.GetValue() + result)
                     else:
                         #print u"शुन्य",
                         gui.tc3.SetValue(gui.tc3.GetValue() + u"शुन्य")
