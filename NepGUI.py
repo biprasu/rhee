@@ -13,19 +13,19 @@ last modified: September 2011
 
 import wx
 import os
-
+import traceback
 import ply.lex as lex
 import ply.yacc as yacc
 import NepLexer as NepL
 import NepParser as NepP
 import NepInterpreter as NepI
 
+
 KeyInput = ''
 class InputHandler(wx.Dialog):
     
     def __init__(self, *args, **kw):
-        super(InputHandler, self).__init__(*args, **kw) 
-
+        super(InputHandler, self).__init__(*args, **kw)
         self.InitUI()
         self.SetSize((200, 200))
         self.SetTitle(u"डाटा दिनुहोस")
@@ -65,7 +65,6 @@ class InputHandler(wx.Dialog):
     def OnOk(self, e):
         global KeyInput
         KeyInput = self.tcH.GetValue();
-        print KeyInput
         self.Destroy()
 
     def OnClose(self, e):
@@ -248,17 +247,18 @@ class Example(wx.Frame):
         self.write(self.tc2.GetValue())
 
     def RunProgram(self, e):
-        input = self.tc2.GetValue()
-        lexer = lex.lex(module=NepL)
-        parser = yacc.yacc(module=NepP)
-        ast = parser.parse(input, lexer=lexer)
-        print ast
-
         try:
+            input = self.tc2.GetValue()
+            lexer = lex.lex(module=NepL)
+            parser = yacc.yacc(module=NepP)
+            ast = parser.parse(input, lexer=lexer)
+            #print ast
             self.tc3.SetValue('')
             NepI.interpret(ast,None,self)
-        except:
-            pass
+        except Exception, e:
+            print e.message
+
+
 
     
     def StopProgram(self, e):

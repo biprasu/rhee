@@ -305,20 +305,20 @@ def p_error(p):
 
 
 
-import ply.lex as lex
+#import ply.lex as lex
 # import ply.yacc as yacc
-import NepLexer
+#import NepLexer
 # import NepParser
 from NepLexer import tokens
 # from NepParser import * 
-lexer = lex.lex(module=NepLexer)
-parser = yacc.yacc()
+#lexer = lex.lex(module=NepLexer)
+#parser = yacc.yacc()
 
 
 
 
 #write input text here to override it
-input = ""
+#input = ""
 
 
 ip = u'''क लेख

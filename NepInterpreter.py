@@ -34,7 +34,7 @@ def get_key_from_value(my_dict, v):
 
 def to_ascii(num):
 
-    if not ( isinstance(num,str)):
+    if not ( isinstance(num,str) or isinstance(num,unicode)):
         return num
 
     ascii = ''
@@ -275,12 +275,12 @@ def interpret(trees,env = environment,tb=None):
             if e.__class__.__name__ == "ContinueError":
                 raise ContinueError()
 
-            print traceback.format_exc()
-            print to_unicode (lineno) + u" लाइनमा गल्ति भयो"
-            errorname = e.__class__.__name__
-            errormessage = errors.get(errorname)
-            print errormessage,e.message
-            exit (-1)
+            #print traceback.format_exc()
+            errormessage = to_unicode (lineno) + u" लाइनमा गल्ति भयो\n"
+            errormessage += traceback.format_exc() + "\n"
+            #errorname = e.__class__.__name__
+            #errormessage = errors.get(errorname)
+            raise Exception(errormessage)
 
 
 def add_to_env(env,vname,value):
