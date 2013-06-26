@@ -118,6 +118,10 @@ def p_stmt_increment(p):
     'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
     p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop"+"_"+str(p.lineno(1)), p[2],[("identifier"+"_"+str(p.lineno(1)), p[1])],[p[4]])])
 
+def p_stmt_incrementarray(p):
+    'stmt : IDENTIFIER LGPARA exp RGPARA incrementsign ASSIGNMENT exp'
+    p[0] = ("listItemAssign"+"_"+str(p.lineno(2)), p[1], [p[3]], [("binop"+"_"+str(p.lineno(1)), p[5],[("listItem"+"_"+str(p.lineno(1)), p[1], [p[3]])],[p[7]])])    
+
 def p_stmt_ifcondition(p):
     'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
     p[0] = ("ifelse"+"_"+str(p.lineno(1)), [("yedi"+"_"+str(p.lineno(1)), p[2], p[4])] + p[5])
@@ -463,6 +467,10 @@ input = u'''
 '''
 input = u'''क="तेस्तात"
 क[२] = "त"
+'''
+input = u'''क = [९,४,५]
+क[०] += १
+क[०] लेख 
 '''
 #write a file name here to override it.
 # filename = ""
