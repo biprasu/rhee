@@ -267,6 +267,8 @@ class Example(wx.Frame):
             NepI.interpret(ast,None,self)
         except Exception, e:
             print e.message
+        pass
+
 
 
     

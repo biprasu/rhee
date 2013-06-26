@@ -304,6 +304,9 @@ def interpret(trees,env = environment,tb=None):
             raise Exception(unicode(errormessage))
 
 
+
+
+
 def add_to_env(env,vname,value):
     env[1][vname] = value
 

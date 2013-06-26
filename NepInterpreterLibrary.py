@@ -150,6 +150,13 @@ def cleargraphics(args,env):
     root.update()
     return
 
+def closegraphics(args,env):
+    if len(args) != 1:
+        raise ArgumentError()
+    root,canvas = NI.env_lookup(args[0],env)
+    root.destroy()
+    return
+
 def updategraphics(args,env):
     if len(args) != 1:
         raise ArgumentError()
@@ -339,6 +346,7 @@ function_names = {
     u"__बनाउ__" : updategraphics,
     u"__मेटाउ__" : cleargraphics,
     u"__कोर__" : drawgraphics,
+    u"__हटाउ__" : closegraphics,
     u"बटन" : keyboardgetkeys,
     u'गन' : count,
     u'टुक्राऊ' : breakString,

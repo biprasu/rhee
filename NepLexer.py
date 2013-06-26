@@ -60,6 +60,7 @@ reserved = {
     u'बनाउ' : 'BANAU',
     u'कोर' : 'KORA',
     u'मेटाउ' : 'METAU',
+    u'हटाउ' : 'HATAU',
     u'बाहिर' : 'BAHIRA',
     u'अर्को': "ARKO",
     u'शुन्य' : 'SUNYA',

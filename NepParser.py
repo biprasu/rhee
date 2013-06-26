@@ -92,6 +92,10 @@ def p_stmt_graphichide(p):
     'stmt : IDENTIFIER LUKAU'
     p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__लुकाउ__", [p[1]])])
 
+def p_stmt_graphichide(p):
+    'stmt : IDENTIFIER HATAU'
+    p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__हटाउ__", [p[1]])])
+
 def p_stmt_graphicupdate(p):
     'stmt : IDENTIFIER BANAU'
     p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__बनाउ__", [p[1]])])
