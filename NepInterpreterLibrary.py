@@ -150,6 +150,13 @@ def cleargraphics(args,env):
     root.update()
     return
 
+def closegraphics(args,env):
+    if len(args) != 1:
+        raise ArgumentError()
+    root,canvas = NI.env_lookup(args[0],env)
+    root.destroy()
+    return
+
 def updategraphics(args,env):
     if len(args) != 1:
         raise ArgumentError()
@@ -182,10 +189,11 @@ def drawgraphics(args,env):
 def drawpoint(args):
     if len(args)<4 or len(args) > 6:
         raise ArgumentError()
+    argnum = len(args)
     c1 = int(NI.to_ascii(args[2]))
     c2 = int(NI.to_ascii(args[3]))
-    width = int(NI.to_ascii(args[4])) if args[4] else None
-    outline = to_col[args[5]] if args[5] else None
+    width = int(NI.to_ascii(args[4])) if argnum>4 else None
+    outline = to_col[args[5]] if argnum>5 else None
     root,canvas = args[0]
     canvas.create_rectangle(c1,c2,c1,c2,width=width,outline=outline)
     root.update()
@@ -194,11 +202,12 @@ def drawpoint(args):
 def drawtext(args):
     if len(args)<5 or len(args) > 7:
         raise ArgumentError()
+    argnum = len(args)
     c1 = int(NI.to_ascii(args[2]))
     c2 = int(NI.to_ascii(args[3]))
     text = args[4].encode("UTF8")
-    size = int(NI.to_ascii(args[5])) if args[5] else None
-    color = to_col[args[6]] if args[6] else None
+    size = int(NI.to_ascii(args[5])) if argnum>5 else None
+    color = to_col[args[6]] if argnum>6 else None
     font = "a " + str(size) if size is not None else "0 "
     root,canvas = args[0]
     canvas.create_text(c1,c2,text=text,font=font,fill=color,anchor="nw")
@@ -209,13 +218,14 @@ def drawline(args):
     'requires the canvas, 4 coords compulsory and width and foreground color optional'
     if len(args) < 6 or len(args) > 8:
         raise ArgumentError()
+    argnum = len(args)
     root,canvas = args[0]
     c1 = int(NI.to_ascii(args[2]))
     c2 = int(NI.to_ascii(args[3]))
     c3 = int(NI.to_ascii(args[4]))
     c4 = int(NI.to_ascii(args[5]))
-    width = int(NI.to_ascii(args[6])) if args[6] else None
-    fill = to_col[args[7]] if args[7] else None
+    width = int(NI.to_ascii(args[6])) if argnum > 6 else None
+    fill = to_col[args[7]] if argnum>7 else None
     canvas.create_line(c1,c2,c3,c4,width=width,fill=fill)
     canvas.update()
     return
@@ -226,13 +236,14 @@ def drawcircle(args):
     'requres canvas, 2 coords, radius compulsory; width, outline, fill optional'
     if len(args) < 5 or len(args) > 8:
         raise ArgumentError()
+    argnum = len(args)
     root,canvas = args[0]
     x = int(NI.to_ascii(args[2]))
     y = int(NI.to_ascii(args[3]))
     r = int(NI.to_ascii(args[4]))
-    width = int(NI.to_ascii(args[5]))
-    outline = to_col[args[6]] if args[6] else None
-    fill = to_col[args[7]] if args[7] else None
+    width = int(NI.to_ascii(args[5])) if argnum>5 else None
+    outline = to_col[args[6]] if argnum>6 else None
+    fill = to_col[args[7]] if argnum>7 else None
     canvas.create_oval(x-r,y-r,x+r,y+r,width=width,fill=fill,outline=outline)
     canvas.update()
     return
@@ -241,14 +252,15 @@ def drawrectangle(args):
     'requires the canvas, 4 coords compulsory and width and foreground color optional'
     if len(args) < 6 or len(args) > 9:
         raise ArgumentError()
+    argnum = len(args)
     root,canvas = args[0]
     c1 = int(NI.to_ascii(args[2]))
     c2 = int(NI.to_ascii(args[3]))
     c3 = int(NI.to_ascii(args[4]))
     c4 = int(NI.to_ascii(args[5]))
-    width = int(NI.to_ascii(args[6])) if args[6] else None
-    outline = to_col[args[7]] if args[7] else None
-    fill = to_col[args[8]] if args[8] else None
+    width = int(NI.to_ascii(args[6])) if argnum>6 else None
+    outline = to_col[args[7]] if argnum>7 else None
+    fill = to_col[args[8]] if argnum>8 else None
     canvas.create_rectangle(c1,c2,c3,c4,width=width,fill=fill,outline=outline)
     canvas.update()
     return
@@ -339,6 +351,7 @@ function_names = {
     u"__बनाउ__" : updategraphics,
     u"__मेटाउ__" : cleargraphics,
     u"__कोर__" : drawgraphics,
+    u"__हटाउ__" : closegraphics,
     u"बटन" : keyboardgetkeys,
     u'गन' : count,
     u'टुक्राऊ' : breakString,
