@@ -139,7 +139,6 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-<<<<<<< HEAD
 # lexer = lex.lex()
 # # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
 # ip = u'''क = ३
@@ -158,22 +157,3 @@ def t_error(t):
 #         print a.type#, a.value
 #     else:
 #         print a.type
-=======
-lexer = lex.lex()
-# ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
-ip = u'''
-
-क = ४ //फ्ज्द्कफ्ज्द्फ़
-क लेख 
-'''
-lexer.input (ip)
-
-
-while True:
-    a = lexer.token()
-    if not a: break
-    if not a.type == 'NEWLINE':
-        print a.type#, a.value
-    else:
-        print a.type
->>>>>>> cb73d57f0a9d6be4328f439772eaa7f409f84238

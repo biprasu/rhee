@@ -33,12 +33,7 @@ def get_key_from_value(my_dict, v):
     return None
 
 def to_ascii(num):
-<<<<<<< HEAD
-
-    if not ( isinstance(num,str) or isinstance(num, unicode)):
-=======
     if not ( isinstance(num,str) or isinstance(num,unicode)):
->>>>>>> cb73d57f0a9d6be4328f439772eaa7f409f84238
         return num
 
     ascii = ''
