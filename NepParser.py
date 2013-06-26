@@ -479,8 +479,8 @@ input = u'''क[०] = "तेस्तात"
 #         input = unicode(open(argv[1],"r").read(),"UTF8")
 
 
-# ast = parser.parse(input, lexer=lexer)
-# print ast
+ast = parser.parse(input, lexer=lexer)
+print ast
 
 # try:
 # #    pass

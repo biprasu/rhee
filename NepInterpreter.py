@@ -120,6 +120,10 @@ def interpret(trees,env = environment,tb=None):
             elif stmttype == 'assignment':
                 env_update(tree[1], interpret(tree[2],env), env)
                 #print env
+            elif stmttype == 'listItemAssign':
+                print environment
+                env_update(tree[1][int(to_ascii(interpret(tree[2],env)))],interpret(tree[3], env), env)
+                print environment
             elif stmttype == 'increment':
                 pass
             elif stmttype == 'binop':
