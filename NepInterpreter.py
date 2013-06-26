@@ -117,7 +117,9 @@ def interpret(trees,env = environment,tb=None):
             elif stmttype == 'slicing':
                 return env_lookup( tree[1],env)[(tree[2] and int(to_ascii(interpret(tree[2],env))) or 0):(tree[3] and int(to_ascii(interpret(tree[3],env))) or None)]
             elif stmttype == 'input':
-                env_update(tree[1],gui.getInputData(),env)
+                inputData = gui.getInputData()
+                env_update(tree[1],inputData,env)
+                gui.tc3.SetValue(gui.tc3.GetValue() + inputData)
 
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:
