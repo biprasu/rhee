@@ -39,7 +39,10 @@ def to_ascii(num):
 
     ascii = ''
     for char in num:
-                ascii += (char == '-') and '-' or ((char=='.') and '.' or str(map_num[char]))
+        if char in map_num:
+            ascii += (char == '-') and '-' or ((char=='.') and '.' or str(map_num[char]))
+        else:
+            return num
     if ascii.find('.') == -1:
         return int(ascii)
     else:
@@ -284,10 +287,10 @@ def interpret(trees,env = environment,tb=None):
 
             #print traceback.format_exc()
             errormessage = to_unicode (lineno) + u" लाइनमा गल्ति भयो\n"
-            errormessage += traceback.format_exc() + "\n"
+            errormessage += unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
             #errorname = e.__class__.__name__
             #errormessage = errors.get(errorname)
-            raise Exception(errormessage)
+            raise Exception(unicode(errormessage))
 
 
 def add_to_env(env,vname,value):

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22d8b3e9-c7af-428f-80ae-101de7310192" name="Default" comment="" />
+    <list default="true" id="22d8b3e9-c7af-428f-80ae-101de7310192" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepGUI.py" afterPath="$PROJECT_DIR$/NepGUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepInterpreter.py" afterPath="$PROJECT_DIR$/NepInterpreter.py" />
+    </list>
     <ignored path="rhee.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +28,7 @@
       <file leaf-file-name="NepParser.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NepParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="20" selection-start="5790" selection-end="5790" vertical-scroll-proportion="0.0">
+            <state line="186" column="20" selection-start="5985" selection-end="5985" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -52,10 +55,8 @@
       <file leaf-file-name="NepGUI.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NepGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="255" column="0" selection-start="8454" selection-end="8454" vertical-scroll-proportion="-4.04">
-              <folding>
-                <element signature="e#193#202#0" expanded="true" />
-              </folding>
+            <state line="268" column="0" selection-start="8918" selection-end="8918" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,10 +64,28 @@
       <file leaf-file-name="NepInterpreter.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NepInterpreter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="24" selection-start="6932" selection-end="6932" vertical-scroll-proportion="0.54444444">
+            <state line="44" column="22" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.53731346">
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="traceback.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/traceback.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="242" column="0" selection-start="8719" selection-end="8719" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Filehandling.rhee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docsink/Filehandling.rhee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="8" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,8 +123,8 @@
         <option value="$PROJECT_DIR$/docsink/Filehandling.rhee" />
         <option value="$PROJECT_DIR$/NepLexer.py" />
         <option value="$PROJECT_DIR$/ip.txt" />
-        <option value="$PROJECT_DIR$/NepGUI.py" />
         <option value="$PROJECT_DIR$/NepParser.py" />
+        <option value="$PROJECT_DIR$/NepGUI.py" />
         <option value="$PROJECT_DIR$/NepInterpreter.py" />
       </list>
     </option>
@@ -142,6 +161,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -160,19 +180,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rhee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rhee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docsink" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="D:/Rheeshi/Rheeshi" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -328,18 +361,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1374" height="732" extended-state="7" />
+    <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18057664" sideWeight="0.6780239" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39863715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18361153" sideWeight="0.6780239" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40545145" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32197616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32197616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -402,12 +435,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/NepGUI.py</url>
-          <line>258</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/NepInterpreter.py</url>
-          <line>135</line>
+          <line>144</line>
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -433,11 +462,6 @@
         <state line="4" column="50" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docsink/Filehandling.rhee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docsink/GraphicsKeyboard.rhee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="18" selection-start="0" selection-end="531" vertical-scroll-proportion="0.0" />
@@ -453,14 +477,16 @@
         <state line="12" column="8" selection-start="360" selection-end="360" vertical-scroll-proportion="0.5184136" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://C:/Python27/Lib/site-packages/wx-2.8-msw-unicode/wx/_core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="8" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" />
+        <state line="7305" column="0" selection-start="276907" selection-end="276907" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NepInterpreterLibrary.py">
+    <entry file="file://$PROJECT_DIR$/NepParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" />
+        <state line="186" column="20" selection-start="5985" selection-end="5985" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NepLexer.py">
@@ -468,32 +494,40 @@
         <state line="69" column="0" selection-start="553" selection-end="1250" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/wx-2.8-msw-unicode/wx/_core.py">
+    <entry file="file://$PROJECT_DIR$/NepInterpreterLibrary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7305" column="0" selection-start="276907" selection-end="276907" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
+        <state line="20" column="0" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="8" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NepGUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="0" selection-start="8454" selection-end="8454" vertical-scroll-proportion="-4.04">
-          <folding>
-            <element signature="e#193#202#0" expanded="true" />
-          </folding>
+        <state line="268" column="0" selection-start="8918" selection-end="8918" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NepParser.py">
+    <entry file="file://C:/Python27/Lib/traceback.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="20" selection-start="5790" selection-end="5790" vertical-scroll-proportion="0.0">
+        <state line="242" column="0" selection-start="8719" selection-end="8719" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docsink/Filehandling.rhee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="8" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NepInterpreter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="24" selection-start="6932" selection-end="6932" vertical-scroll-proportion="0.54444444">
+        <state line="44" column="22" selection-start="1259" selection-end="1259" vertical-scroll-proportion="0.53731346">
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>

@@ -269,7 +269,6 @@ class Example(wx.Frame):
             print e.message
 
 
-
     
     def StopProgram(self, e):
         a = wx.MessageBox()
