@@ -139,23 +139,20 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-# lexer = lex.lex()
-# # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
-# ip = u'''
+lexer = lex.lex()
+# ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
+ip = u'''
+
+क = ४ //फ्ज्द्कफ्ज्द्फ़
+क लेख 
+'''
+lexer.input (ip)
 
 
-# काम रमालो ()
-#     क = []
-#     क[१०] लेख;
-# मका
-# '''
-# lexer.input (ip)
-
-
-# while True:
-#     a = lexer.token()
-#     if not a: break
-#     if not a.type == 'NEWLINE':
-#         print a.type, a.value
-#     else:
-#         print a.type
+while True:
+    a = lexer.token()
+    if not a: break
+    if not a.type == 'NEWLINE':
+        print a.type#, a.value
+    else:
+        print a.type
