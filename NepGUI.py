@@ -20,13 +20,12 @@ import NepLexer as NepL
 import NepParser as NepP
 import NepInterpreter as NepI
 
-
-KeyInput = u''
+KeyInput = ''
 class InputHandler(wx.Dialog):
     
     def __init__(self, *args, **kw):
         super(InputHandler, self).__init__(*args, **kw) 
-            
+
         self.InitUI()
         self.SetSize((200, 200))
         self.SetTitle(u"डाटा दिनुहोस")
@@ -70,11 +69,12 @@ class InputHandler(wx.Dialog):
         closeButton.Bind(wx.EVT_BUTTON, self.OnClose)
         
     def OnOk(self, e):
+        global KeyInput
         KeyInput = self.tcH.GetValue();
         print KeyInput
         self.Destroy()
+
     def OnClose(self, e):
-        
         self.Destroy()
 
 class Example(wx.Frame):
@@ -99,9 +99,8 @@ class Example(wx.Frame):
             print "Printed"
         except Exception,e:
             pass
-    def InitUI(self):    
 
-
+    def InitUI(self):
         toolbar = self.CreateToolBar()
         ntool = toolbar.AddLabelTool(wx.ID_ANY, '', wx.Bitmap('icons/gtk-new.png'))
         otool = toolbar.AddLabelTool(wx.ID_ANY, '', wx.Bitmap('icons/gtk-open.png'))
@@ -207,7 +206,7 @@ class Example(wx.Frame):
         
     def getInputData(self):
         chgdep = InputHandler(None, 
-            title='Change Color Depth')
+            title='Input')
         chgdep.ShowModal()
         chgdep.Destroy()
         return KeyInput
@@ -265,7 +264,7 @@ class Example(wx.Frame):
 
         try:
             self.tc3.SetValue('')
-            NepI.interpret(ast,None,self.tc3)
+            NepI.interpret(ast,None,self)
         except:
             pass
 

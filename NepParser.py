@@ -109,10 +109,10 @@ def p_stmt_graphicdraw(p):
 def p_stmt_input(p):
     'stmt : IDENTIFIER LEU'
     p[0] = ("input"+"_"+str(p.lineno(2)), p[1])
-
+# [('binop_2', u'+', [('identifier_2', u'\u0915')], [('number_2', u'\u0967')])])
 def p_stmt_increment(p):
     'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
-    p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop", p[2],[("identifier", p[1])],[p[4]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop"+"_"+str(p.lineno(1)), p[2],[("identifier"+"_"+str(p.lineno(1)), p[1])],[p[4]])])
 
 def p_stmt_ifcondition(p):
     'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
@@ -453,9 +453,9 @@ input = u'''
 
 क = १+०-३*२+१-३*२
 '''
-input = u'''क = १+०-३*२+१-३*२
-क*क लेख
-३%२ लेख
+input = u'''क = ०
+क += १
+क लेख
 '''
 #write a file name here to override it.
 # filename = ""
