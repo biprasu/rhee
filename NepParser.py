@@ -319,14 +319,14 @@ def p_error(p):
 
 
 
-#import ply.lex as lex
+import ply.lex as lex
 # import ply.yacc as yacc
-#import NepLexer
+import NepLexer
 # import NepParser
 from NepLexer import tokens
 # from NepParser import * 
-#lexer = lex.lex(module=NepLexer)
-#parser = yacc.yacc()
+lexer = lex.lex(module=NepLexer)
+parser = yacc.yacc()
 
 
 
@@ -461,7 +461,8 @@ input = u'''
 
 क = १+०-३*२+१-३*२
 '''
-input = u'''क[०] = "तेस्तात"
+input = u'''क="तेस्तात"
+क[२] = "त"
 '''
 #write a file name here to override it.
 # filename = ""
