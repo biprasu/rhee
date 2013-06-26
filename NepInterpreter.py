@@ -33,8 +33,12 @@ def get_key_from_value(my_dict, v):
     return None
 
 def to_ascii(num):
+<<<<<<< HEAD
 
     if not ( isinstance(num,str) or isinstance(num, unicode)):
+=======
+    if not ( isinstance(num,str) or isinstance(num,unicode)):
+>>>>>>> cb73d57f0a9d6be4328f439772eaa7f409f84238
         return num
 
     ascii = ''
@@ -56,8 +60,11 @@ def to_unicode(num):
         unic += (char == '-' ) and '-' or ((char=='.') and '.' or get_key_from_value(map_num, int(char)))
     return unic
 
-def _type(data):
-    return data[0][0]
+def _type(data, env):
+    dtype = data[0][0]
+    dtype = dtype[:-2]
+    if dtype != 'identifier':   return data[0][0]
+    return type(env_lookup(data[0][1], env))==list and "list" or "string"
 
 gui = None
 def interpret(trees,env = environment,tb=None):
@@ -129,10 +136,12 @@ def interpret(trees,env = environment,tb=None):
     #                print 'error: type mismatch'
     #                return
 
-                if _type(tree[2]) == 'list':
+                if _type(tree[2], env) == 'list' and operator == '+' :
                     return interpret(tree[2], env) + interpret(tree[3], env)
                 
 
+                if _type(tree[2] ,env) == 'string' and operator == '+':
+                    return interpret(tree[2], env) + interpret(tree[3], env)
 
                 left_value = None if tree[2] == u"शुन्य" else to_ascii(interpret(tree[2], env))
                 right_value = None if tree[2] == u"शुन्य" else to_ascii(interpret(tree[3], env))
@@ -144,6 +153,7 @@ def interpret(trees,env = environment,tb=None):
                 elif operator == '-':
                     num = left_value - right_value
                 elif operator == '*':
+                    print left_value, right_value
                     num = left_value * right_value
                 elif operator == '/':
                     num = left_value / right_value

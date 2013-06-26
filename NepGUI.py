@@ -201,6 +201,8 @@ class Example(wx.Frame):
 
         self.SetSize((250, 200))
         self.SetTitle(u'ऋ - नेपाली भाषामा प्रोग्राम्मिंग')
+        ico = wx.Icon('rhee.ico',wx.BITMAP_TYPE_ICO)
+        self.SetIcon(ico)
         self.Centre()
         # self.getInputData()
         
