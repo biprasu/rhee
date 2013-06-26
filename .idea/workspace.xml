@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22d8b3e9-c7af-428f-80ae-101de7310192" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepGUI.py" afterPath="$PROJECT_DIR$/NepGUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepInterpreter.py" afterPath="$PROJECT_DIR$/NepInterpreter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepParser.py" afterPath="$PROJECT_DIR$/NepParser.py" />
-    </list>
+    <list default="true" id="22d8b3e9-c7af-428f-80ae-101de7310192" name="Default" comment="" />
     <ignored path="rhee.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,7 +63,7 @@
       <file leaf-file-name="NepInterpreter.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NepInterpreter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1293" selection-end="1293" vertical-scroll-proportion="-6.0666666">
+            <state line="186" column="24" selection-start="6932" selection-end="6932" vertical-scroll-proportion="0.54444444">
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -174,6 +170,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="D:/Rheeshi/Rheeshi" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -342,7 +339,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39863715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32197616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32197616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -416,11 +413,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="0" selection-start="12599" selection-end="12599" vertical-scroll-proportion="0.06049822" />
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/encodings/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="153" column="0" selection-start="5587" selection-end="5587" vertical-scroll-proportion="0.3950178" />
@@ -501,7 +493,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NepInterpreter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1293" selection-end="1293" vertical-scroll-proportion="-6.0666666">
+        <state line="186" column="24" selection-start="6932" selection-end="6932" vertical-scroll-proportion="0.54444444">
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>

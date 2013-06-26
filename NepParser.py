@@ -16,6 +16,12 @@ precedence = (
 def p_N(p):
     'N : element NEWLINE N'
     p[0] = [p[1]] + p[3]
+# def p_N(p):
+#     'N : element NEWLINE NEWLINE N'
+#     p[0] = [p[1]] + p[4]
+def p_N_newline(p):
+    'N : NEWLINE N'
+    p[0] = [("blankLine"+"_"+str(p.lineno(1)),)] + p[2]
 def p_N_lastone(p):
     'N : element'
     p[0] = [p[1]]
@@ -34,7 +40,25 @@ def p_stmt_assign(p):
     p[0] = ("assignment"+"_"+str(p.lineno(2)), p[1], [p[3]])
 
 
-#Pravesh added these
+# def p_stmt_println(p):
+#     'stmt : dynamString COMMA LEKHA'
+#     p[0] = ("println", p[1])
+
+def p_stmt_withoutCommaNewline(p):
+    'stmt : dynamString LEKHA'
+    p[0] = ("println"+"_"+str(p.lineno(2)), p[1])
+
+# def p_stmt_print(p):
+#     'stmt : dynamString COMMA LEKHA SEMICOLON'
+#     p[0] = ("print", p[1])
+
+def p_stmt_WOCommaSameline(p):
+    'stmt : dynamString LEKHA SEMICOLON'
+    p[0] = ("print"+"_"+str(p.lineno(2)), p[1])
+
+# def p_stmt_newline(p):
+#     'stmt : NEWLINE'
+#     p[0] = ("blankLine"+"_"+str(p.lineno(1)),)
 
 def p_stmt_break(p):
     'stmt : BAHIRA'
@@ -81,29 +105,14 @@ def p_stmt_graphicdraw(p):
     'stmt : IDENTIFIER MA IDENTIFIER KORA variableexp '
     p[0] = ("assignment"+"_"+str(p.lineno(1)),"temp", [("functionCall"+"_"+str(p.lineno(1)), u"__कोर__", [p[1],p[3]]+p[5])])
 
-# def p_stmt_println(p):
-#     'stmt : dynamString COMMA LEKHA'
-#     p[0] = ("println", p[1])
-
-def p_stmt_withoutCommaNewline(p):
-    'stmt : dynamString LEKHA'
-    p[0] = ("println"+"_"+str(p.lineno(2)), p[1])
-
-# def p_stmt_print(p):
-#     'stmt : dynamString COMMA LEKHA SEMICOLON'
-#     p[0] = ("print", p[1])
-
-def p_stmt_WOCommaSameline(p):
-    'stmt : dynamString LEKHA SEMICOLON'
-    p[0] = ("print"+"_"+str(p.lineno(2)), p[1])
 
 def p_stmt_input(p):
     'stmt : IDENTIFIER LEU'
     p[0] = ("input"+"_"+str(p.lineno(2)), p[1])
-
+# [('binop_2', u'+', [('identifier_2', u'\u0915')], [('number_2', u'\u0967')])])
 def p_stmt_increment(p):
     'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
-    p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop", p[2],[("identifier", p[1])],[p[4]])])
+    p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop"+"_"+str(p.lineno(1)), p[2],[("identifier"+"_"+str(p.lineno(1)), p[1])],[p[4]])])
 
 def p_stmt_ifcondition(p):
     'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
@@ -137,9 +146,9 @@ def p_stmt_returnStatement(p):
     'stmt : exp PATHAU'
     p[0] = ('returnStmt'+"_"+str(p.lineno(2)), [p[1]])
 
-def p_stmt_newline(p):
-    'stmt : NEWLINE'
-    p[0] = ("blankLine"+"_"+str(p.lineno(1)),)
+def p_stmt_listitemassignment(p):
+    'stmt : IDENTIFIER LGPARA exp RGPARA ASSIGNMENT exp'
+    p[0] = ('listItemAssign'+"_"+str(p.lineno(2)), p[1], [p[3]], [p[6]])
 
 def p_variableArgs_arguments(p):
     'variableArgs : IDENTIFIER COMMA variableArgs'
@@ -300,7 +309,8 @@ def p_error(p):
     #changed here
     print "Syntax Error: Near Token " + p.type
     print p.lineno
-    exit(-1)
+    pass
+    # exit(-1)
 
 
 
@@ -447,11 +457,9 @@ input = u'''
 
 क = १+०-३*२+१-३*२
 '''
-ip = u'''क = १+०-३*२+१-३*२
-क लेख
-३%२ लेख
+input = u'''क[०] = "तेस्तात"
 '''
-# #write a file name here to override it.
+#write a file name here to override it.
 # filename = ""
 
 # usage =\
