@@ -93,9 +93,7 @@ class Example(wx.Frame):
     def write(self, text, filepath = None):
         filepath = filepath if filepath else self.filePath
         try:
-            print "Printed"
             open (filepath,"w").write(text.encode("UTF8"))
-            print "Printed"
         except Exception,e:
             pass
 
@@ -268,7 +266,7 @@ class Example(wx.Frame):
             NepI._envclear()
         except Exception, e:
             pass
-
+            self.tc3.SetValue(e.message)
             #print e.message
             #print unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
         finally:
@@ -276,9 +274,6 @@ class Example(wx.Frame):
 
         pass
 
-
-
-    
     def StopProgram(self, e):
         a = wx.MessageBox()
         print a

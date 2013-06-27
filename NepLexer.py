@@ -134,7 +134,7 @@ def t_NUMBER(token):
 t_ignore = u' \t'
 #error
 def t_error(t):
-    print "Illegal character '%s'" % t.value[0]
+    raise Exception()
     t.lexer.skip(1)
 
 # lexer = lex.lex()

@@ -7,15 +7,18 @@ from NepInterpreterLibrary import ArgumentError, BreakError,ContinueError,Return
 #from NepGUI import writetogui
 
 errors ={
-    'ZeroDivisionError': 'शुन्य ले भाग गरियो',
-    'NameError' : 'नाम मिलेन',
-    'IOError' : 'फाइलमा गल्ति भएको छ',
-    'IndexError': 'संग्रह को अकं मिलेन',
-    'KeyError' : 'कोशमा नाम मिलेन',
-    'ArgumentError' : 'काम को आरगुमेन्ट मिलेन',
+    'ZeroDivisionError': u'शुन्य ले भाग गरियो',
+    'NameError' : u'नाम मिलेन',
+    'TypeError' : u'दुइ वस्तुको प्रकृति मेलेन',
+    'IOError' : u'फाइलमा गल्ति भएको छ',
+    'IndexError': u'संग्रह को अकं मिलेन',
+    'KeyError' : u'कोशमा नाम मिलेन',
+    'ArgumentError' : u'काम को आरगुमेन्ट मिलेन',
     'BreakError' :u'यहा राख्न पाइन्न',
     'ContinueError' : u'यहा राख्न पाइन्न',
-    'NotANumber'    : 'दिईएको अर्गुमेन्त अङ्क होइन ',
+    'ReturnError' : u'यहा राख्न पाइन्न',
+    'NotANumber'    : u'दिईएको अर्गुमेन्त अङ्क होइन ',
+
 }
 
 environment = (None,{})
@@ -86,6 +89,8 @@ def interpret(trees,env = environment,tb=None):
         gui = tb
     if not env:
         env = environment
+
+    gui.update()
 
     for tree in trees:
 
@@ -306,6 +311,7 @@ def interpret(trees,env = environment,tb=None):
             exit(-1)
 
         except Exception,e:
+
             if e.__class__.__name__ == "BreakError":
                 raise BreakError()
             if e.__class__.__name__ == "ContinueError":
@@ -313,11 +319,14 @@ def interpret(trees,env = environment,tb=None):
             if e.__class__.__name__ == "ReturnError":
                 raise ReturnError(e.message)
 
+            if (isinstance(e.message,unicode)):
+                raise Exception(e.message)
+
             #print traceback.format_exc()
             errormessage = to_unicode (lineno) + u" लाइनमा गल्ति भयो\n"
-            errormessage += unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
-            #errorname = e.__class__.__name__
-            #errormessage = errors.get(errorname)
+            #errormessage += unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
+            errorname = e.__class__.__name__
+            errormessage += errors.get(errorname,u"गरेको मेलेन")
             raise Exception(unicode(errormessage))
 
 
