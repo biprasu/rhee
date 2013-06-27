@@ -289,7 +289,7 @@ def interpret(trees,env = environment,tb=None):
                             argval = interpret(args[i], env)
                             (newenv[1])[fparams[i]] = argval
                     result = interpret(fbody,newenv)
-                    return (result != None) and result or None
+                    return result
 
                 elif checklibrary(tree):
                     return call (tree,env)
@@ -297,7 +297,7 @@ def interpret(trees,env = environment,tb=None):
                     raise ArgumentError()
 
             elif stmttype == 'returnStmt':
-                return [interpret(i, env) for i in tree[1]]
+                return interpret(tree[1], env)
         except SystemExit:
             exit(-1)
 
