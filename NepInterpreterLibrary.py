@@ -339,6 +339,19 @@ def trimString(args,env):
         raise ArgumentError
     return NI.interpret(args[0]).strip(" ")
 
+import math
+import random
+def squareRoot(args, env):
+    if len(args) != 1:
+        raise ArgumentError
+    return NI.to_unicode(math.sqrt(NI.to_ascii(NI.interpret(args[0], env))))
+
+def randomNumber(args, env):
+    return NI.to_unicode(int(random.random()*1000))
+
+def joinString(args, env):
+    return ''.join([NI.interpret(args[0], env), NI.interpret(args[1], env)])
+
 function_names = {
     u'फाइलखोल' : openfile,
     u'__बन्दगर__' : closefile,
@@ -360,6 +373,9 @@ function_names = {
     u'अङ्कहो'  : isNumber,
     u'अ‍कं'     : toNumber,
     u'खालीहताऊ' : trimString,
+    u'वर्गरुट' : squareRoot,
+    u'अनियमित' : randomNumber,
+    u'जोड' :joinString,
 }
 
 

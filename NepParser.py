@@ -118,6 +118,10 @@ def p_stmt_increment(p):
     'stmt : IDENTIFIER incrementsign ASSIGNMENT exp'
     p[0] = ("assignment"+"_"+str(p.lineno(1)), p[1], [("binop"+"_"+str(p.lineno(1)), p[2],[("identifier"+"_"+str(p.lineno(1)), p[1])],[p[4]])])
 
+def p_stmt_incrementarray(p):
+    'stmt : IDENTIFIER LGPARA exp RGPARA incrementsign ASSIGNMENT exp'
+    p[0] = ("listItemAssign"+"_"+str(p.lineno(2)), p[1], [p[3]], [("binop"+"_"+str(p.lineno(1)), p[5],[("listItem"+"_"+str(p.lineno(1)), p[1], [p[3]])],[p[7]])])    
+
 def p_stmt_ifcondition(p):
     'stmt : YEDI condition NEWLINE cmpdstmt optelse DIYE'
     p[0] = ("ifelse"+"_"+str(p.lineno(1)), [("yedi"+"_"+str(p.lineno(1)), p[2], p[4])] + p[5])
@@ -319,14 +323,14 @@ def p_error(p):
 
 
 
-#import ply.lex as lex
+import ply.lex as lex
 # import ply.yacc as yacc
-#import NepLexer
+import NepLexer
 # import NepParser
 from NepLexer import tokens
 # from NepParser import * 
-#lexer = lex.lex(module=NepLexer)
-#parser = yacc.yacc()
+lexer = lex.lex(module=NepLexer)
+parser = yacc.yacc()
 
 
 
@@ -461,7 +465,12 @@ input = u'''
 
 क = १+०-३*२+१-३*२
 '''
-input = u'''क[०] = "तेस्तात"
+input = u'''क="तेस्तात"
+क[२] = "त"
+'''
+input = u'''क = [९,४,५]
+क[०] += १
+क[०] लेख 
 '''
 #write a file name here to override it.
 # filename = ""
@@ -483,8 +492,8 @@ input = u'''क[०] = "तेस्तात"
 #         input = unicode(open(argv[1],"r").read(),"UTF8")
 
 
-# ast = parser.parse(input, lexer=lexer)
-# print ast
+ast = parser.parse(input, lexer=lexer)
+print ast
 
 # try:
 # #    pass

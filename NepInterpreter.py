@@ -123,7 +123,9 @@ def interpret(trees,env = environment,tb=None):
             elif stmttype == 'slicing':
                 return env_lookup( tree[1],env)[(tree[2] and int(to_ascii(interpret(tree[2],env))) or 0):(tree[3] and int(to_ascii(interpret(tree[3],env))) or None)]
             elif stmttype == 'input':
-                env_update(tree[1],gui.getInputData(),env)
+                inputData = gui.getInputData()
+                env_update(tree[1],inputData,env)
+                gui.tc3.SetValue(gui.tc3.GetValue() + inputData)
 
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:
@@ -141,6 +143,9 @@ def interpret(trees,env = environment,tb=None):
             elif stmttype == 'assignment':
                 env_update(tree[1], interpret(tree[2],env), env)
                 #print env
+            elif stmttype == 'listItemAssign':
+                index = int(to_ascii(interpret(tree[2],env)))
+                env_update(tree[1],interpret(tree[3], env), env,index,True)
             elif stmttype == 'increment':
                 pass
             elif stmttype == 'binop':
@@ -311,20 +316,21 @@ def interpret(trees,env = environment,tb=None):
 
 
 
-
-
 def add_to_env(env,vname,value):
     env[1][vname] = value
 
-def env_update(vname,value,env):
+def env_update(vname,value,env,list_index=0,lst=False):
     if vname in env[1]:
-        (env[1])[vname] = value
+        if lst==False:  (env[1])[vname] = value
+        else:   (env[1])[vname][list_index] = value
     # elif not (env[0]== None):
     #     env_update(vname,value,env[0])
     elif vname in environment[1]:
-        (environment[1])[vname] = value
+        if lst==False:  (environment[1])[vname] = value
+        else:   (environment[1])[vname][list_index] = value
     else:
-        (env[1])[vname] = value
+        if lst==False:  (env[1])[vname] = value
+        else:   (env[1])[vname][list_index] = value
 
 
 def env_exists(vname,env):
