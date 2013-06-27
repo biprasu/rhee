@@ -64,6 +64,8 @@ reserved = {
     u'बाहिर' : 'BAHIRA',
     u'अर्को': "ARKO",
     u'शुन्य' : 'SUNYA',
+    u'चोटि' : 'CHOTI',
+    u'टिचो' : 'TICHO',
 }
  
 tokens = tokens + list(reserved.values())

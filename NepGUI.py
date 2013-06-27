@@ -268,7 +268,6 @@ class Example(wx.Frame):
         except KeyboardInterrupt,e:
             self.tc3.SetValue(self.tc3.GetValue() + u"\nबन्द गरियो\n")
         except Exception, e:
-            pass
             self.tc3.SetValue(e.message)
         finally:
             self.tc3.SetValue(self.tc3.GetValue() + u"\nप्रोग्राम सकियो!!")

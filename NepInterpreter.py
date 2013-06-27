@@ -324,7 +324,8 @@ def interpret(trees,env = environment,tb=None):
 
             #print traceback.format_exc()
             errormessage = to_unicode (lineno) + u" लाइनमा गल्ति भयो\n"
-            #errormessage += unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
+            errormessage += unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
+            print errormessage
             errorname = e.__class__.__name__
             errormessage += errors.get(errorname,u"गरेको मेलेन")
             raise e.__class__(unicode(errormessage))
