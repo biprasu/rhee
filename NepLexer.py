@@ -124,7 +124,7 @@ t_QUESTION = ur'\?'
 #words
 def t_IDENTIFIER(token):
     #down below is the entire devanagari script except numbers.
-    ur'[\u0900-\u0965_][\u0900-\u0965_०-९]*'
+    ur'[\u0900-\u0965_][\u0900-\u0965_०-९\u200d]*'
     token.type = reserved.get(token.value,'IDENTIFIER')    # Check for reserved words
     return token
  
@@ -141,11 +141,28 @@ def t_error(t):
 
 # lexer = lex.lex()
 # # ip = unicode(open('inputfile.txt','r').read(),encoding="UTF8")
-# ip = u'''क = ३
-
-# //टेस्ट
-
+# ip = u'''क = "फाइलखोल"
 # क लेख
+# म = गन("फाइलखोल")
+# म लेख
+# म = टुक्राऊ("फाइलखोल", "इ")
+# म लेख
+# म = खोज("फाइलखोल", "इ")
+# म लेख
+# म = खोज("फाइलखोल", "इ", ०, १०)
+# म लेख
+# म = बद्ल("फाइलखोल", "इ", "ल")
+# म लेख
+# म = अ‍कं("१०")
+# म लेख
+# म = खालीहताऊ("   फाइलखोल   ")
+# म लेख
+# म = गन(["फ", "ाइलखोल"])
+# म लेख
+# म = टुक्राऊ("फाइलखोल", "इ")
+# म लेख
+# म = खोज("फाइलखोल", "इ")
+
 # '''
 # lexer.input (ip)
 

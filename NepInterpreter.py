@@ -125,7 +125,7 @@ def interpret(trees,env = environment,tb=None):
             elif stmttype == 'input':
                 inputData = gui.getInputData()
                 env_update(tree[1],inputData,env)
-                gui.tc3.SetValue(gui.tc3.GetValue() + inputData)
+                gui.tc3.SetValue(gui.tc3.GetValue() + inputData + '\n')
 
             elif stmttype == 'println' or stmttype == 'print':
                 for data in tree[1]:

@@ -323,8 +323,8 @@ def isNumber(args,env):
         raise ArgumentError
     for item in NI.interpret(args[0], env):
         if ((not item in NI.map_num) and item != u'.' and item != u'-'):
-            return False
-    return True
+            return u'०'
+    return u'१'
 
 def toNumber(args,env):
     if len(args) != 1:
@@ -332,7 +332,7 @@ def toNumber(args,env):
     for item in NI.interpret(args[0], env):
         if ((not item in NI.map_num) and item != u'.' and item != u'-'):
             raise NotANumber
-    return (NI.interpret(args[0]))
+    return (NI.interpret(args[0], env))
 
 def trimString(args,env):
     if len(args) != 1:
@@ -370,7 +370,7 @@ function_names = {
     u'टुक्राऊ' : breakString,
     u'खोज'     : findString,
     u'बद्ल'     : replaceString,
-    u'अङ्कहो'  : isNumber,
+    u'अ‍कंहो'  : isNumber,
     u'अ‍कं'     : toNumber,
     u'खालीहताऊ' : trimString,
     u'वर्गरुट' : squareRoot,
