@@ -90,7 +90,10 @@ def interpret(trees,env = environment,tb=None):
     if not env:
         env = environment
 
-    gui.update()
+    while (gui.app.Pending()):
+        gui.app.Dispatch();
+    if (not gui.running):   #if the red button clicked, stop
+        raise KeyboardInterrupt()
 
     for tree in trees:
 
@@ -319,15 +322,12 @@ def interpret(trees,env = environment,tb=None):
             if e.__class__.__name__ == "ReturnError":
                 raise ReturnError(e.message)
 
-            if (isinstance(e.message,unicode)):
-                raise Exception(e.message)
-
             #print traceback.format_exc()
             errormessage = to_unicode (lineno) + u" लाइनमा गल्ति भयो\n"
             #errormessage += unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
             errorname = e.__class__.__name__
             errormessage += errors.get(errorname,u"गरेको मेलेन")
-            raise Exception(unicode(errormessage))
+            raise e.__class__(unicode(errormessage))
 
 
 

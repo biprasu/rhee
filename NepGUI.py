@@ -116,7 +116,7 @@ class Example(wx.Frame):
         self.Bind(wx.EVT_TOOL, self.saveAsFile, satool)
         self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)
         self.Bind(wx.EVT_TOOL, self.RunProgram, rtool)
-        # self.Bind(wx.EVT_TOOL, self.getInputData, stop)
+        self.Bind(wx.EVT_TOOL, self.StopProgram, stop)
 
 
 
@@ -262,21 +262,21 @@ class Example(wx.Frame):
             ast = parser.parse(input, lexer=lexer)
             #print ast
             self.tc3.SetValue('')
+            self.running = True
             NepI.interpret(ast,None,self)
             NepI._envclear()
+        except KeyboardInterrupt,e:
+            self.tc3.SetValue(self.tc3.GetValue() + u"\nबन्द गरियो\n")
         except Exception, e:
             pass
             self.tc3.SetValue(e.message)
-            #print e.message
-            #print unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
         finally:
             self.tc3.SetValue(self.tc3.GetValue() + u"\nप्रोग्राम सकियो!!")
 
         pass
 
     def StopProgram(self, e):
-        a = wx.MessageBox()
-        print a
+        self.running=False
     
     def OnQuit(self, e):
         ret  = wx.MessageBox(u'प्रोग्राम बन्द गर्दिम त?', 'Question', 
@@ -290,7 +290,8 @@ def main():
     global win
     ex = wx.App()
     win = Example(None)
-    ex.MainLoop()    
+    win.app = ex
+    ex.MainLoop()
 
 
 
