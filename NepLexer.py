@@ -67,9 +67,7 @@ reserved = {
 }
  
 tokens = tokens + list(reserved.values())
- 
- 
- 
+
 #comment
 def t_comment(token):
     ur'(//[^\n]*)|(?:/\*[^(\*/)]*\*/)'

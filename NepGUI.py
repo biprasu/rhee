@@ -267,7 +267,10 @@ class Example(wx.Frame):
             NepI.interpret(ast,None,self)
             NepI._envclear()
         except Exception, e:
-            print e.message
+            pass
+
+            #print e.message
+            #print unicode(traceback.format_exc(),encoding="UTF8") + u"\n"
         finally:
             self.tc3.SetValue(self.tc3.GetValue() + u"\nप्रोग्राम सकियो!!")
 

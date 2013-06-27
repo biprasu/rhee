@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="22d8b3e9-c7af-428f-80ae-101de7310192" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepGUI.py" afterPath="$PROJECT_DIR$/NepGUI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepInterpreter.py" afterPath="$PROJECT_DIR$/NepInterpreter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepInterpreterLibrary.py" afterPath="$PROJECT_DIR$/NepInterpreterLibrary.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NepLexer.py" afterPath="$PROJECT_DIR$/NepLexer.py" />
     </list>
     <ignored path="rhee.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +31,8 @@
       <file leaf-file-name="NepParser.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NepParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="12" selection-start="5378" selection-end="5378" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1372299164621" expanded="true" signature="8986:9030" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1372299164621" expanded="true" signature="9050:9074" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-              </folding>
+            <state line="157" column="26" selection-start="5506" selection-end="5506" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -40,7 +40,7 @@
       <file leaf-file-name="NepLexer.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NepLexer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="10" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0">
+            <state line="74" column="8" selection-start="1446" selection-end="1446" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -49,25 +49,27 @@
       <file leaf-file-name="NepInterpreterLibrary.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NepInterpreterLibrary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="239" column="25" selection-start="6099" selection-end="6099" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="211" selection-end="211" vertical-scroll-proportion="-7.48">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NepInterpreter.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NepInterpreter.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NepInterpreter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="299" column="40" selection-start="11417" selection-end="11417" vertical-scroll-proportion="0.6029851">
-              <folding />
+            <state line="314" column="0" selection-start="11981" selection-end="11981" vertical-scroll-proportion="-7.72">
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NepGUI.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NepGUI.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NepGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="276" column="0" selection-start="9084" selection-end="9084" vertical-scroll-proportion="0.0">
+            <state line="259" column="12" selection-start="8613" selection-end="8613" vertical-scroll-proportion="0.2540107">
               <folding />
             </state>
           </provider>
@@ -76,7 +78,7 @@
       <file leaf-file-name="GraphicsKeyboard.rhee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docsink/GraphicsKeyboard.rhee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="10" selection-start="0" selection-end="531" vertical-scroll-proportion="0.0">
+            <state line="5" column="14" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,7 +87,7 @@
       <file leaf-file-name="Filehandling.rhee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docsink/Filehandling.rhee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="8" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
+            <state line="14" column="8" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,14 +121,14 @@
         <option value="$PROJECT_DIR$/inputfile.txt" />
         <option value="$PROJECT_DIR$/docsink/Basic IO.txt" />
         <option value="$PROJECT_DIR$/docsink/Loops&amp;ConditionalStatements.txt" />
-        <option value="$PROJECT_DIR$/docsink/Filehandling.rhee" />
         <option value="$PROJECT_DIR$/ip.txt" />
         <option value="$PROJECT_DIR$/docsink/GraphicsKeyboard.rhee" />
-        <option value="$PROJECT_DIR$/NepLexer.py" />
-        <option value="$PROJECT_DIR$/NepInterpreterLibrary.py" />
-        <option value="$PROJECT_DIR$/NepGUI.py" />
         <option value="$PROJECT_DIR$/NepParser.py" />
+        <option value="$PROJECT_DIR$/NepLexer.py" />
+        <option value="$PROJECT_DIR$/docsink/Filehandling.rhee" />
+        <option value="$PROJECT_DIR$/NepInterpreterLibrary.py" />
         <option value="$PROJECT_DIR$/NepInterpreter.py" />
+        <option value="$PROJECT_DIR$/NepGUI.py" />
       </list>
     </option>
   </component>
@@ -162,6 +164,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -196,7 +199,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,11 +371,11 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18664643" sideWeight="0.6780239" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46678025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20106222" sideWeight="0.67972744" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41908008" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32197616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32027256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -437,7 +439,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/NepInterpreterLibrary.py</url>
-          <line>47</line>
+          <line>49</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/NepInterpreter.py</url>
+          <line>361</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/NepInterpreter.py</url>
+          <line>305</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/NepInterpreter.py</url>
+          <line>308</line>
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -475,44 +489,12 @@
     </entry>
     <entry file="file://C:/Python27/Lib/traceback.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="242" column="0" selection-start="8719" selection-end="8719" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="242" column="0" selection-start="8719" selection-end="8719" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://C:/Python27/Lib/lib-tk/Tkinter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1689" column="30" selection-start="68925" selection-end="68925" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NepLexer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="10" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NepInterpreterLibrary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="25" selection-start="6099" selection-end="6099" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docsink/GraphicsKeyboard.rhee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="10" selection-start="0" selection-end="531" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docsink/Filehandling.rhee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="8" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1689" column="30" selection-start="68925" selection-end="68925" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -520,26 +502,53 @@
         <state line="34" column="8" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NepGUI.py">
+    <entry file="file://$PROJECT_DIR$/docsink/Filehandling.rhee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="276" column="0" selection-start="9084" selection-end="9084" vertical-scroll-proportion="0.0">
+        <state line="14" column="8" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NepParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="12" selection-start="5378" selection-end="5378" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1372299164621" expanded="true" signature="8986:9030" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1372299164621" expanded="true" signature="9050:9074" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
+        <state line="157" column="26" selection-start="5506" selection-end="5506" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NepLexer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="8" selection-start="1446" selection-end="1446" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docsink/GraphicsKeyboard.rhee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NepInterpreterLibrary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="211" selection-end="211" vertical-scroll-proportion="-7.48">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NepInterpreter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="299" column="40" selection-start="11417" selection-end="11417" vertical-scroll-proportion="0.6029851">
+        <state line="314" column="0" selection-start="11981" selection-end="11981" vertical-scroll-proportion="-7.72">
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NepGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="259" column="12" selection-start="8613" selection-end="8613" vertical-scroll-proportion="0.2540107">
           <folding />
         </state>
       </provider>

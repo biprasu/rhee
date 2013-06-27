@@ -11,6 +11,8 @@ class ArgumentError(Exception):
 
 class BreakError(Exception):
     pass
+class ReturnError(Exception):
+    pass
 
 class ContinueError(Exception):
     pass

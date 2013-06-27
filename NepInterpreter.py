@@ -3,7 +3,7 @@ import re
 import sys
 import traceback
 
-from NepInterpreterLibrary import ArgumentError, BreakError,ContinueError, checklibrary, call
+from NepInterpreterLibrary import ArgumentError, BreakError,ContinueError,ReturnError, checklibrary, call
 #from NepGUI import writetogui
 
 errors ={
@@ -47,7 +47,7 @@ def to_ascii(num):
 
     ascii = ''
     for char in num:
-        if char in map_num:
+        if char in map_num or char =='-' or char =='.':
             ascii += (char == '-') and '-' or ((char=='.') and '.' or str(map_num[char]))
         else:
             return num
@@ -213,7 +213,7 @@ def interpret(trees,env = environment,tb=None):
                 interpret(tree[1], env)
             elif stmttype == 'yedi':
                 if map_num[interpret(tree[1], env)]:
-                    interpret(tree[2])
+                    interpret(tree[2],env)
                     return
             elif stmttype == 'elseif':
                 if map_num[interpret(tree[1], env)]:
@@ -288,7 +288,10 @@ def interpret(trees,env = environment,tb=None):
                         for i in range(len(args)):
                             argval = interpret(args[i], env)
                             (newenv[1])[fparams[i]] = argval
-                    result = interpret(fbody,newenv)
+                    try:
+                        result = interpret(fbody,newenv)
+                    except ReturnError, r:
+                        return r.message
                     return result
 
                 elif checklibrary(tree):
@@ -297,7 +300,8 @@ def interpret(trees,env = environment,tb=None):
                     raise ArgumentError()
 
             elif stmttype == 'returnStmt':
-                return interpret(tree[1], env)
+                n = ReturnError (interpret(tree[1], env))
+                raise n
         except SystemExit:
             exit(-1)
 
@@ -306,6 +310,8 @@ def interpret(trees,env = environment,tb=None):
                 raise BreakError()
             if e.__class__.__name__ == "ContinueError":
                 raise ContinueError()
+            if e.__class__.__name__ == "ReturnError":
+                raise ReturnError(e.message)
 
             #print traceback.format_exc()
             errormessage = to_unicode (lineno) + u" लाइनमा गल्ति भयो\n"
