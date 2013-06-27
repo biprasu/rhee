@@ -73,6 +73,11 @@ def _type(data, env):
     if dtype != 'identifier':   return data[0][0]
     return type(env_lookup(data[0][1], env))==list and "list" or "number"
 
+def _envclear():
+    global environment
+    environment = (None,{})
+
+
 gui = None
 def interpret(trees,env = environment,tb=None):
     global gui
@@ -81,6 +86,7 @@ def interpret(trees,env = environment,tb=None):
         gui = tb
     if not env:
         env = environment
+
     for tree in trees:
 
         if not tree:

@@ -265,8 +265,12 @@ class Example(wx.Frame):
             #print ast
             self.tc3.SetValue('')
             NepI.interpret(ast,None,self)
+            NepI._envclear()
         except Exception, e:
             print e.message
+        finally:
+            self.tc3.SetValue(self.tc3.GetValue() + u"\nप्रोग्राम सकियो!!")
+
         pass
 
 
