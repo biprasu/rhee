@@ -130,6 +130,11 @@ def p_stmt_for(p):
     'stmt : SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp SEMICOLON sign exp NEWLINE cmpdstmt BAISA'
     p[0] = ("forloop"+"_"+str(p.lineno(1)), p[2], [p[4]], [p[6]], p[8], [p[9]], p[11])
 
+def p_stmt_choti(p):
+    'stmt : exp CHOTI NEWLINE cmpdstmt TICHO'
+    p[0] = ("forloop"+"_"+str(p.lineno(1)), p[2], [p[4]], [p[6]], p[8], [p[9]], p[11])
+    pass
+
 def p_stmt_for1(p):
     'stmt : SABEI IDENTIFIER ASSIGNMENT exp DEKHI exp NEWLINE cmpdstmt BAISA'
     p[0] = ("forloop"+"_"+str(p.lineno(1)), p[2], [p[4]], [p[6]], u"+", [("number_"+str(p.lineno(1)),u'१' )], p[8])
